@@ -21,7 +21,64 @@ class ContractorsController extends AppController
         $contractors = $this->paginate($query);
 
         $this->set(compact('contractors'));
+
+        // Retrieve search parameters from the query string
+        $name = $this->request->getQuery('name');
+        $email = $this->request->getQuery('email');
+        $skills = $this->request->getQuery('skills');
+        $sort = $this->request->getQuery('sort', 'default'); // Default sort if none provided
+
+        // Start building the query
+        $query = $this->Contractors->find()
+            ->contain(['Skills', 'Projects'])
+            ->leftJoinWith('Projects') // Join with the Projects table for sorting by project count
+            ->select([
+                'Contractors.id',
+                'Contractors.first_name',
+                'Contractors.last_name',
+                'Contractors.contractor_email',
+                'Contractors.phone_number',
+                'project_count' => $query->func()->count('Projects.id')
+            ])
+            ->group('Contractors.id');
+
+        // Filter by name (first or last)
+        if (!empty($name)) {
+            $query->where([
+                'OR' => [
+                    'Contractors.first_name LIKE' => '%' . $name . '%',
+                    'Contractors.last_name LIKE' => '%' . $name . '%'
+                ]
+            ]);
+        }
+
+        // Filter by email
+        if (!empty($email)) {
+            $query->where(['Contractors.contractor_email LIKE' => '%' . $email . '%']);
+        }
+
+        // Filter by skills
+        if (!empty($skills)) {
+            $query->matching('Skills', function ($q) use ($skills) {
+                return $q->where(['Skills.id IN' => $skills]);
+            });
+        }
+
+        // Sorting by project count if selected
+        if ($sort === 'projects') {
+            $query->order(['project_count' => 'DESC']);
+        }
+
+        // Paginate the filtered and sorted results
+        $contractors = $this->paginate($query);
+
+        // Fetch the list of skills for the filter form
+        $skillsList = $this->Contractors->Skills->find('list')->toArray();
+
+        // Set variables for the view
+        $this->set(compact('contractors', 'skillsList'));
     }
+
 
     /**
      * View method
@@ -99,4 +156,8 @@ class ContractorsController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+
+
+
 }
