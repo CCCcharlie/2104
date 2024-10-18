@@ -2245,23 +2245,23 @@
         },
         {
             "name": "cakephp/twig-view",
-            "version": "2.0.2",
+            "version": "2.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/twig-view.git",
-                "reference": "2bda8f75e97d821b20bda521c4306240241c401b"
+                "reference": "b11df8e8734ae556d98b143192377dbc6a6f5360"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/twig-view/zipball/2bda8f75e97d821b20bda521c4306240241c401b",
-                "reference": "2bda8f75e97d821b20bda521c4306240241c401b",
+                "url": "https://api.github.com/repos/cakephp/twig-view/zipball/b11df8e8734ae556d98b143192377dbc6a6f5360",
+                "reference": "b11df8e8734ae556d98b143192377dbc6a6f5360",
                 "shasum": ""
             },
             "require": {
                 "cakephp/cakephp": "^5.0.0",
                 "jasny/twig-extensions": "^1.3",
                 "twig/markdown-extra": "^3.0",
-                "twig/twig": "^3.10.3"
+                "twig/twig": "^3.11.1"
             },
             "conflict": {
                 "wyrihaximus/twig-view": "*"
@@ -2269,10 +2269,9 @@
             "require-dev": {
                 "cakephp/cakephp-codesniffer": "^5.0",
                 "cakephp/debug_kit": "^5.0",
-                "cakephp/plugin-installer": "^1.3",
                 "michelf/php-markdown": "^1.9",
                 "mikey179/vfsstream": "^1.6.10",
-                "phpunit/phpunit": "^10.1.0"
+                "phpunit/phpunit": "^10.5.5 || ^11.1.3"
             },
             "type": "cakephp-plugin",
             "autoload": {
@@ -2303,7 +2302,7 @@
                 "issues": "https://github.com/cakephp/twig-view/issues",
                 "source": "https://github.com/cakephp/twig-view"
             },
-            "time": "2024-07-02T20:42:26+00:00"
+            "time": "2024-10-11T07:53:08+00:00"
         },
         {
             "name": "composer/class-map-generator",

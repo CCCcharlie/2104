@@ -6,16 +6,16 @@ namespace App\Test\Fixture;
 use Cake\TestSuite\Fixture\TestFixture;
 
 /**
- * ContactUsFixture
+ * ContactFixture
  */
-class ContactUsFixture extends TestFixture
+class ContactFixture extends TestFixture
 {
     /**
      * Table name
      *
      * @var string
      */
-    public string $table = 'contact_us';
+    public string $table = 'contact';
     /**
      * Init method
      *
@@ -32,8 +32,8 @@ class ContactUsFixture extends TestFixture
                 'phone_number' => 'Lorem ip',
                 'message' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
                 'organisation_id' => 1,
-                'created' => '2024-10-17 04:19:30',
-                'modified' => '2024-10-17 04:19:30',
+                'created' => '2024-10-18 00:27:11',
+                'modified' => '2024-10-18 00:27:11',
             ],
         ];
         parent::init();
