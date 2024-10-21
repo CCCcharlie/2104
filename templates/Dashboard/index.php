@@ -1,19 +1,16 @@
 <!-- src/Templates/Dashboard/index.php -->
+
 <div class="container-fluid">
     <div class="row">
         <!-- Sidebar -->
         <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
             <div class="position-sticky">
                 <ul class="nav flex-column">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">Dashboard</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./projects">Projects</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./contactus">Contact Us </a>
-                    </li>
+                    <li><a href="<?= $this->Url->build('./dashboard'); ?>">Dashboard</a></li>
+                    <li><a href="<?= $this->Url->build('./projects'); ?>">Projects</a></li>
+                    <li><a href="<?= $this->Url->build('./contractors'); ?>">Contractors</a></li>
+                    <li><a href="<?= $this->Url->build('./organisations'); ?>">Organisations</a></li>
+                    <li><a href="<?= $this->Url->build('./contact-us'); ?>">Contact Us</a></li>
                 </ul>
             </div>
         </nav>

@@ -22,6 +22,33 @@ class ContactController extends AppController
         $contact = $this->paginate($query);
 
         $this->set(compact('contact'));
+
+        $query = $this->Contact->find('all', [
+            'conditions' => [
+                'OR' => [
+                    'Contractors.first_name LIKE' => '%' . $keyword . '%',
+                    'Contractors.last_name LIKE' => '%' . $keyword . '%'
+                ]
+            ]
+        ]);
+
+        $query = $this->Contact->find('all', [
+            'conditions' => ['Contractors.contractor_email LIKE' => '%' . $keyword . '%']
+        ]);
+
+
+        $query = $this->Contact->find()
+            ->select(['Contractors.id', 'Contractors.first_name', 'Contractors.last_name', 'project_count' => $query->func()->count('Projects.id')])
+            ->leftJoinWith('Projects')
+            ->group(['Contractors.id'])
+            ->order(['project_count' => 'DESC']);
+
+
+        $query = $this->Contact->find()
+            ->matching('Skills', function($q) use ($selectedSkills) {
+                return $q->where(['Skills.skill_name IN' => $selectedSkills]);
+            });
+
     }
 
     /**

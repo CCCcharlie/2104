@@ -22,6 +22,17 @@ class ContactUsController extends AppController
         $contactUs = $this->paginate($query);
 
         $this->set(compact('contactUs'));
+
+        $contact = $this->ContactUs->get($id);
+        $contact->organisation_id = $organisationId;
+        $contact->contractor_id = $contractorId; // If applicable
+        $this->ContactUs->save($contact);
+
+        $contact = $this->ContactUs->get($id);
+        $contact->replied = true;
+        $this->ContactUs->save($contact);
+
+
     }
 
     /**

@@ -1,0 +1,30 @@
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background-color: #f4f4f4;
+    width: 200px; /* Adjust based on your layout */
+    height: 100vh;
+}
+
+.sidebar-menu li {
+    border-bottom: 1px solid #ddd;
+}
+
+.sidebar-menu li a {
+    display: block;
+    padding: 10px;
+    color: #333;
+    text-decoration: none;
+}
+
+.sidebar-menu li a:hover {
+    background-color: #ddd;
+}
+
+/* FontAwesome icons */
+.sidebar-menu li a:before {
+    font-family: FontAwesome;
+    margin-right: 10px;
+    content: "\f015"; /* Example icon code */
+}
