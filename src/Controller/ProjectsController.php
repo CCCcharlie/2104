@@ -17,42 +17,44 @@ class ProjectsController extends AppController
      */
     public function index()
     {
-        $keyword = $this->request->getQuery('keyword'); // Search keyword
-        $status = $this->request->getQuery('status'); // Status filter
+        $keyword = $this->request->getQuery('keyword'); // Skill keyword
+        $status = $this->request->getQuery('status');   // Status filter
+        $skills = $this->request->getQuery('skills');   // Array of skill IDs
         $startDate = $this->request->getQuery('start_date'); // Start date filter
-        $endDate = $this->request->getQuery('end_date'); // End date filter
+        $endDate = $this->request->getQuery('end_date');     // End date filter
 
         $query = $this->Projects->find()
-            ->contain(['Contractors', 'Organisations']);
-        $projects = $this->paginate($query);
+            ->contain(['Skills', 'Contractors', 'Organisations']);
 
-        $this->set(compact('projects'));
-
-        $query = $this->Projects->find()
-            ->matching('Skills', function($q) use ($keyword) {
+        // Filter by skill keyword
+        if (!empty($keyword)) {
+            $query = $query->matching('Skills', function ($q) use ($keyword) {
                 return $q->where(['Skills.skill_name LIKE' => '%' . $keyword . '%']);
             });
+        }
 
-        $query = $this->Projects->find()
-            ->where(['Projects.complete' => $status]);
+        // Filter by project status
+        if (!empty($status)) {
+            $query = $query->where(['Projects.complete' => $status]);
+        }
 
-        $query = $this->Projects->find()
-            ->where([
+        // Filter by selected skills (checkboxes)
+        if (!empty($skills)) {
+            $query = $query->matching('Skills', function ($q) use ($skills) {
+                return $q->where(['Skills.id IN' => $skills]);
+            });
+        }
+
+        // Filter by start and end dates
+        if (!empty($startDate) && !empty($endDate)) {
+            $query = $query->where([
                 'Projects.project_due_date >=' => $startDate,
                 'Projects.project_due_date <=' => $endDate
             ]);
-
-        // Handle Projects Filter by Status
-        if ($status !== null) {
-            // If status is explicitly provided (1 for complete or 0 for incomplete)
-            $query = $query->where(['Projects.complete' => $status]);
-        } else {
-            // If the status is not set or NULL (e.g., user didn't select a filter)
-            $query = $query->where(['Projects.complete IS NOT NULL']);
         }
 
-        $this->set(compact('query'));
-
+        $projects = $this->paginate($query);
+        $this->set(compact('projects'));
     }
 
     /**

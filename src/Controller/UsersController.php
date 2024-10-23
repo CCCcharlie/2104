@@ -97,4 +97,33 @@ class UsersController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+    public function login()
+    {
+        $this->request->allowMethod(['get', 'post']);
+        $result = $this->Authentication->getResult();
+        if ($result->isValid()) {
+            // Redirect to intended page
+            $redirect = $this->request->getQuery('redirect', [
+                'controller' => 'Pages',
+                'action' => 'display',
+                'home'
+            ]);
+
+            return $this->redirect($redirect);
+        } else if ($this->request->is('post')) {
+            // Authentication failed, display error
+            $this->Flash->error(__('Invalid username or password'));
+        }
+    }
+
+    public function logout()
+    {
+        $result = $this->Authentication->getResult();
+        if ($result->isValid()) {
+            $this->Authentication->logout();
+            return $this->redirect(['controller' => 'Users', 'action' => 'login']);
+        }
+    }
+
 }

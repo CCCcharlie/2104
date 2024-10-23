@@ -54,6 +54,12 @@ class ProjectsTable extends Table
         $this->belongsTo('Organisations', [
             'foreignKey' => 'organisation_id',
         ]);
+
+        $this->belongsToMany('Skills', [
+            'joinTable' => 'projects_skills',
+            'foreignKey' => 'project_id',
+            'targetForeignKey' => 'skill_id',
+        ]);
     }
 
     /**

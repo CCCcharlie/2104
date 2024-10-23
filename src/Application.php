@@ -28,6 +28,7 @@ use Cake\ORM\Locator\TableLocator;
 use Cake\Routing\Middleware\AssetMiddleware;
 use Cake\Routing\Middleware\RoutingMiddleware;
 
+
 /**
  * Application setup class.
  *
@@ -54,7 +55,10 @@ class Application extends BaseApplication
                 (new TableLocator())->allowFallbackClass(false)
             );
         }
+        $this->addPlugin('Authentication');
     }
+
+
 
     /**
      * Setup the middleware queue your application will use.
@@ -91,6 +95,7 @@ class Application extends BaseApplication
                 'httponly' => true,
             ]));
 
+
         return $middlewareQueue;
     }
 
@@ -104,4 +109,25 @@ class Application extends BaseApplication
     public function services(ContainerInterface $container): void
     {
     }
+
+    public function getAuthenticationService(ServerRequestInterface $request): AuthenticationServiceInterface
+    {
+        $service = new AuthenticationService();
+        $service->loadIdentifier('Authentication.Password', [
+            'fields' => [
+                'username' => 'username',
+                'password' => 'password',
+            ]
+        ]);
+        $service->loadAuthenticator('Authentication.Form', [
+            'fields' => [
+                'username' => 'username',
+                'password' => 'password',
+            ],
+            'loginUrl' => '/users/login',
+        ]);
+
+        return $service;
+    }
+
 }
