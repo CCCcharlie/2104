@@ -62,7 +62,7 @@ return function (RouteBuilder $routes): void {
          */
 //        $builder->connect('/pages/*', 'Pages::display');
 
-        $builder->connect('/', ['controller' => 'Dashboard', 'action' => 'index']);
+        $builder->connect('/', ['controller' => 'Projects', 'action' => 'index']);
 
 
         /*
