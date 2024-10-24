@@ -11,7 +11,6 @@ use Cake\Validation\Validator;
 /**
  * Organisations Model
  *
- * @property \App\Model\Table\ContactUsTable&\Cake\ORM\Association\HasMany $ContactUs
  * @property \App\Model\Table\ProjectsTable&\Cake\ORM\Association\HasMany $Projects
  *
  * @method \App\Model\Entity\Organisation newEmptyEntity()
@@ -48,7 +47,7 @@ class OrganisationsTable extends Table
 
         $this->addBehavior('Timestamp');
 
-        $this->hasMany('ContactUs', [
+        $this->hasMany('Contact', [
             'foreignKey' => 'organisation_id',
         ]);
         $this->hasMany('Projects', [

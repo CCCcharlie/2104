@@ -21,17 +21,6 @@ class OrganisationsController extends AppController
         $organisations = $this->paginate($query);
 
         $this->set(compact('organisations'));
-
-        $query = $this->Organisations->find('all', [
-            'conditions' => ['Organisations.business_name LIKE' => '%' . $keyword . '%']
-        ]);
-
-        $query = $this->Organisations->find()
-            ->select(['Organisations.id', 'Organisations.business_name', 'project_count' => $query->func()->count('Projects.id')])
-            ->leftJoinWith('Projects')
-            ->group(['Organisations.id'])
-            ->order(['project_count' => 'DESC']);
-
     }
 
     /**

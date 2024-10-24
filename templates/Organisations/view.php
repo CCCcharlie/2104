@@ -58,45 +58,6 @@
                 </blockquote>
             </div>
             <div class="related">
-                <h4><?= __('Related Contact Us') ?></h4>
-                <?php if (!empty($organisation->contact_us)) : ?>
-                <div class="table-responsive">
-                    <table>
-                        <tr>
-                            <th><?= __('Id') ?></th>
-                            <th><?= __('First Name') ?></th>
-                            <th><?= __('Last Name') ?></th>
-                            <th><?= __('Email') ?></th>
-                            <th><?= __('Phone Number') ?></th>
-                            <th><?= __('Message') ?></th>
-                            <th><?= __('Organisation Id') ?></th>
-                            <th><?= __('Created') ?></th>
-                            <th><?= __('Modified') ?></th>
-                            <th class="actions"><?= __('Actions') ?></th>
-                        </tr>
-                        <?php foreach ($organisation->contact_us as $contactU) : ?>
-                        <tr>
-                            <td><?= h($contactU->id) ?></td>
-                            <td><?= h($contactU->first_name) ?></td>
-                            <td><?= h($contactU->last_name) ?></td>
-                            <td><?= h($contactU->email) ?></td>
-                            <td><?= h($contactU->phone_number) ?></td>
-                            <td><?= h($contactU->message) ?></td>
-                            <td><?= h($contactU->organisation_id) ?></td>
-                            <td><?= h($contactU->created) ?></td>
-                            <td><?= h($contactU->modified) ?></td>
-                            <td class="actions">
-                                <?= $this->Html->link(__('View'), ['controller' => 'ContactUs', 'action' => 'view', $contactU->id]) ?>
-                                <?= $this->Html->link(__('Edit'), ['controller' => 'ContactUs', 'action' => 'edit', $contactU->id]) ?>
-                                <?= $this->Form->postLink(__('Delete'), ['controller' => 'ContactUs', 'action' => 'delete', $contactU->id], ['confirm' => __('Are you sure you want to delete # {0}?', $contactU->id)]) ?>
-                            </td>
-                        </tr>
-                        <?php endforeach; ?>
-                    </table>
-                </div>
-                <?php endif; ?>
-            </div>
-            <div class="related">
                 <h4><?= __('Related Projects') ?></h4>
                 <?php if (!empty($organisation->projects)) : ?>
                 <div class="table-responsive">

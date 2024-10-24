@@ -50,7 +50,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             <a href="<?= $this->Url->build('./projects'); ?>">Projects</a>
             <a href="<?= $this->Url->build('./contractors'); ?>">Contractors</a>
             <a href="<?= $this->Url->build('./organisations'); ?>">Organisations</a>
-            <a href="<?= $this->Url->build('./contact-us'); ?>">Contact Us</a>
+            <a href="<?= $this->Url->build('./contact'); ?>">Contact Us</a>
         </div>
 
     </nav>
