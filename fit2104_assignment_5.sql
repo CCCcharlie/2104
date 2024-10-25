@@ -52,7 +52,9 @@ CREATE TABLE `contractors` (
   `phone_number` varchar(10) DEFAULT NULL,
   `contractor_email` varchar(255) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL
+  `modified` datetime DEFAULT NULL,
+  `skill_id` int DEFAULT NULL,
+  FOREIGN KEY (`skill_id`) REFERENCES `skills`(`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
@@ -138,7 +140,9 @@ CREATE TABLE `organisations` (
   `current_website` varchar(255) DEFAULT NULL,
   `industry` text,
   `created` datetime DEFAULT CURRENT_TIMESTAMP,
-  `modified` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `modified` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `skill_id` int DEFAULT NULL,
+  FOREIGN KEY (`skill_id`) REFERENCES `skills`(`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
@@ -174,7 +178,9 @@ CREATE TABLE `projects` (
   `contractor_id` int DEFAULT NULL,
   `organisation_id` int DEFAULT NULL,
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL
+  `modified` datetime DEFAULT NULL,
+  `skill_id` int DEFAULT NULL,
+  FOREIGN KEY (`skill_id`) REFERENCES `skills`(`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
@@ -239,9 +245,9 @@ CREATE TABLE projects_skills (
 );
 
 CREATE TABLE contractors_skills (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    contractor_id INT NOT NULL,
-    skill_id INT NOT NULL,
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `contractor_id` INT NOT NULL,
+    `skill_id` INT NOT NULL,
     FOREIGN KEY (contractor_id) REFERENCES contractors(id),
     FOREIGN KEY (skill_id) REFERENCES skills(id)
 );
