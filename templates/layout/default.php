@@ -51,6 +51,8 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             <a href="<?= $this->Url->build('./contractors'); ?>">Contractors</a>
             <a href="<?= $this->Url->build('./organisations'); ?>">Organisations</a>
             <a href="<?= $this->Url->build('./contact'); ?>">Contact Us</a>
+            <a href="<?= $this->Url->build('./skills'); ?>">Skills</a>
+
         </div>
 
     </nav>
