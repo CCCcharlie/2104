@@ -54,8 +54,13 @@ class ProjectsController extends AppController
         }
 
         // Fetch the skills list for filtering options in the view
-        $skillList = $this->Projects->Skills->find();
+        $skillList = $this->Projects->Skills->find('list', [
+            'keyField' => 'id',
+            'valueField' => 'skill_name'
+        ])->toArray();
 
+//dd($skillList);
+//exit();
         // Paginate the query results to display in the view
         $projects = $this->paginate($query);
 
@@ -74,21 +79,8 @@ class ProjectsController extends AppController
     {
         $project = $this->Projects->get($id, contain: ['Contractors', 'Organisations']);
         $this->set(compact('project'));
-        $this->Form->create(null, ['type' => 'get']);
-        $this->Form->control('keyword', ['label' => 'Search by Keyword']);
-        $this->Form->control('status', [
-            'label' => 'Filter by Status',
-            'options' => [
-                '' => 'Any',  // Default to any status
-                '1' => 'Complete',
-                '0' => 'Incomplete'
-            ]
-        ]);
-        $this->Form->control('start_date', ['type' => 'date', 'label' => 'Start Date']);
-        $this->Form->control('end_date', ['type' => 'date', 'label' => 'End Date']);
-        $this->Form->button('Search');
-        $this->Form->end();
     }
+
 
     /**
      * Add method

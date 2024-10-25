@@ -10,7 +10,7 @@
 <?= $this->Form->control('skills', [
     'type' => 'checkbox',
     'multiple' => 'checkbox',
-    'options' => $skillsList,
+    'options' => $skillList,
     'label' => 'Filter by Skills',
     'value' => $this->request->getQuery('skills')
 ]) ?>

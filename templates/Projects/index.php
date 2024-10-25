@@ -13,10 +13,13 @@
     'empty' => 'Select Status',
     'value' => $this->request->getQuery('status')
 ]) ?>
-<?= $this->Form->control('skills', [
+
+<?=
+
+$this->Form->control('skills', [
     'type' => 'select',
     'multiple' => true,
-    'options' => $skillsList,
+    'options' => $skillList,
     'label' => 'Filter by Skills'
 ]) ?>
 <?= $this->Form->control('start_date', ['type' => 'date', 'label' => 'Start Date', 'value' => $this->request->getQuery('start_date')]) ?>
