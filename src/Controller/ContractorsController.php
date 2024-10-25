@@ -97,6 +97,18 @@ class ContractorsController extends AppController
                 ->group('Contractors.id')
                 ->order(['total_projects' => 'DESC']);
         }
+        // Base query to load contractors with associated projects
+        $query = $this->Contractors->find()
+            ->contain(['Projects']); // Ensures Projects are joined for counting
+
+        // Apply project count filter
+        if ($projectCount = $this->request->getQuery('project_count')) {
+            $query->select(['total_projects' => $query->func()->count('Projects.id')])
+                ->leftJoinWith('Projects') // Include Projects in the join
+                ->group(['Contractors.id'])
+                ->having(['total_projects >=' => $projectCount]);
+        }
+
 
         $contractors = $this->paginate($query);
         $skillsList = $this->Contractors->Skills->find('list')->toArray(); // List of skills for the filter

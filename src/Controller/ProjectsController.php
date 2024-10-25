@@ -54,13 +54,13 @@ class ProjectsController extends AppController
         }
 
         // Fetch the skills list for filtering options in the view
-        $skills = $this->Projects->Skills->find();
+        $skillList = $this->Projects->Skills->find();
 
         // Paginate the query results to display in the view
         $projects = $this->paginate($query);
 
         // Pass the data to the view
-        $this->set(compact('projects', 'skills'));
+        $this->set(compact('projects', 'skillList'));
     }
 
     /**

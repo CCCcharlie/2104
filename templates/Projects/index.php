@@ -4,39 +4,29 @@
  * @var iterable<\App\Model\Entity\Project> $projects
  */
 ?>
+<?= $this->Form->create(null, ['type' => 'get', 'url' => ['action' => 'index']]) ?>
+<?= $this->Form->control('keyword', ['label' => 'Search by Skill Keyword', 'value' => $this->request->getQuery('keyword')]) ?>
+<?= $this->Form->control('status', [
+    'type' => 'select',
+    'options' => ['1' => 'Complete', '0' => 'Incomplete'],
+    'label' => 'Filter by Status',
+    'empty' => 'Select Status',
+    'value' => $this->request->getQuery('status')
+]) ?>
+<?= $this->Form->control('skills', [
+    'type' => 'select',
+    'multiple' => true,
+    'options' => $skillsList,
+    'label' => 'Filter by Skills'
+]) ?>
+<?= $this->Form->control('start_date', ['type' => 'date', 'label' => 'Start Date', 'value' => $this->request->getQuery('start_date')]) ?>
+<?= $this->Form->control('end_date', ['type' => 'date', 'label' => 'End Date', 'value' => $this->request->getQuery('end_date')]) ?>
+<?= $this->Form->button(__('Filter')) ?>
+<?= $this->Form->end() ?>
+
 <!-- Create the form for filtering and searching -->
 <?= $this->Form->create(null, ['type' => 'get', 'class' => 'form-inline']) ?>
 
-<!-- Search Bar -->
-<div class="form-group">
-    <?= $this->Form->create(null, ['type' => 'get']) ?>
-    <div class="form-group">
-        <!-- Skills Dropdown Filter -->
-        <?= $this->Form->control('skills', [
-            'type' => 'select',
-            'multiple' => 'checkbox', // Ensures it's a multi-select dropdown
-            'options' => $skills, // Options passed from the controller
-            'label' => 'Filter by Skills',
-            'empty' => 'Select Skills' // Adds a placeholder option
-        ]) ?>
-    </div>
-    <div class="form-group">
-        <?= $this->Form->button(__('Filter')) ?>
-    </div>
-    <?= $this->Form->end() ?>
-
-    <?= $this->Form->button('Search') ?>
-    <?= $this->Form->end() ?>
-
-</div>
-
-<!-- Filter Button -->
-<div class="form-group">
-    <?= $this->Form->button('Filter', [
-        'type' => 'submit',
-        'class' => 'btn btn-primary'
-    ]) ?>
-</div>
 
 <!-- Reset Button (to reset the filters) -->
 <div class="form-group">

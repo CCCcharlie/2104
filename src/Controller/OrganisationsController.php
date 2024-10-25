@@ -17,9 +17,31 @@ class OrganisationsController extends AppController
      */
     public function index()
     {
-        $query = $this->Organisations->find();
-        $organisations = $this->paginate($query);
+        $query = $this->Organisations->find()->contain(['Projects']);
 
+        // Filter by organisation name
+        if ($keyword = $this->request->getQuery('keyword')) {
+            $query->where(['Organisations.business_name LIKE' => '%' . $keyword . '%']);
+        }
+
+        // Sort by number of projects
+        if ($this->request->getQuery('sort_by_projects') === '1') {
+            $query->select(['total_projects' => $query->func()->count('Projects.id')])
+                ->group('Organisations.id')
+                ->order(['total_projects' => 'DESC']);
+        }
+        $query = $this->Organisations->find()
+            ->contain(['Projects']); // Ensures Projects are joined for counting
+
+        if ($projectCount = $this->request->getQuery('project_count')) {
+            $query->select(['total_projects' => $query->func()->count('Projects.id')])
+                ->leftJoinWith('Projects')
+                ->group(['Organisations.id'])
+                ->having(['total_projects >=' => $projectCount]);
+        }
+
+
+        $organisations = $this->paginate($query);
         $this->set(compact('organisations'));
     }
 

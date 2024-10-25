@@ -203,6 +203,18 @@ CREATE TABLE `skills` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
+INSERT INTO `skills` (`id`, `skill_name`) VALUES
+(1, 'Java'),
+(2, 'Python'),
+(3, 'Project Management'),
+(4, 'Data Analysis'),
+(5, 'Web Development'),
+(6, 'Database Administration'),
+(7, 'Machine Learning'),
+(8, 'Cybersecurity'),
+(9, 'Cloud Computing'),
+(10, 'Digital Marketing');
+
 
 --
 -- Table structure for table `users`

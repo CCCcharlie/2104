@@ -16,9 +16,22 @@
         'options' => $skillsList,
         'label' => 'Filter by Skills'
     ]) ?>
-    <?= $this->Form->control('sort_by_projects', ['type' => 'checkbox', 'label' => 'Sort by Number of Projects']) ?>
+    <?= $this->Form->create(null, ['type' => 'get']) ?>
+    <?= $this->Form->control('project_count', [
+        'type' => 'number',
+        'label' => 'Minimum Project Count',
+        'value' => $this->request->getQuery('project_count')
+    ]) ?>
+    <?= $this->Form->button(__('Filter')) ?>
+    <?= $this->Form->end() ?>
     <?= $this->Form->button('Search') ?>
     <?= $this->Form->end() ?>
+
+    <div class="form-group">
+        <a href="<?= $this->Url->build(['action' => 'index']) ?>" class="btn btn-secondary">
+            Reset
+        </a>
+    </div>
     <div class="table-responsive">
         <table>
             <thead>

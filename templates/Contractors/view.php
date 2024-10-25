@@ -3,18 +3,23 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Contractor $contractor
  */
-?><?= $this->Form->create(null, ['type' => 'get']) ?>
-<?= $this->Html->link(__('Search'), ['action' => 'Search', $contractor->id], ['class' => 'side-nav-item']) ?>
-
-<?= $this->Form->control('email', ['label' => 'Search by Email']) ?>
+?>
+<?= $this->Form->create(null, ['type' => 'get', 'url' => ['action' => 'index']]) ?>
+<?= $this->Form->control('keyword', ['label' => 'Search by Name', 'value' => $this->request->getQuery('keyword')]) ?>
+<?= $this->Form->control('email', ['label' => 'Search by Email', 'value' => $this->request->getQuery('email')]) ?>
 <?= $this->Form->control('skills', [
-    'type' => 'select',
-    'multiple' => true,
+    'type' => 'checkbox',
+    'multiple' => 'checkbox',
     'options' => $skillsList,
-    'label' => 'Filter by Skills'
+    'label' => 'Filter by Skills',
+    'value' => $this->request->getQuery('skills')
 ]) ?>
-<?= $this->Form->control('sort_by_projects', ['type' => 'checkbox', 'label' => 'Sort by Number of Projects']) ?>
-<?= $this->Form->button('Search') ?>
+<?= $this->Form->control('sort_by_projects', [
+    'type' => 'checkbox',
+    'label' => 'Sort by Number of Projects',
+    'value' => '1'
+]) ?>
+<?= $this->Form->button(__('Filter')) ?>
 <?= $this->Form->end() ?>
 <div class="row">
     <aside class="column column-20">
