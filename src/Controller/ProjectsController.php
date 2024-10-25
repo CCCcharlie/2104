@@ -24,37 +24,43 @@ class ProjectsController extends AppController
         $endDate = $this->request->getQuery('end_date');     // End date filter
 
         $query = $this->Projects->find()
-            ->contain(['Skills', 'Contractors', 'Organisations']);
+            ->contain(['Skills', 'Contractors', 'Organisations']); // Include related tables
 
-        // Filter by skill keyword
+        // Filter by skill keyword if present
         if (!empty($keyword)) {
-            $query = $query->matching('Skills', function ($q) use ($keyword) {
+            $query->matching('Skills', function ($q) use ($keyword) {
                 return $q->where(['Skills.skill_name LIKE' => '%' . $keyword . '%']);
             });
         }
 
-        // Filter by project status
-        if (!empty($status)) {
-            $query = $query->where(['Projects.complete' => $status]);
+        // Filter by project completion status
+        if ($status !== null && $status !== '') {
+            $query->where(['Projects.complete' => $status]);
         }
 
-        // Filter by selected skills (checkboxes)
+        // Filter by selected skills if any skills are specified
         if (!empty($skills)) {
-            $query = $query->matching('Skills', function ($q) use ($skills) {
+            $query->matching('Skills', function ($q) use ($skills) {
                 return $q->where(['Skills.id IN' => $skills]);
             });
         }
 
-        // Filter by start and end dates
+        // Filter by start and end dates if both are provided
         if (!empty($startDate) && !empty($endDate)) {
-            $query = $query->where([
+            $query->where([
                 'Projects.project_due_date >=' => $startDate,
                 'Projects.project_due_date <=' => $endDate
             ]);
         }
 
+        // Fetch the skills list for filtering options in the view
+        $skillList = $this->Projects->Skills->find();
+
+        // Paginate the query results to display in the view
         $projects = $this->paginate($query);
-        $this->set(compact('projects'));
+
+        // Pass the data to the view
+        $this->set(compact('projects', 'skillList'));
     }
 
     /**

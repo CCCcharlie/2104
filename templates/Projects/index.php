@@ -4,6 +4,39 @@
  * @var iterable<\App\Model\Entity\Project> $projects
  */
 ?>
+<?= $this->Form->create(null, ['type' => 'get', 'url' => ['action' => 'index']]) ?>
+<?= $this->Form->control('keyword', ['label' => 'Search by Skill Keyword', 'value' => $this->request->getQuery('keyword')]) ?>
+<?= $this->Form->control('status', [
+    'type' => 'select',
+    'options' => ['1' => 'Complete', '0' => 'Incomplete'],
+    'label' => 'Filter by Status',
+    'empty' => 'Select Status',
+    'value' => $this->request->getQuery('status')
+]) ?>
+<?= $this->Form->control('skills', [
+    'type' => 'select',
+    'multiple' => true,
+    'options' => $skillsList,
+    'label' => 'Filter by Skills'
+]) ?>
+<?= $this->Form->control('start_date', ['type' => 'date', 'label' => 'Start Date', 'value' => $this->request->getQuery('start_date')]) ?>
+<?= $this->Form->control('end_date', ['type' => 'date', 'label' => 'End Date', 'value' => $this->request->getQuery('end_date')]) ?>
+<?= $this->Form->button(__('Filter')) ?>
+<?= $this->Form->end() ?>
+
+<!-- Create the form for filtering and searching -->
+<?= $this->Form->create(null, ['type' => 'get', 'class' => 'form-inline']) ?>
+
+
+<!-- Reset Button (to reset the filters) -->
+<div class="form-group">
+    <a href="<?= $this->Url->build(['action' => 'index']) ?>" class="btn btn-secondary">
+        Reset
+    </a>
+</div>
+
+<?= $this->Form->end() ?>
+
 <div class="projects index content">
     <?= $this->Html->link(__('New Project'), ['action' => 'add'], ['class' => 'button float-right']) ?>
     <h3><?= __('Projects') ?></h3>

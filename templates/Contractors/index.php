@@ -7,6 +7,31 @@
 <div class="contractors index content">
     <?= $this->Html->link(__('New Contractor'), ['action' => 'add'], ['class' => 'button float-right']) ?>
     <h3><?= __('Contractors') ?></h3>
+    <?= $this->Form->create(null, ['type' => 'get']) ?>
+    <?= $this->Form->control('keyword', ['label' => 'Search by Name']) ?>
+    <?= $this->Form->control('email', ['label' => 'Search by Email']) ?>
+    <?= $this->Form->control('skills', [
+        'type' => 'select',
+        'multiple' => true,
+        'options' => $skillsList,
+        'label' => 'Filter by Skills'
+    ]) ?>
+    <?= $this->Form->create(null, ['type' => 'get']) ?>
+    <?= $this->Form->control('project_count', [
+        'type' => 'number',
+        'label' => 'Minimum Project Count',
+        'value' => $this->request->getQuery('project_count')
+    ]) ?>
+    <?= $this->Form->button(__('Filter')) ?>
+    <?= $this->Form->end() ?>
+    <?= $this->Form->button('Search') ?>
+    <?= $this->Form->end() ?>
+
+    <div class="form-group">
+        <a href="<?= $this->Url->build(['action' => 'index']) ?>" class="btn btn-secondary">
+            Reset
+        </a>
+    </div>
     <div class="table-responsive">
         <table>
             <thead>

@@ -4,6 +4,29 @@
  * @var iterable<\App\Model\Entity\Organisation> $organisations
  */
 ?>
+<?= $this->Form->create(null, ['type' => 'get', 'url' => ['action' => 'index']]) ?>
+<?= $this->Form->control('keyword', ['label' => 'Search by Organisation Name', 'value' => $this->request->getQuery('keyword')]) ?>
+<?= $this->Form->control('sort_by_projects', [
+    'type' => 'checkbox',
+    'label' => 'Sort by Number of Projects',
+    'value' => '1'
+]) ?>
+<?= $this->Form->create(null, ['type' => 'get']) ?>
+<?= $this->Form->control('project_count', [
+    'type' => 'number',
+    'label' => 'Minimum Project Count',
+    'value' => $this->request->getQuery('project_count')
+]) ?>
+<?= $this->Form->button(__('Filter')) ?>
+<?= $this->Form->end() ?>
+
+<?= $this->Form->button(__('Filter')) ?>
+<?= $this->Form->end() ?>
+<div class="form-group">
+    <a href="<?= $this->Url->build(['action' => 'index']) ?>" class="btn btn-secondary">
+        Reset
+    </a>
+</div>
 <div class="organisations index content">
     <?= $this->Html->link(__('New Organisation'), ['action' => 'add'], ['class' => 'button float-right']) ?>
     <h3><?= __('Organisations') ?></h3>

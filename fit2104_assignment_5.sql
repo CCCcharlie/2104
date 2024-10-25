@@ -52,7 +52,9 @@ CREATE TABLE `contractors` (
   `phone_number` varchar(10) DEFAULT NULL,
   `contractor_email` varchar(255) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL
+  `modified` datetime DEFAULT NULL,
+  `project_id` int DEFAULT NULL,
+  FOREIGN KEY (`project_id`) REFERENCES `projects`(`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
@@ -138,7 +140,9 @@ CREATE TABLE `organisations` (
   `current_website` varchar(255) DEFAULT NULL,
   `industry` text,
   `created` datetime DEFAULT CURRENT_TIMESTAMP,
-  `modified` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `modified` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `project_id` int DEFAULT NULL,
+  FOREIGN KEY (`project_id`) REFERENCES `projects`(`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
@@ -203,6 +207,18 @@ CREATE TABLE `skills` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
+INSERT INTO `skills` (`id`, `skill_name`) VALUES
+(1, 'Java'),
+(2, 'Python'),
+(3, 'Project Management'),
+(4, 'Data Analysis'),
+(5, 'Web Development'),
+(6, 'Database Administration'),
+(7, 'Machine Learning'),
+(8, 'Cybersecurity'),
+(9, 'Cloud Computing'),
+(10, 'Digital Marketing');
+
 
 --
 -- Table structure for table `users`
@@ -224,6 +240,14 @@ CREATE TABLE projects_skills (
     `skill_id` INT NOT NULL,
     FOREIGN KEY (project_id) REFERENCES projects(id) ON DELETE CASCADE,
     FOREIGN KEY (skill_id) REFERENCES skills(id) ON DELETE CASCADE
+);
+
+CREATE TABLE contractors_skills (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `contractor_id` INT NOT NULL,
+    `skill_id` INT NOT NULL,
+    FOREIGN KEY (contractor_id) REFERENCES contractors(id),
+    FOREIGN KEY (skill_id) REFERENCES skills(id)
 );
 
 --
