@@ -53,8 +53,8 @@ CREATE TABLE `contractors` (
   `contractor_email` varchar(255) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
-  `skill_id` int DEFAULT NULL,
-  FOREIGN KEY (`skill_id`) REFERENCES `skills`(`id`) ON DELETE SET NULL
+  `project_id` int DEFAULT NULL,
+  FOREIGN KEY (`project_id`) REFERENCES `projects`(`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
@@ -141,8 +141,8 @@ CREATE TABLE `organisations` (
   `industry` text,
   `created` datetime DEFAULT CURRENT_TIMESTAMP,
   `modified` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `skill_id` int DEFAULT NULL,
-  FOREIGN KEY (`skill_id`) REFERENCES `skills`(`id`) ON DELETE SET NULL
+  `project_id` int DEFAULT NULL,
+  FOREIGN KEY (`project_id`) REFERENCES `projects`(`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
@@ -178,9 +178,7 @@ CREATE TABLE `projects` (
   `contractor_id` int DEFAULT NULL,
   `organisation_id` int DEFAULT NULL,
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL,
-  `skill_id` int DEFAULT NULL,
-  FOREIGN KEY (`skill_id`) REFERENCES `skills`(`id`) ON DELETE SET NULL
+  `modified` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
