@@ -57,7 +57,7 @@ class ContactController extends AppController
         $organisations = $this->Contact->Organisations->find('list', [
             'keyField' => 'id',
             'valueField' => 'business_name',
-            'limit' => 200 // 限制查询数量为 200
+            'limit' => 200 // get the business name to display
         ])->toArray();
 
 //        dd($organisations);
