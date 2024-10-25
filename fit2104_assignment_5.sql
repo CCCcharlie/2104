@@ -226,6 +226,14 @@ CREATE TABLE projects_skills (
     FOREIGN KEY (skill_id) REFERENCES skills(id) ON DELETE CASCADE
 );
 
+CREATE TABLE contractors_skills (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    contractor_id INT NOT NULL,
+    skill_id INT NOT NULL,
+    FOREIGN KEY (contractor_id) REFERENCES contractors(id),
+    FOREIGN KEY (skill_id) REFERENCES skills(id)
+);
+
 --
 -- Indexes for dumped tables
 --

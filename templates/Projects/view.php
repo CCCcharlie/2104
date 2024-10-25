@@ -8,26 +8,7 @@
     <aside class="column">
         <div class="side-nav">
             <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Form->create(null, ['type' => 'get']) ?>
-            <?= $this->Form->control('keyword', ['label' => 'Search by Skill']) ?>
-            <?= $this->Form->control('status', [
-                'type' => 'select',
-                'options' => [
-                    '' => 'Any Status',
-                    '1' => 'Complete',
-                    '0' => 'Incomplete'
-                ],
-                'label' => 'Project Status'
-            ]) ?>
-            <?= $this->Form->control('skills', [
-                'type' => 'select',
-                'multiple' => true,
-                'options' => $skillsList // A list of skills passed from the controller
-            ]) ?>
-            <?= $this->Form->control('start_date', ['type' => 'date', 'label' => 'Start Date']) ?>
-            <?= $this->Form->control('end_date', ['type' => 'date', 'label' => 'End Date']) ?>
-            <?= $this->Form->button('Search') ?>
-            <?= $this->Form->end() ?>
+
             <?= $this->Html->link(__('Edit Project'), ['action' => 'edit', $project->id], ['class' => 'side-nav-item']) ?>
             <?= $this->Form->postLink(__('Delete Project'), ['action' => 'delete', $project->id], ['confirm' => __('Are you sure you want to delete # {0}?', $project->id), 'class' => 'side-nav-item']) ?>
             <?= $this->Html->link(__('List Projects'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>

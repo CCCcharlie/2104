@@ -3,7 +3,19 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Contractor $contractor
  */
-?>
+?><?= $this->Form->create(null, ['type' => 'get']) ?>
+<?= $this->Html->link(__('Search'), ['action' => 'Search', $contractor->id], ['class' => 'side-nav-item']) ?>
+
+<?= $this->Form->control('email', ['label' => 'Search by Email']) ?>
+<?= $this->Form->control('skills', [
+    'type' => 'select',
+    'multiple' => true,
+    'options' => $skillsList,
+    'label' => 'Filter by Skills'
+]) ?>
+<?= $this->Form->control('sort_by_projects', ['type' => 'checkbox', 'label' => 'Sort by Number of Projects']) ?>
+<?= $this->Form->button('Search') ?>
+<?= $this->Form->end() ?>
 <div class="row">
     <aside class="column column-20">
         <div class="side-nav">

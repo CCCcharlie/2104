@@ -44,14 +44,15 @@ class SkillsTable extends Table
         $this->setPrimaryKey('id');
 
         $this->belongsToMany('Contractors', [
+            'joinTable' => 'contractors_skills',
             'foreignKey' => 'skill_id',
             'targetForeignKey' => 'contractor_id',
-            'joinTable' => 'contractors_skills',
         ]);
+
         $this->belongsToMany('Projects', [
+            'joinTable' => 'projects_skills',
             'foreignKey' => 'skill_id',
             'targetForeignKey' => 'project_id',
-            'joinTable' => 'projects_skills',
         ]);
     }
 

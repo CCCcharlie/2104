@@ -4,6 +4,49 @@
  * @var iterable<\App\Model\Entity\Project> $projects
  */
 ?>
+<!-- Create the form for filtering and searching -->
+<?= $this->Form->create(null, ['type' => 'get', 'class' => 'form-inline']) ?>
+
+<!-- Search Bar -->
+<div class="form-group">
+    <?= $this->Form->create(null, ['type' => 'get']) ?>
+    <div class="form-group">
+        <!-- Skills Dropdown Filter -->
+        <?= $this->Form->control('skills', [
+            'type' => 'select',
+            'multiple' => 'checkbox', // Ensures it's a multi-select dropdown
+            'options' => $skills, // Options passed from the controller
+            'label' => 'Filter by Skills',
+            'empty' => 'Select Skills' // Adds a placeholder option
+        ]) ?>
+    </div>
+    <div class="form-group">
+        <?= $this->Form->button(__('Filter')) ?>
+    </div>
+    <?= $this->Form->end() ?>
+
+    <?= $this->Form->button('Search') ?>
+    <?= $this->Form->end() ?>
+
+</div>
+
+<!-- Filter Button -->
+<div class="form-group">
+    <?= $this->Form->button('Filter', [
+        'type' => 'submit',
+        'class' => 'btn btn-primary'
+    ]) ?>
+</div>
+
+<!-- Reset Button (to reset the filters) -->
+<div class="form-group">
+    <a href="<?= $this->Url->build(['action' => 'index']) ?>" class="btn btn-secondary">
+        Reset
+    </a>
+</div>
+
+<?= $this->Form->end() ?>
+
 <div class="projects index content">
     <?= $this->Html->link(__('New Project'), ['action' => 'add'], ['class' => 'button float-right']) ?>
     <h3><?= __('Projects') ?></h3>

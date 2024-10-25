@@ -51,11 +51,15 @@ class ContractorsTable extends Table
         $this->hasMany('Projects', [
             'foreignKey' => 'contractor_id',
         ]);
+
+
+        // Other associations
         $this->belongsToMany('Skills', [
+            'joinTable' => 'contractors_skills',
             'foreignKey' => 'contractor_id',
             'targetForeignKey' => 'skill_id',
-            'joinTable' => 'contractors_skills',
         ]);
+
     }
 
     /**
