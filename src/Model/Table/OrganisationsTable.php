@@ -11,6 +11,7 @@ use Cake\Validation\Validator;
 /**
  * Organisations Model
  *
+ * @property \App\Model\Table\ContactTable&\Cake\ORM\Association\HasMany $Contact
  * @property \App\Model\Table\ProjectsTable&\Cake\ORM\Association\HasMany $Projects
  *
  * @method \App\Model\Entity\Organisation newEmptyEntity()

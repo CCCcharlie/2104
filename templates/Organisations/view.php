@@ -5,7 +5,7 @@
  */
 ?>
 <div class="row">
-    <aside class="column">
+    <aside class="column column-20"> <!-- fixed the side bar width 20% -->
         <div class="side-nav">
             <h4 class="heading"><?= __('Actions') ?></h4>
             <?= $this->Html->link(__('Edit Organisation'), ['action' => 'edit', $organisation->id], ['class' => 'side-nav-item']) ?>
@@ -42,6 +42,11 @@
                     <th><?= __('Id') ?></th>
                     <td><?= $this->Number->format($organisation->id) ?></td>
                 </tr>
+
+                <tr>
+                    <th><?= __('Industry') ?></th>
+                    <td><?= h($organisation->industry) ?></td>
+                </tr>
                 <tr>
                     <th><?= __('Created') ?></th>
                     <td><?= h($organisation->created) ?></td>
@@ -51,11 +56,50 @@
                     <td><?= h($organisation->modified) ?></td>
                 </tr>
             </table>
-            <div class="text">
-                <strong><?= __('Industry') ?></strong>
-                <blockquote>
-                    <?= $this->Text->autoParagraph(h($organisation->industry)); ?>
-                </blockquote>
+<!--            <div class="text">-->
+<!--                <strong>--><?php //= __('Industry') ?><!--</strong>-->
+<!--                <blockquote>-->
+<!--                    --><?php //= $this->Text->autoParagraph(h($organisation->industry)); ?>
+<!--                </blockquote>-->
+<!--            </div>-->
+            <div class="related">
+                <h4><?= __('Related Contact') ?></h4>
+                <?php if (!empty($organisation->contact)) : ?>
+                <div class="table-responsive">
+                    <table>
+                        <tr>
+                            <th><?= __('Id') ?></th>
+                            <th><?= __('First Name') ?></th>
+                            <th><?= __('Last Name') ?></th>
+                            <th><?= __('Email') ?></th>
+                            <th><?= __('Phone Number') ?></th>
+                            <th><?= __('Message') ?></th>
+                            <th><?= __('Organisation Id') ?></th>
+                            <th><?= __('Created') ?></th>
+                            <th><?= __('Modified') ?></th>
+                            <th class="actions"><?= __('Actions') ?></th>
+                        </tr>
+                        <?php foreach ($organisation->contact as $contact) : ?>
+                        <tr>
+                            <td><?= h($contact->id) ?></td>
+                            <td><?= h($contact->first_name) ?></td>
+                            <td><?= h($contact->last_name) ?></td>
+                            <td><?= h($contact->email) ?></td>
+                            <td><?= h($contact->phone_number) ?></td>
+                            <td><?= h($contact->message) ?></td>
+                            <td><?= h($contact->organisation_id) ?></td>
+                            <td><?= h($contact->created) ?></td>
+                            <td><?= h($contact->modified) ?></td>
+                            <td class="actions">
+                                <?= $this->Html->link(__('View'), ['controller' => 'Contact', 'action' => 'view', $contact->id]) ?>
+                                <?= $this->Html->link(__('Edit'), ['controller' => 'Contact', 'action' => 'edit', $contact->id]) ?>
+                                <?= $this->Form->postLink(__('Delete'), ['controller' => 'Contact', 'action' => 'delete', $contact->id], ['confirm' => __('Are you sure you want to delete # {0}?', $contact->id)]) ?>
+                            </td>
+                        </tr>
+                        <?php endforeach; ?>
+                    </table>
+                </div>
+                <?php endif; ?>
             </div>
             <div class="related">
                 <h4><?= __('Related Projects') ?></h4>

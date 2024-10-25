@@ -18,7 +18,7 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\DateTime|null $created
  * @property \Cake\I18n\DateTime|null $modified
  *
- * @property \App\Model\Entity\ContactU[] $contact_us
+ * @property \App\Model\Entity\Contact[] $contact
  * @property \App\Model\Entity\Project[] $projects
  */
 class Organisation extends Entity
@@ -41,7 +41,7 @@ class Organisation extends Entity
         'industry' => true,
         'created' => true,
         'modified' => true,
-        'contact_us' => true,
+        'contact' => true,
         'projects' => true,
     ];
 }

@@ -32,7 +32,7 @@ class OrganisationsController extends AppController
      */
     public function view($id = null)
     {
-        $organisation = $this->Organisations->get($id, contain: ['ContactUs', 'Projects']);
+        $organisation = $this->Organisations->get($id, contain: ['Contact', 'Projects']);
         $this->set(compact('organisation'));
     }
 
