@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `contact_us`
 --
 
-CREATE TABLE `contact` (
+CREATE TABLE contact (
   `id` int NOT NULL,
   `first_name` varchar(255) DEFAULT NULL,
   `last_name` varchar(255) DEFAULT NULL,
@@ -35,9 +35,23 @@ CREATE TABLE `contact` (
   `phone_number` varchar(10) DEFAULT NULL,
   `message` text,
   `organisation_id` int DEFAULT NULL,
+  `contractor_id` int DEFAULT NULL,
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL
+  `modified` datetime DEFAULT NULL,
+  `replied` TINYINT(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+INSERT INTO contact (`id`, `first_name`, `last_name`, `email`, `phone_number`, `message`, `organisation_id`, `contractor_id`, `created`, `modified`, `replied`) VALUES
+(1, 'John', 'Doe', 'john.doe@example.com', '0412345678', 'Inquiry about project timelines.', 1, NULL, '2024-10-01 10:00:00', '2024-10-01 10:15:00', 0),
+(2, 'Jane', 'Smith', 'jane.smith@example.com', '0412678901', 'Requesting an update on billing.', NULL, 2, '2024-10-02 09:30:00', '2024-10-02 09:45:00', 1),
+(3, 'Michael', 'Brown', 'michael.brown@example.com', '0412234567', 'Feedback on recent service quality.', 3, NULL, '2024-10-03 11:15:00', '2024-10-03 11:30:00', 0),
+(4, 'Emily', 'Davis', 'emily.davis@example.com', '0412987654', 'Questions about pricing plans.', NULL, 4, '2024-10-04 14:00:00', '2024-10-04 14:15:00', 1),
+(5, 'Sarah', 'Wilson', 'sarah.wilson@example.com', '0412345987', 'Inquiry regarding ongoing project status.', 2, NULL, '2024-10-05 08:45:00', '2024-10-05 09:00:00', 0),
+(6, 'David', 'Johnson', 'david.johnson@example.com', '0412567890', 'Request to reschedule a meeting.', NULL, 5, '2024-10-06 10:00:00', '2024-10-06 10:10:00', 1),
+(7, 'Laura', 'Martinez', 'laura.martinez@example.com', '0412678234', 'Request for partnership details.', 4, NULL, '2024-10-07 12:30:00', '2024-10-07 12:45:00', 0),
+(8, 'Robert', 'Lee', 'robert.lee@example.com', '0412789345', 'Inquiring about contract renewal.', NULL, 1, '2024-10-08 13:20:00', '2024-10-08 13:30:00', 0),
+(9, 'Michelle', 'Harris', 'michelle.harris@example.com', '0412890456', 'Feedback on user experience.', 3, NULL, '2024-10-09 14:50:00', '2024-10-09 15:00:00', 1),
+(10, 'William', 'Clark', 'william.clark@example.com', '0412901567', 'Request for a quote on services.', 1, 3, '2024-10-10 09:15:00', '2024-10-10 09:30:00', 0);
 
 -- --------------------------------------------------------
 
@@ -257,9 +271,14 @@ CREATE TABLE contractors_skills (
 --
 -- Indexes for table `contact_us`
 --
-ALTER TABLE `contact`
+ALTER TABLE contact
   ADD PRIMARY KEY (`id`),
-  ADD KEY `organisation_id` (`organisation_id`);
+  ADD COLUMN `contractor_id` INT DEFAULT NULL,
+  ADD COLUMN `replied` TINYINT(1) DEFAULT 0,
+  ADD FOREIGN KEY (`organisation_id`) REFERENCES `organisations`(`id`) ON DELETE SET NULL,
+  ADD FOREIGN KEY (`contractor_id`) REFERENCES `contractors`(`id`) ON DELETE SET NULL;
+  /*ADD KEY `organisation_id` (`organisation_id`);*/
+
 
 --
 -- Indexes for table `contractors`
@@ -309,7 +328,7 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT for table `contact_us`
 --
-ALTER TABLE `contact`
+ALTER TABLE contact
   MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --

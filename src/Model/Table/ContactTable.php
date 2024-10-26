@@ -50,6 +50,9 @@ class ContactTable extends Table
         $this->belongsTo('Organisations', [
             'foreignKey' => 'organisation_id',
         ]);
+        $this->belongsTo('Contractors', [
+            'foreignKey' => 'contractor_id',
+        ]);
     }
 
     /**
@@ -60,6 +63,11 @@ class ContactTable extends Table
      */
     public function validationDefault(Validator $validator): Validator
     {
+        $validator
+            ->integer('id')
+            ->requirePresence('id', 'create')
+            ->notEmptyString('id');
+
         $validator
             ->scalar('first_name')
             ->maxLength('first_name', 255)
@@ -87,6 +95,14 @@ class ContactTable extends Table
             ->integer('organisation_id')
             ->allowEmptyString('organisation_id');
 
+        $validator
+            ->integer('contractor_id')
+            ->allowEmptyString('contractor_id');
+
+        $validator
+            ->boolean('replied')
+            ->allowEmptyString('replied');
+
         return $validator;
     }
 
@@ -100,6 +116,7 @@ class ContactTable extends Table
     public function buildRules(RulesChecker $rules): RulesChecker
     {
         $rules->add($rules->existsIn(['organisation_id'], 'Organisations'), ['errorField' => 'organisation_id']);
+        $rules->add($rules->existsIn(['contractor_id'], 'Contractors'), ['errorField' => 'contractor_id']);
 
         return $rules;
     }
