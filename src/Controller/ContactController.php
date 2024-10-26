@@ -17,11 +17,10 @@ class ContactController extends AppController
      */
     public function index()
     {
-        $query = $this->Contact->find()
-            ->contain(['Organisations']);
-        $contact = $this->paginate($query);
-
-        $this->set(compact('contact'));
+        // Fetch and paginate contact records with linked organisations and contractors
+        $query = $this->Contact->find()->contain(['Organisations', 'Contractors']);
+        $contacts = $this->paginate($query);
+        $this->set(compact('contacts'));
     }
 
     /**
@@ -54,14 +53,7 @@ class ContactController extends AppController
             }
             $this->Flash->error(__('The contact could not be saved. Please, try again.'));
         }
-        $organisations = $this->Contact->Organisations->find('list', [
-            'keyField' => 'id',
-            'valueField' => 'business_name',
-            'limit' => 200 // get the business name to display
-        ])->toArray();
-
-//        dd($organisations);
-//        exit;
+        $organisations = $this->Contact->Organisations->find('list', limit: 200)->all();
         $this->set(compact('contact', 'organisations'));
     }
 
