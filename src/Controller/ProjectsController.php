@@ -46,26 +46,29 @@ class ProjectsController extends AppController
         }
 
         // Filter by start and end dates if both are provided
-        if (!empty($startDate) && !empty($endDate)) {
-            $query->where([
-                'Projects.project_due_date >=' => $startDate,
-                'Projects.project_due_date <=' => $endDate
-            ]);
+        if (!empty($startDate)) {
+            $query->where(['Projects.project_due_date >=' => $startDate]);
         }
 
+        if (!empty($endDate)) {
+            $query->where(['Projects.project_due_date <=' => $endDate]);
+        }
+
+//        dd($startDate);
+//        dd($endDate);
+//        exit();
+
         // Fetch the skills list for filtering options in the view
-        $skillList = $this->Projects->Skills->find('list', [
+        $skillsList = $this->Projects->Skills->find('list', [
             'keyField' => 'id',
             'valueField' => 'skill_name'
         ])->toArray();
 
-//dd($skillList);
-//exit();
         // Paginate the query results to display in the view
         $projects = $this->paginate($query);
 
         // Pass the data to the view
-        $this->set(compact('projects', 'skillList'));
+        $this->set(compact('projects', 'skillsList'));
     }
 
     /**
@@ -77,10 +80,9 @@ class ProjectsController extends AppController
      */
     public function view($id = null)
     {
-        $project = $this->Projects->get($id, contain: ['Contractors', 'Organisations']);
+        $project = $this->Projects->get($id, contain: ['Contractors', 'Organisations', 'Skills']);
         $this->set(compact('project'));
     }
-
 
     /**
      * Add method
@@ -101,7 +103,8 @@ class ProjectsController extends AppController
         }
         $contractors = $this->Projects->Contractors->find('list', limit: 200)->all();
         $organisations = $this->Projects->Organisations->find('list', limit: 200)->all();
-        $this->set(compact('project', 'contractors', 'organisations'));
+        $skills = $this->Projects->Skills->find('list', limit: 200)->all();
+        $this->set(compact('project', 'contractors', 'organisations', 'skills'));
     }
 
     /**
@@ -113,7 +116,7 @@ class ProjectsController extends AppController
      */
     public function edit($id = null)
     {
-        $project = $this->Projects->get($id, contain: []);
+        $project = $this->Projects->get($id, contain: ['Skills']);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $project = $this->Projects->patchEntity($project, $this->request->getData());
             if ($this->Projects->save($project)) {
@@ -125,7 +128,8 @@ class ProjectsController extends AppController
         }
         $contractors = $this->Projects->Contractors->find('list', limit: 200)->all();
         $organisations = $this->Projects->Organisations->find('list', limit: 200)->all();
-        $this->set(compact('project', 'contractors', 'organisations'));
+        $skills = $this->Projects->Skills->find('list', limit: 200)->all();
+        $this->set(compact('project', 'contractors', 'organisations', 'skills'));
     }
 
     /**

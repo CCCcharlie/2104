@@ -4,9 +4,8 @@
  * @var \App\Model\Entity\Project $project
  */
 ?>
-
 <div class="row">
-    <aside class="column column-20">
+    <aside class="column">
         <div class="side-nav">
             <h4 class="heading"><?= __('Actions') ?></h4>
             <?= $this->Html->link(__('Edit Project'), ['action' => 'edit', $project->id], ['class' => 'side-nav-item']) ?>
@@ -65,6 +64,31 @@
                 <blockquote>
                     <?= $this->Text->autoParagraph(h($project->description)); ?>
                 </blockquote>
+            </div>
+            <div class="related">
+                <h4><?= __('Related Skills') ?></h4>
+                <?php if (!empty($project->skills)) : ?>
+                <div class="table-responsive">
+                    <table>
+                        <tr>
+                            <th><?= __('Id') ?></th>
+                            <th><?= __('Skill Name') ?></th>
+                            <th class="actions"><?= __('Actions') ?></th>
+                        </tr>
+                        <?php foreach ($project->skills as $skill) : ?>
+                        <tr>
+                            <td><?= h($skill->id) ?></td>
+                            <td><?= h($skill->skill_name) ?></td>
+                            <td class="actions">
+                                <?= $this->Html->link(__('View'), ['controller' => 'Skills', 'action' => 'view', $skill->id]) ?>
+                                <?= $this->Html->link(__('Edit'), ['controller' => 'Skills', 'action' => 'edit', $skill->id]) ?>
+                                <?= $this->Form->postLink(__('Delete'), ['controller' => 'Skills', 'action' => 'delete', $skill->id], ['confirm' => __('Are you sure you want to delete # {0}?', $skill->id)]) ?>
+                            </td>
+                        </tr>
+                        <?php endforeach; ?>
+                    </table>
+                </div>
+                <?php endif; ?>
             </div>
         </div>
     </div>

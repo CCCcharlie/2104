@@ -13,6 +13,7 @@ use Cake\Validation\Validator;
  *
  * @property \App\Model\Table\ContractorsTable&\Cake\ORM\Association\BelongsTo $Contractors
  * @property \App\Model\Table\OrganisationsTable&\Cake\ORM\Association\BelongsTo $Organisations
+ * @property \App\Model\Table\SkillsTable&\Cake\ORM\Association\BelongsToMany $Skills
  *
  * @method \App\Model\Entity\Project newEmptyEntity()
  * @method \App\Model\Entity\Project newEntity(array $data, array $options = [])
@@ -54,11 +55,10 @@ class ProjectsTable extends Table
         $this->belongsTo('Organisations', [
             'foreignKey' => 'organisation_id',
         ]);
-
         $this->belongsToMany('Skills', [
-            'joinTable' => 'projects_skills',
             'foreignKey' => 'project_id',
             'targetForeignKey' => 'skill_id',
+            'joinTable' => 'projects_skills',
         ]);
     }
 

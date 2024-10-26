@@ -25,6 +25,8 @@ class ProjectsControllerTest extends TestCase
         'app.Projects',
         'app.Contractors',
         'app.Organisations',
+        'app.Skills',
+        'app.ProjectsSkills',
     ];
 
     /**

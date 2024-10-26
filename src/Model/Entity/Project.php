@@ -22,6 +22,7 @@ use Cake\ORM\Entity;
  *
  * @property \App\Model\Entity\Contractor $contractor
  * @property \App\Model\Entity\Organisation $organisation
+ * @property \App\Model\Entity\Skill[] $skills
  */
 class Project extends Entity
 {
@@ -47,5 +48,6 @@ class Project extends Entity
         'modified' => true,
         'contractor' => true,
         'organisation' => true,
+        'skills' => true,
     ];
 }

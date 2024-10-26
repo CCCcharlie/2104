@@ -4,6 +4,7 @@
  * @var \App\Model\Entity\Project $project
  * @var \Cake\Collection\CollectionInterface|string[] $contractors
  * @var \Cake\Collection\CollectionInterface|string[] $organisations
+ * @var \Cake\Collection\CollectionInterface|string[] $skills
  */
 ?>
 <div class="row">
@@ -27,6 +28,7 @@
                     echo $this->Form->control('complete');
                     echo $this->Form->control('contractor_id', ['options' => $contractors, 'empty' => true]);
                     echo $this->Form->control('organisation_id', ['options' => $organisations, 'empty' => true]);
+                    echo $this->Form->control('skills._ids', ['options' => $skills]);
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

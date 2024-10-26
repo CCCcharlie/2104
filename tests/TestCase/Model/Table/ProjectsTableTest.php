@@ -27,6 +27,7 @@ class ProjectsTableTest extends TestCase
         'app.Projects',
         'app.Contractors',
         'app.Organisations',
+        'app.Skills',
     ];
 
     /**
