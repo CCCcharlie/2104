@@ -65,6 +65,11 @@ class ContactTable extends Table
     public function validationDefault(Validator $validator): Validator
     {
         $validator
+            ->integer('id')
+            ->requirePresence('id', 'create')
+            ->notEmptyString('id');
+
+        $validator
             ->scalar('first_name')
             ->maxLength('first_name', 255)
             ->allowEmptyString('first_name');

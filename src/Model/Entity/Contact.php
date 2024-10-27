@@ -35,6 +35,7 @@ class Contact extends Entity
      * @var array<string, bool>
      */
     protected array $_accessible = [
+        'id' => true,
         'first_name' => true,
         'last_name' => true,
         'email' => true,

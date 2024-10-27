@@ -26,7 +26,10 @@
                     echo $this->Form->control('message');
                     echo $this->Form->control('organisation_id', ['options' => $organisations, 'empty' => true]);
                     echo $this->Form->control('contractors_id', ['options' => $contractors, 'empty' => true]);
-                    echo $this->Form->control('replied');
+                    echo $this->Form->control('replied', [
+                        'type' => 'checkbox',
+                        'label' => 'Replied'
+                    ]);
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>
