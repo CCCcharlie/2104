@@ -7,9 +7,12 @@
 ?>
 <div class="row">
     <aside class="column">
+        <!-- Back button -->
+        <div class="back-button">
+            <?= $this->Html->link(__('Back to Contractors'), ['action' => 'index'], ['class' => 'button']) ?>
+        </div>
         <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('List Contractors'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
+            <h4 class="heading"><?= __('Add New Contractor') ?></h4>
         </div>
     </aside>
     <div class="column column-80">

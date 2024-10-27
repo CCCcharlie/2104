@@ -11,12 +11,19 @@
     <aside class="column">
         <div class="side-nav">
             <h4 class="heading"><?= __('Actions') ?></h4>
+            <!-- Back to Projects List -->
+            <?= $this->Html->link(__('Back to Projects'), ['action' => 'index'], ['class' => 'button', 'style' => 'color: white; background-color: #007bff;']) ?>
+
+            <!-- Delete Project -->
             <?= $this->Form->postLink(
-                __('Delete'),
+                __('Delete Project'),
                 ['action' => 'delete', $project->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $project->id), 'class' => 'side-nav-item']
+                [
+                    'confirm' => __('Are you sure you want to delete # {0}?', $project->id),
+                    'class' => 'button',
+                    'style' => 'color: white; background-color: #dc3545;'
+                ]
             ) ?>
-            <?= $this->Html->link(__('List Projects'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
         </div>
     </aside>
     <div class="column column-80">

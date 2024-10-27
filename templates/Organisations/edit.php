@@ -8,12 +8,19 @@
     <aside class="column">
         <div class="side-nav">
             <h4 class="heading"><?= __('Actions') ?></h4>
+            <!-- Back to Organisation List -->
+            <?= $this->Html->link(__('Back to Organisation'), ['action' => 'index'], ['class' => 'button', 'style' => 'color: white; background-color: #007bff;']) ?>
+
+            <!-- Delete Organisation -->
             <?= $this->Form->postLink(
-                __('Delete'),
+                __('Delete Organisation'),
                 ['action' => 'delete', $organisation->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $organisation->id), 'class' => 'side-nav-item']
+                [
+                    'confirm' => __('Are you sure you want to delete # {0}?', $organisation->id),
+                    'class' => 'button',
+                    'style' => 'color: white; background-color: #dc3545;'
+                ]
             ) ?>
-            <?= $this->Html->link(__('List Organisations'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
         </div>
     </aside>
     <div class="column column-80">

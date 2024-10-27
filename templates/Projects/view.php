@@ -6,12 +6,24 @@
 ?>
 <div class="row">
     <aside class="column column-20">
-        <div class="side-nav ">
+        x<div class="side-nav">
             <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('Edit Project'), ['action' => 'edit', $project->id], ['class' => 'side-nav-item']) ?>
-            <?= $this->Form->postLink(__('Delete Project'), ['action' => 'delete', $project->id], ['confirm' => __('Are you sure you want to delete # {0}?', $project->id), 'class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('List Projects'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('New Project'), ['action' => 'add'], ['class' => 'side-nav-item']) ?>
+            <!-- Back to Projects List -->
+            <?= $this->Html->link(__('Back to Projects'), ['action' => 'index'], ['class' => 'button', 'style' => 'color: white; background-color: #007bff;']) ?>
+
+            <!-- Edit Project -->
+            <?= $this->Html->link(__('Edit Project'), ['action' => 'edit', $project->id], ['class' => 'button', 'style' => 'color: white; background-color: #007bff;']) ?>
+
+            <!-- Delete Project -->
+            <?= $this->Form->postLink(
+                __('Delete Project'),
+                ['action' => 'delete', $project->id],
+                [
+                    'confirm' => __('Are you sure you want to delete # {0}?', $project->id),
+                    'class' => 'button',
+                    'style' => 'color: white; background-color: #dc3545;'
+                ]
+            ) ?>
         </div>
     </aside>
     <div class="column column-80">

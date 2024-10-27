@@ -9,9 +9,12 @@
 ?>
 <div class="row">
     <aside class="column">
+        <!-- Back button -->
+        <div class="back-button">
+            <?= $this->Html->link(__('Back to Projects'), ['action' => 'index'], ['class' => 'button']) ?>
+        </div>
         <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('List Projects'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
+            <h4 class="heading"><?= __('Add New Project') ?></h4>
         </div>
     </aside>
     <div class="column column-80">
