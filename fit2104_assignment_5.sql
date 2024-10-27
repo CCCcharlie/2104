@@ -374,7 +374,7 @@ ALTER TABLE `users`
 --
 -- Constraints for table `contact_us`
 --
-ALTER TABLE `contact_us`
+ALTER TABLE `contact`
   ADD CONSTRAINT `contact_ibfk_1` FOREIGN KEY (`organisation_id`) REFERENCES `organisations` (`id`) ON DELETE SET NULL;
 
 --

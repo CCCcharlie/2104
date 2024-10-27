@@ -17,6 +17,7 @@
         'label' => 'Filter by Skills'
     ]) ?>
     <?= $this->Form->create(null, ['type' => 'get']) ?>
+
     <?= $this->Form->control('project_count', [
         'type' => 'number',
         'label' => 'Minimum Project Count',
