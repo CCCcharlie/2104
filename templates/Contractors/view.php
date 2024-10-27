@@ -4,23 +4,23 @@
  * @var \App\Model\Entity\Contractor $contractor
  */
 ?>
-<?= $this->Form->create(null, ['type' => 'get', 'url' => ['action' => 'index']]) ?>
-<?= $this->Form->control('keyword', ['label' => 'Search by Name', 'value' => $this->request->getQuery('keyword')]) ?>
-<?= $this->Form->control('email', ['label' => 'Search by Email', 'value' => $this->request->getQuery('email')]) ?>
-<?= $this->Form->control('skills', [
-    'type' => 'checkbox',
-    'multiple' => 'checkbox',
-    'options' => $skillList,
-    'label' => 'Filter by Skills',
-    'value' => $this->request->getQuery('skills')
-]) ?>
-<?= $this->Form->control('sort_by_projects', [
-    'type' => 'checkbox',
-    'label' => 'Sort by Number of Projects',
-    'value' => '1'
-]) ?>
-<?= $this->Form->button(__('Filter')) ?>
-<?= $this->Form->end() ?>
+<?php //= $this->Form->create(null, ['type' => 'get', 'url' => ['action' => 'index']]) ?>
+<?php //= $this->Form->control('keyword', ['label' => 'Search by Name', 'value' => $this->request->getQuery('keyword')]) ?>
+<?php //= $this->Form->control('email', ['label' => 'Search by Email', 'value' => $this->request->getQuery('email')]) ?>
+<?php //= $this->Form->control('skills', [
+//    'type' => 'checkbox',
+//    'multiple' => 'checkbox',
+//    'options' => $skillsList,
+//    'label' => 'Filter by Skills',
+//    'value' => $this->request->getQuery('skills')
+//]) ?>
+<?php //= $this->Form->control('sort_by_projects', [
+//    'type' => 'checkbox',
+//    'label' => 'Sort by Number of Projects',
+//    'value' => '1'
+//]) ?>
+<?php //= $this->Form->button(__('Filter')) ?>
+<?php //= $this->Form->end() ?>
 <div class="row">
     <aside class="column column-20">
         <div class="side-nav">

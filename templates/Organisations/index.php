@@ -20,8 +20,6 @@
 <?= $this->Form->button(__('Filter')) ?>
 <?= $this->Form->end() ?>
 
-<?= $this->Form->button(__('Filter')) ?>
-<?= $this->Form->end() ?>
 <div class="form-group">
     <a href="<?= $this->Url->build(['action' => 'index']) ?>" class="btn btn-secondary">
         Reset

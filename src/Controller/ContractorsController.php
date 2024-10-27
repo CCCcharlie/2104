@@ -99,8 +99,13 @@ class ContractorsController extends AppController
      */
     public function view($id = null)
     {
+
+
+        // Get the list of skills for the skills filter
+        $skillsList = $this->Contractors->Skills->find('list')->toArray();
+
         $contractor = $this->Contractors->get($id, contain: ['Skills', 'Projects']);
-        $this->set(compact('contractor'));
+        $this->set(compact('contractor','skillsList'));
     }
 
     /**

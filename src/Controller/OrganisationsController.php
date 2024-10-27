@@ -17,31 +17,55 @@ class OrganisationsController extends AppController
      */
     public function index()
     {
-        $query = $this->Organisations->find()->contain(['Projects']);
+        // intialise query
+        $query = $this->Organisations->find()
+            ->contain(['Projects']); // 包含 Projects 关联
 
-        // Filter by organisation name
+        // search based on the business_name
         if ($keyword = $this->request->getQuery('keyword')) {
             $query->where(['Organisations.business_name LIKE' => '%' . $keyword . '%']);
         }
 
-        // Sort by number of projects
+        // check if sort by project picked
         if ($this->request->getQuery('sort_by_projects') === '1') {
-            $query->select(['total_projects' => $query->func()->count('Projects.id')])
-                ->group('Organisations.id')
-                ->order(['total_projects' => 'DESC']);
+            $query->select([
+                'Organisations.id',
+                'Organisations.business_name',
+                'Organisations.contact_first_name',
+                'Organisations.contact_last_name',
+                'Organisations.contact_email',
+                'Organisations.current_website',
+                'Organisations.created',
+                'Organisations.modified',
+                'total_projects' => $query->func()->count('Projects.id')
+            ])
+                ->leftJoinWith('Projects') // join with project
+                ->groupBy(['Organisations.id']) // groupby organisation
+                ->orderBy(['total_projects' => 'DESC']); // order by project
         }
-        $query = $this->Organisations->find()
-            ->contain(['Projects']); // Ensures Projects are joined for counting
 
+        // sort by project number
         if ($projectCount = $this->request->getQuery('project_count')) {
-            $query->select(['total_projects' => $query->func()->count('Projects.id')])
+            $query->select([
+                'Organisations.id',
+                'Organisations.business_name',
+                'Organisations.contact_first_name',
+                'Organisations.contact_last_name',
+                'Organisations.contact_email',
+                'Organisations.current_website',
+                'Organisations.created',
+                'Organisations.modified',
+                'total_projects' => $query->func()->count('Projects.id')
+            ])
                 ->leftJoinWith('Projects')
-                ->group(['Organisations.id'])
+                ->groupBy(['Organisations.id'])
                 ->having(['total_projects >=' => $projectCount]);
         }
 
 
         $organisations = $this->paginate($query);
+
+
         $this->set(compact('organisations'));
     }
 
