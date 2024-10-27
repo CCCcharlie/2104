@@ -18,6 +18,7 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\DateTime|null $created
  * @property \Cake\I18n\DateTime|null $modified
  * @property int|null $contractors_id
+ * @property int|null $replied
  *
  * @property \App\Model\Entity\Organisation $organisation
  * @property \App\Model\Entity\Contractor $contractor
@@ -43,6 +44,7 @@ class Contact extends Entity
         'created' => true,
         'modified' => true,
         'contractors_id' => true,
+        'replied' => true,
         'organisation' => true,
         'contractor' => true,
     ];

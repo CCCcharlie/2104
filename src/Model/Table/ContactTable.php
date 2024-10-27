@@ -95,6 +95,10 @@ class ContactTable extends Table
             ->integer('contractors_id')
             ->allowEmptyString('contractors_id');
 
+        $validator
+            ->integer('replied')
+            ->allowEmptyString('replied');
+
         return $validator;
     }
 

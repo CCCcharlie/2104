@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 18, 2024 at 12:17 AM
+-- Generation Time: Oct 27, 2024 at 04:03 AM
 -- Server version: 9.0.1
 -- PHP Version: 8.3.10
 
@@ -24,10 +24,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `contact_us`
+-- Table structure for table `contact`
 --
 
-CREATE TABLE contact (
+CREATE TABLE `contact` (
   `id` int NOT NULL,
   `first_name` varchar(255) DEFAULT NULL,
   `last_name` varchar(255) DEFAULT NULL,
@@ -35,23 +35,27 @@ CREATE TABLE contact (
   `phone_number` varchar(10) DEFAULT NULL,
   `message` text,
   `organisation_id` int DEFAULT NULL,
-  `contractor_id` int DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
-  `replied` TINYINT(1) DEFAULT 0
+  `contractors_id` int DEFAULT NULL,
+  `replied` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-INSERT INTO contact (`id`, `first_name`, `last_name`, `email`, `phone_number`, `message`, `organisation_id`, `contractor_id`, `created`, `modified`, `replied`) VALUES
-(1, 'John', 'Doe', 'john.doe@example.com', '0412345678', 'Inquiry about project timelines.', 1, NULL, '2024-10-01 10:00:00', '2024-10-01 10:15:00', 0),
-(2, 'Jane', 'Smith', 'jane.smith@example.com', '0412678901', 'Requesting an update on billing.', NULL, 2, '2024-10-02 09:30:00', '2024-10-02 09:45:00', 1),
-(3, 'Michael', 'Brown', 'michael.brown@example.com', '0412234567', 'Feedback on recent service quality.', 3, NULL, '2024-10-03 11:15:00', '2024-10-03 11:30:00', 0),
-(4, 'Emily', 'Davis', 'emily.davis@example.com', '0412987654', 'Questions about pricing plans.', NULL, 4, '2024-10-04 14:00:00', '2024-10-04 14:15:00', 1),
-(5, 'Sarah', 'Wilson', 'sarah.wilson@example.com', '0412345987', 'Inquiry regarding ongoing project status.', 2, NULL, '2024-10-05 08:45:00', '2024-10-05 09:00:00', 0),
-(6, 'David', 'Johnson', 'david.johnson@example.com', '0412567890', 'Request to reschedule a meeting.', NULL, 5, '2024-10-06 10:00:00', '2024-10-06 10:10:00', 1),
-(7, 'Laura', 'Martinez', 'laura.martinez@example.com', '0412678234', 'Request for partnership details.', 4, NULL, '2024-10-07 12:30:00', '2024-10-07 12:45:00', 0),
-(8, 'Robert', 'Lee', 'robert.lee@example.com', '0412789345', 'Inquiring about contract renewal.', NULL, 1, '2024-10-08 13:20:00', '2024-10-08 13:30:00', 0),
-(9, 'Michelle', 'Harris', 'michelle.harris@example.com', '0412890456', 'Feedback on user experience.', 3, NULL, '2024-10-09 14:50:00', '2024-10-09 15:00:00', 1),
-(10, 'William', 'Clark', 'william.clark@example.com', '0412901567', 'Request for a quote on services.', 1, 3, '2024-10-10 09:15:00', '2024-10-10 09:30:00', 0);
+--
+-- Dumping data for table `contact`
+--
+
+INSERT INTO `contact` (`id`, `first_name`, `last_name`, `email`, `phone_number`, `message`, `organisation_id`, `created`, `modified`, `contractors_id`, `replied`) VALUES
+(1, 'John', 'Doe', 'john.doe@example.com', '0412345678', 'Inquiry about project timelines.', 1, '2024-10-01 10:00:00', '2024-10-01 10:15:00', NULL, 0),
+(2, 'Jane', 'Smith', 'jane.smith@example.com', '0412678901', 'Requesting an update on billing.', NULL, '2024-10-02 09:30:00', '2024-10-02 09:45:00', 2, 1),
+(3, 'Michael', 'Brown', 'michael.brown@example.com', '0412234567', 'Feedback on recent service quality.', 3, '2024-10-03 11:15:00', '2024-10-03 11:30:00', NULL, 0),
+(4, 'Emily', 'Davis', 'emily.davis@example.com', '0412987654', 'Questions about pricing plans.', NULL, '2024-10-04 14:00:00', '2024-10-04 14:15:00', 4, 1),
+(5, 'Sarah', 'Wilson', 'sarah.wilson@example.com', '0412345987', 'Inquiry regarding ongoing project status.', 2, '2024-10-05 08:45:00', '2024-10-05 09:00:00', NULL, 0),
+(6, 'David', 'Johnson', 'david.johnson@example.com', '0412567890', 'Request to reschedule a meeting.', NULL, '2024-10-06 10:00:00', '2024-10-06 10:10:00', 5, 1),
+(7, 'Laura', 'Martinez', 'laura.martinez@example.com', '0412678234', 'Request for partnership details.', 4, '2024-10-07 12:30:00', '2024-10-07 12:45:00', NULL, 0),
+(8, 'Robert', 'Lee', 'robert.lee@example.com', '0412789345', 'Inquiring about contract renewal.', NULL, '2024-10-08 13:20:00', '2024-10-08 13:30:00', 1, 0),
+(9, 'Michelle', 'Harris', 'michelle.harris@example.com', '0412890456', 'Feedback on user experience.', 3, '2024-10-09 14:50:00', '2024-10-09 15:00:00', NULL, 1),
+(10, 'William', 'Clark', 'william.clark@example.com', '0412901567', 'Request for a quote on services.', 1, '2024-10-10 09:15:00', '2024-10-10 09:30:00', 3, 0);
 
 -- --------------------------------------------------------
 
@@ -66,9 +70,7 @@ CREATE TABLE `contractors` (
   `phone_number` varchar(10) DEFAULT NULL,
   `contractor_email` varchar(255) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL,
-  `project_id` int DEFAULT NULL,
-  FOREIGN KEY (`project_id`) REFERENCES `projects`(`id`) ON DELETE SET NULL
+  `modified` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
@@ -76,7 +78,7 @@ CREATE TABLE `contractors` (
 --
 
 INSERT INTO `contractors` (`id`, `first_name`, `last_name`, `phone_number`, `contractor_email`, `created`, `modified`) VALUES
-(1, 'John', 'Doe', '0412345678', 'john.doe@example.com', '2024-10-13 15:38:41', '2024-10-13 15:38:41'),
+(1, 'John', 'Doe', '0412345678', 'john.doe@example.com', '2024-10-13 15:38:41', '2024-10-27 02:07:13'),
 (2, 'Jane', 'Smith', '0412678901', 'jane.smith@example.com', '2024-10-13 15:38:41', '2024-10-13 15:38:41'),
 (3, 'Michael', 'Brown', '0412234567', 'michael.brown@example.com', '2024-10-13 15:38:41', '2024-10-13 15:38:41'),
 (4, 'Emily', 'Davis', '0412987654', 'emily.davis@example.com', '2024-10-13 15:38:41', '2024-10-13 15:38:41'),
@@ -139,6 +141,13 @@ CREATE TABLE `contractors_skills` (
   `skill_id` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- Dumping data for table `contractors_skills`
+--
+
+INSERT INTO `contractors_skills` (`id`, `contractor_id`, `skill_id`) VALUES
+(2, 1, 8);
+
 -- --------------------------------------------------------
 
 --
@@ -154,9 +163,7 @@ CREATE TABLE `organisations` (
   `current_website` varchar(255) DEFAULT NULL,
   `industry` text,
   `created` datetime DEFAULT CURRENT_TIMESTAMP,
-  `modified` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `project_id` int DEFAULT NULL,
-  FOREIGN KEY (`project_id`) REFERENCES `projects`(`id`) ON DELETE SET NULL
+  `modified` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
@@ -200,14 +207,26 @@ CREATE TABLE `projects` (
 --
 
 INSERT INTO `projects` (`id`, `project_name`, `description`, `management_tool_link`, `project_due_date`, `last_checked`, `complete`, `contractor_id`, `organisation_id`, `created`, `modified`) VALUES
-(1, 'Website Redesign', 'Complete redesign of the company website, including a new user interface and enhanced mobile compatibility.', 'http://trello.com/project1', '2024-12-01 00:00:00', '2024-09-25 10:30:00', 0, 1, 1, '2024-08-01 12:00:00', '2024-09-01 10:00:00'),
-(2, 'Mobile App Development', 'Develop a mobile app for online booking services.', 'http://jira.com/project2', '2025-02-15 00:00:00', '2024-09-20 14:00:00', 0, 2, 2, '2024-07-10 12:00:00', '2024-09-15 11:00:00'),
+(1, 'Website Redesign', 'Complete redesign of the company website, including a new user interface and enhanced mobile compatibility.', 'http://trello.com/project1', '2024-12-01 00:00:00', '2024-09-25 10:30:00', 0, 1, 1, '2024-08-01 12:00:00', '2024-10-26 02:06:53'),
+(2, 'Mobile App Development', 'Develop a mobile app for online booking services.', 'http://jira.com/project2', '2025-02-15 00:00:00', '2024-09-20 14:00:00', 0, 2, 2, '2024-07-10 12:00:00', '2024-10-26 02:08:32'),
 (3, 'Social Media Marketing Campaign', 'Plan and execute a social media marketing strategy for the launch of a new product.', 'http://asana.com/project3', '2024-11-05 00:00:00', '2024-09-18 09:30:00', 1, 3, 3, '2024-06-20 14:00:00', '2024-08-25 08:00:00'),
 (4, 'Cybersecurity Audit', 'Conduct a full audit of the organization’s IT infrastructure for vulnerabilities.', 'http://monday.com/project4', '2024-10-30 00:00:00', '2024-09-22 16:45:00', 0, 4, 1, '2024-07-15 09:00:00', '2024-09-10 10:00:00'),
-(5, 'E-commerce Platform Migration', 'Migrate the existing e-commerce platform to a new cloud-based solution.', 'http://basecamp.com/project5', '2025-01-20 00:00:00', '2024-09-25 11:15:00', 0, 5, 2, '2024-08-05 10:30:00', '2024-09-20 15:30:00'),
+(5, 'E-commerce Platform Migration', 'Migrate the existing e-commerce platform to a new cloud-based solution.', 'http://basecamp.com/project5', '2025-01-20 00:00:00', '2024-09-25 11:15:00', 0, 5, 2, '2024-08-05 10:30:00', '2024-10-26 04:24:32'),
 (6, 'Brand Identity Development', 'Develop a new brand identity including logo, colors, and typography.', 'http://trello.com/project6', '2024-11-15 00:00:00', '2024-09-25 13:30:00', 1, 6, 3, '2024-06-25 14:00:00', '2024-09-01 12:30:00'),
 (7, 'Data Center Upgrade', 'Upgrade the organization’s data center to support new server architecture.', 'http://jira.com/project7', '2024-12-20 00:00:00', '2024-09-18 17:00:00', 0, 4, 7, '2024-07-05 15:00:00', '2024-09-10 12:45:00'),
 (8, 'SEO Optimization', 'Optimize the company’s website for better search engine ranking.', 'http://asana.com/project8', '2024-10-10 00:00:00', '2024-09-16 10:30:00', 1, 1, 5, '2024-05-15 10:00:00', '2024-09-05 13:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `projects_skills`
+--
+
+CREATE TABLE `projects_skills` (
+  `id` int NOT NULL,
+  `project_id` int NOT NULL,
+  `skill_id` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -220,19 +239,23 @@ CREATE TABLE `skills` (
   `skill_name` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- --------------------------------------------------------
-INSERT INTO `skills` (`id`, `skill_name`) VALUES
-(1, 'Java'),
-(2, 'Python'),
-(3, 'Project Management'),
-(4, 'Data Analysis'),
-(5, 'Web Development'),
-(6, 'Database Administration'),
-(7, 'Machine Learning'),
-(8, 'Cybersecurity'),
-(9, 'Cloud Computing'),
-(10, 'Digital Marketing');
+--
+-- Dumping data for table `skills`
+--
 
+INSERT INTO `skills` (`id`, `skill_name`) VALUES
+(9, 'Cloud Computing'),
+(8, 'Cybersecurity'),
+(4, 'Data Analysis'),
+(6, 'Database Administration'),
+(10, 'Digital Marketing'),
+(1, 'Java'),
+(7, 'Machine Learning'),
+(3, 'Project Management'),
+(2, 'Python'),
+(5, 'Web Development');
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `users`
@@ -248,37 +271,17 @@ CREATE TABLE `users` (
   `modified` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-CREATE TABLE projects_skills (
-    `id` INT AUTO_INCREMENT PRIMARY KEY,
-    `project_id` INT NOT NULL,
-    `skill_id` INT NOT NULL,
-    FOREIGN KEY (project_id) REFERENCES projects(id) ON DELETE CASCADE,
-    FOREIGN KEY (skill_id) REFERENCES skills(id) ON DELETE CASCADE
-);
-
-CREATE TABLE contractors_skills (
-    `id` INT AUTO_INCREMENT PRIMARY KEY,
-    `contractor_id` INT NOT NULL,
-    `skill_id` INT NOT NULL,
-    FOREIGN KEY (contractor_id) REFERENCES contractors(id),
-    FOREIGN KEY (skill_id) REFERENCES skills(id)
-);
-
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `contact_us`
+-- Indexes for table `contact`
 --
-ALTER TABLE contact
+ALTER TABLE `contact`
   ADD PRIMARY KEY (`id`),
-  ADD COLUMN `contractor_id` INT DEFAULT NULL,
-  ADD COLUMN `replied` TINYINT(1) DEFAULT 0,
-  ADD FOREIGN KEY (`organisation_id`) REFERENCES `organisations`(`id`) ON DELETE SET NULL,
-  ADD FOREIGN KEY (`contractor_id`) REFERENCES `contractors`(`id`) ON DELETE SET NULL;
-  /*ADD KEY `organisation_id` (`organisation_id`);*/
-
+  ADD KEY `organisation_id` (`organisation_id`),
+  ADD KEY `fk_contact_contractors` (`contractors_id`);
 
 --
 -- Indexes for table `contractors`
@@ -309,6 +312,14 @@ ALTER TABLE `projects`
   ADD KEY `organisation_id` (`organisation_id`);
 
 --
+-- Indexes for table `projects_skills`
+--
+ALTER TABLE `projects_skills`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `project_id` (`project_id`),
+  ADD KEY `skill_id` (`skill_id`);
+
+--
 -- Indexes for table `skills`
 --
 ALTER TABLE `skills`
@@ -326,10 +337,10 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `contact_us`
+-- AUTO_INCREMENT for table `contact`
 --
-ALTER TABLE contact
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+ALTER TABLE `contact`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `contractors`
@@ -341,7 +352,7 @@ ALTER TABLE `contractors`
 -- AUTO_INCREMENT for table `contractors_skills`
 --
 ALTER TABLE `contractors_skills`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `organisations`
@@ -356,10 +367,16 @@ ALTER TABLE `projects`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
+-- AUTO_INCREMENT for table `projects_skills`
+--
+ALTER TABLE `projects_skills`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `skills`
 --
 ALTER TABLE `skills`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -372,10 +389,11 @@ ALTER TABLE `users`
 --
 
 --
--- Constraints for table `contact_us`
+-- Constraints for table `contact`
 --
 ALTER TABLE `contact`
-  ADD CONSTRAINT `contact_ibfk_1` FOREIGN KEY (`organisation_id`) REFERENCES `organisations` (`id`) ON DELETE SET NULL;
+  ADD CONSTRAINT `contact_ibfk_1` FOREIGN KEY (`organisation_id`) REFERENCES `organisations` (`id`) ON DELETE SET NULL,
+  ADD CONSTRAINT `fk_contact_contractors` FOREIGN KEY (`contractors_id`) REFERENCES `contractors` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
 -- Constraints for table `contractors_skills`
@@ -390,6 +408,13 @@ ALTER TABLE `contractors_skills`
 ALTER TABLE `projects`
   ADD CONSTRAINT `projects_ibfk_1` FOREIGN KEY (`contractor_id`) REFERENCES `contractors` (`id`) ON DELETE SET NULL,
   ADD CONSTRAINT `projects_ibfk_2` FOREIGN KEY (`organisation_id`) REFERENCES `organisations` (`id`) ON DELETE SET NULL;
+
+--
+-- Constraints for table `projects_skills`
+--
+ALTER TABLE `projects_skills`
+  ADD CONSTRAINT `projects_skills_ibfk_1` FOREIGN KEY (`project_id`) REFERENCES `projects` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `projects_skills_ibfk_2` FOREIGN KEY (`skill_id`) REFERENCES `skills` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

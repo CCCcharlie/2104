@@ -32,9 +32,10 @@ class ContactFixture extends TestFixture
                 'phone_number' => 'Lorem ip',
                 'message' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
                 'organisation_id' => 1,
-                'created' => '2024-10-26 04:42:12',
-                'modified' => '2024-10-26 04:42:12',
+                'created' => '2024-10-27 04:01:26',
+                'modified' => '2024-10-27 04:01:26',
                 'contractors_id' => 1,
+                'replied' => 1,
             ],
         ];
         parent::init();
