@@ -24,6 +24,7 @@ class ContactControllerTest extends TestCase
     protected array $fixtures = [
         'app.Contact',
         'app.Organisations',
+        'app.Contractors',
     ];
 
     /**

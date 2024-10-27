@@ -4,12 +4,16 @@
  * @var \App\Model\Entity\Contact $contact
  */
 ?>
-<!-- Back Button -->
-<?= $this->Html->link('Back', ['action' => 'index'], ['class' => 'button']) ?>
-
-<!-- Edit Button -->
-<?= $this->Html->link('Edit', ['action' => 'edit', $contact->id], ['class' => 'button']) ?>
 <div class="row">
+    <aside class="column">
+        <div class="side-nav">
+            <h4 class="heading"><?= __('Actions') ?></h4>
+            <?= $this->Html->link(__('Edit Contact'), ['action' => 'edit', $contact->id], ['class' => 'side-nav-item']) ?>
+            <?= $this->Form->postLink(__('Delete Contact'), ['action' => 'delete', $contact->id], ['confirm' => __('Are you sure you want to delete # {0}?', $contact->id), 'class' => 'side-nav-item']) ?>
+            <?= $this->Html->link(__('List Contact'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
+            <?= $this->Html->link(__('New Contact'), ['action' => 'add'], ['class' => 'side-nav-item']) ?>
+        </div>
+    </aside>
     <div class="column column-80">
         <div class="contact view content">
             <h3><?= h($contact->id) ?></h3>
@@ -39,8 +43,8 @@
                     <td><?= $this->Number->format($contact->id) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Contractor Id') ?></th>
-                    <td><?= $contact->contractor_id === null ? '' : $this->Number->format($contact->contractor_id) ?></td>
+                    <th><?= __('Contractors Id') ?></th>
+                    <td><?= $contact->contractors_id === null ? '' : $this->Number->format($contact->contractors_id) ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Created') ?></th>
@@ -49,10 +53,6 @@
                 <tr>
                     <th><?= __('Modified') ?></th>
                     <td><?= h($contact->modified) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Replied') ?></th>
-                    <td><?= $contact->replied ? __('Yes') : __('No'); ?></td>
                 </tr>
             </table>
             <div class="text">

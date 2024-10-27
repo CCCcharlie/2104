@@ -15,10 +15,9 @@ use Cake\ORM\Entity;
  * @property string|null $phone_number
  * @property string|null $message
  * @property int|null $organisation_id
- * @property int|null $contractor_id
  * @property \Cake\I18n\DateTime|null $created
  * @property \Cake\I18n\DateTime|null $modified
- * @property bool|null $replied
+ * @property int|null $contractors_id
  *
  * @property \App\Model\Entity\Organisation $organisation
  * @property \App\Model\Entity\Contractor $contractor
@@ -35,17 +34,15 @@ class Contact extends Entity
      * @var array<string, bool>
      */
     protected array $_accessible = [
-        'id' => true,
         'first_name' => true,
         'last_name' => true,
         'email' => true,
         'phone_number' => true,
         'message' => true,
         'organisation_id' => true,
-        'contractor_id' => true,
         'created' => true,
         'modified' => true,
-        'replied' => true,
+        'contractors_id' => true,
         'organisation' => true,
         'contractor' => true,
     ];

@@ -12,6 +12,7 @@ use Cake\Validation\Validator;
  * Contact Model
  *
  * @property \App\Model\Table\OrganisationsTable&\Cake\ORM\Association\BelongsTo $Organisations
+ * @property \App\Model\Table\ContractorsTable&\Cake\ORM\Association\BelongsTo $Contractors
  *
  * @method \App\Model\Entity\Contact newEmptyEntity()
  * @method \App\Model\Entity\Contact newEntity(array $data, array $options = [])
@@ -51,7 +52,7 @@ class ContactTable extends Table
             'foreignKey' => 'organisation_id',
         ]);
         $this->belongsTo('Contractors', [
-            'foreignKey' => 'contractor_id',
+            'foreignKey' => 'contractors_id',
         ]);
     }
 
@@ -63,11 +64,6 @@ class ContactTable extends Table
      */
     public function validationDefault(Validator $validator): Validator
     {
-        $validator
-            ->integer('id')
-            ->requirePresence('id', 'create')
-            ->notEmptyString('id');
-
         $validator
             ->scalar('first_name')
             ->maxLength('first_name', 255)
@@ -96,12 +92,8 @@ class ContactTable extends Table
             ->allowEmptyString('organisation_id');
 
         $validator
-            ->integer('contractor_id')
-            ->allowEmptyString('contractor_id');
-
-        $validator
-            ->boolean('replied')
-            ->allowEmptyString('replied');
+            ->integer('contractors_id')
+            ->allowEmptyString('contractors_id');
 
         return $validator;
     }
@@ -116,7 +108,7 @@ class ContactTable extends Table
     public function buildRules(RulesChecker $rules): RulesChecker
     {
         $rules->add($rules->existsIn(['organisation_id'], 'Organisations'), ['errorField' => 'organisation_id']);
-        $rules->add($rules->existsIn(['contractor_id'], 'Contractors'), ['errorField' => 'contractor_id']);
+        $rules->add($rules->existsIn(['contractors_id'], 'Contractors'), ['errorField' => 'contractors_id']);
 
         return $rules;
     }

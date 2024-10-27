@@ -17,10 +17,11 @@ class ContactController extends AppController
      */
     public function index()
     {
-        // Fetch and paginate contact records with linked organisations and contractors
-        $query = $this->Contact->find()->contain(['Organisations', 'Contractors']);
-        $contacts = $this->paginate($query);
-        $this->set(compact('contacts'));
+        $query = $this->Contact->find()
+            ->contain(['Organisations', 'Contractors']);
+        $contact = $this->paginate($query);
+
+        $this->set(compact('contact'));
     }
 
     /**
@@ -32,7 +33,7 @@ class ContactController extends AppController
      */
     public function view($id = null)
     {
-        $contact = $this->Contact->get($id, contain: ['Organisations']);
+        $contact = $this->Contact->get($id, contain: ['Organisations', 'Contractors']);
         $this->set(compact('contact'));
     }
 
@@ -54,7 +55,8 @@ class ContactController extends AppController
             $this->Flash->error(__('The contact could not be saved. Please, try again.'));
         }
         $organisations = $this->Contact->Organisations->find('list', limit: 200)->all();
-        $this->set(compact('contact', 'organisations'));
+        $contractors = $this->Contact->Contractors->find('list', limit: 200)->all();
+        $this->set(compact('contact', 'organisations', 'contractors'));
     }
 
     /**
@@ -77,7 +79,8 @@ class ContactController extends AppController
             $this->Flash->error(__('The contact could not be saved. Please, try again.'));
         }
         $organisations = $this->Contact->Organisations->find('list', limit: 200)->all();
-        $this->set(compact('contact', 'organisations'));
+        $contractors = $this->Contact->Contractors->find('list', limit: 200)->all();
+        $this->set(compact('contact', 'organisations', 'contractors'));
     }
 
     /**
