@@ -16,6 +16,10 @@
 
 $cakeDescription = 'CakePHP: the rapid development php framework';
 ?>
+<?php
+// Check if the user is logged in
+$loggedIn = $this->request->getAttribute('identity') !== null;
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,15 +49,23 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             <a href="<?= $this->Url->build('/') ?>"><span>Cake</span>PHP</a>
         </div>
         <div class="top-nav-links">
-
-            <a href="<?= $this->Url->build('./dashboard'); ?>">Dashboard</a>
-            <a href="<?= $this->Url->build('./projects'); ?>">Projects</a>
-            <a href="<?= $this->Url->build('./contractors'); ?>">Contractors</a>
-            <a href="<?= $this->Url->build('./organisations'); ?>">Organisations</a>
-            <a href="<?= $this->Url->build('./contact'); ?>">Contact Us</a>
-            <a href="<?= $this->Url->build('./skills'); ?>">Skills</a>
-
+            <?php if ($loggedIn): ?>
+                <a href="<?= $this->Url->build('./dashboard'); ?>">Homepage</a>
+                <a href="<?= $this->Url->build('./projects'); ?>">Projects</a>
+                <a href="<?= $this->Url->build('./contractors'); ?>">Contractors</a>
+                <a href="<?= $this->Url->build('./organisations'); ?>">Organisations</a>
+                <a href="<?= $this->Url->build('./contact'); ?>">Contact Us</a>
+                <a href="<?= $this->Url->build('./skills'); ?>">Skills</a>
+            <?php else: ?>
+                <!-- Public Navigation for Unauthenticated Users -->
+                <a href="<?= $this->Url->build('./dashboard'); ?>">Homepage</a>
+                <a href="<?= $this->Url->build('./contractors/add'); ?>">Register Contractor</a>
+                <a href="<?= $this->Url->build('./organisations/add'); ?>">Register Organisation</a>
+                <a href="<?= $this->Url->build('./contact/add'); ?>">Contact Us</a>
+                <a><?= $this->Html->link(__('Login'), ['controller' => 'Users', 'action' => 'login']) ?></a>
+            <?php endif; ?>
         </div>
+
 
     </nav>
 

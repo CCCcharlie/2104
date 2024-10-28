@@ -10,6 +10,13 @@ namespace App\Controller;
  */
 class UsersController extends AppController
 {
+    public function initialize(): void
+    {
+        parent::initialize();
+        // Load the Authentication component
+        $this->loadComponent('Authentication.Authentication');
+        $this->Authentication->addUnauthenticatedActions(['login']);
+    }
     /**
      * Index method
      *
