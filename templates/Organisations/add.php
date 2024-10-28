@@ -10,9 +10,6 @@
         <div class="back-button">
             <?= $this->Html->link(__('Back'), ['controller' => 'Dashboard', 'action' => 'index'], ['class' => 'btn btn-secondary']) ?>
         </div>
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Add New Organisation') ?></h4>
-        </div>
     </aside>
     <div class="column column-80">
         <div class="organisations form content">

@@ -1,6 +1,5 @@
 <!-- templates/Users/login.php -->
 <div class="users form">
-    <h2>Login</h2>
     <?= $this->Form->create() ?>
     <fieldset>
         <legend><?= __('Please enter your email and password') ?></legend>
