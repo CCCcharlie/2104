@@ -27,8 +27,10 @@ $loggedIn = $this->request->getAttribute('identity') !== null;
     <!-- src/Templates/Layout/default.php -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-
-
+    <meta charset="UTF-8">
+    <title><?= $this->fetch('title') ?></title>
+    <?= $this->Html->meta('icon', '/favicon.ico', ['type' => 'image/x-icon']); ?>
+    <?= $this->Html->css(['sidebar']) ?>
     <?= $this->Html->charset() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
@@ -46,8 +48,14 @@ $loggedIn = $this->request->getAttribute('identity') !== null;
 <body>
     <nav class="top-nav">
         <div class="top-nav-title">
-            <a href="<?= $this->Url->build('/') ?>"><span>Cake</span>PHP</a>
+            <!-- Display the logo with a link to the homepage -->
+            <?= $this->Html->link(
+                $this->Html->image('logo.png', ['alt' => 'Nathan\'s Business Logo', 'class' => 'logo', 'style' => 'height: 70px; width: auto;']),
+                ['controller' => 'Pages', 'action' => 'display', 'home'],
+                ['escape' => false]
+            ) ?>
         </div>
+
         <div class="top-nav-links">
             <?php if ($loggedIn): ?>
                 <a href="<?= $this->Url->build('./dashboard'); ?>">Homepage</a>

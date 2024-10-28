@@ -9,10 +9,7 @@
     <aside class="column">
         <!-- Back to Dashboard button -->
         <div class="back-button">
-            <?= $this->Html->link(__('Back'), ['controller' => 'Dashboard', 'action' => 'index'], ['class' => 'btn btn-secondary']) ?>
-        </div>
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Add New Contractor') ?></h4>
+            <?= $this->Html->link(__('Back'), ['controller' => 'Dashboard', 'action' => 'index'], ['class' => 'btn btn-primary']) ?>
         </div>
     </aside>
     <div class="column column-80">

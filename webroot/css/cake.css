@@ -1,52 +1,64 @@
-/* Milligram overrides */
+/* Nathan's Business Theme */
 :root {
-    /* The following are official CakePHP colors */
-    --color-cakephp-red: #d33c43;
-    --color-cakephp-gray: #404041;
-    --color-cakephp-blue: #2f85ae;
-    --color-cakephp-lightblue: #34bdd7;
+    /* Updated colors for Nathan's branding */
+    --color-primary: #5845d5; /* Soft vibrant blue as primary color */
+    --color-secondary: #1abc9c; /* Teal accent color */
+    --color-gray: #333333; /* Dark gray for text */
+    --color-lightgray: #e9ecef; /* Light gray for backgrounds */
+    --color-white: #ffffff;
+    --color-black: #000000;
 
-    /* These are additional colors */
-    --color-lightgray: #606c76;
-    --color-white: #fff;
+    --color-main-bg: #f4f6f9; /* Light background color */
+    --color-links: var(--color-primary);
+    --color-links-active: #145a7c; /* Darker blue for active links */
+    --color-headings: var(--color-lightgray);
 
-    --color-main-bg: #f5f7fa;
-    --color-links: var(--color-cakephp-blue);
-    --color-links-active: #2a6496;
-    --color-headings: #363637;
+    /* Custom success, warning, error, and info message colors */
+    --color-message-success-bg: #e8f5f4;
+    --color-message-success-text: #17a2b8;
+    --color-message-success-border: #17a2b8;
 
-    --color-message-success-bg: #e3fcec;
-    --color-message-success-text: #1f9d55;
-    --color-message-success-border: #51d88a;
+    --color-message-error-bg: #f8d7da;
+    --color-message-error-text: #721c24;
+    --color-message-error-border: #f5c6cb;
 
-    --color-message-warning-bg: #fffabc;
-    --color-message-warning-text: #8d7b00;
-    --color-message-warning-border: #d3b800;
-
-    --color-message-error-bg: #fcebea;
-    --color-message-error-text: #cc1f1a;
-    --color-message-error-border: #ef5753;
-
-    --color-message-info-bg: #eff8ff;
-    --color-message-info-text: #2779bd;
-    --color-message-info-border: #6cb2eb;
+    --color-message-info-bg: #d4e6f1;
+    --color-message-info-text: #2c3e50;
+    --color-message-info-border: #3498db;
 }
 
+/* Button styles */
 .button, button, input[type='button'], input[type='reset'], input[type='submit'] {
-    background-color: var(--color-cakephp-red);
-    border-color: var(--color-cakephp-red);
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-white);
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    text-align: center; /* Center text in the button */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button:hover, button:hover, input[type='button']:hover, input[type='reset']:hover, input[type='submit']:hover {
+    background-color: var(--color-secondary);
+    border-color: var(--color-secondary);
 }
 
 body {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 400;
     background: var(--color-main-bg);
+    color: var(--color-gray);
 }
 
 .top-nav-links,
 .side-nav,
 h1, h2, h3, h4, h5, h6 {
     font-family: "Raleway", sans-serif;
+    color: var(--color-headings);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -70,7 +82,7 @@ a:active {
 .top-nav-links a,
 th a,
 .actions a {
-    color: var(--color-lightgray);
+    color: var(--color-gray);
 }
 
 .side-nav a:hover,
@@ -88,52 +100,73 @@ th a,
     -webkit-overflow-scrolling: touch;
 }
 
-/* Main */
+/* Main Content */
 .content {
     padding: 2rem;
     background: var(--color-white);
     border-radius: 0.4rem;
-    /* Thanks Stripe */
     box-shadow: 0 7px 14px 0 rgba(60, 66, 87, 0.1),
-        0 3px 6px 0 rgba(0, 0, 0, 0.07);
-}
-.content form {
-    margin: 0;
-}
-.actions a {
-    font-weight: bold;
-    padding: 0 0.4rem;
-}
-.actions a:first-child {
-    padding-left: 0;
-}
-th {
-    white-space: nowrap;
+    0 3px 6px 0 rgba(0, 0, 0, 0.07);
+    width: 100%;
+    max-width: 800px; /* Limit max width for readability */
+    margin: 3rem auto; /* Center content on the page */
+    text-align: left;
 }
 
-/* Nav bar */
+/* Center and expand form fields */
+.content input[type="text"],
+.content input[type="email"],
+.content input[type="number"],
+.content textarea,
+.content select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+/* Navigation bar */
 .top-nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 112rem;
-    padding: 2rem;
-    margin: 0 auto;
+    width: 100%;
+    padding: 1rem 24%; /* Increase padding for a wider, centered look */
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
+    box-sizing: border-box;
+    height: 100px; /* Adjust height to match or slightly exceed logo size */
 }
+/* Position the logo in the top-left corner */
+.top-nav-title {
+    position: absolute;
+    top: 13.5px; /* Adjust spacing from the top */
+    left: 25px; /* Adjust spacing from the left */
+}
+
 .top-nav-title a {
     font-size: 2.4rem;
-    color: var(--color-cakephp-red);
+    color: var(--color-white);
+    text-decoration: none;
 }
+
 .top-nav-title span {
-    color: var(--color-cakephp-gray);
+    color: var(--color-secondary);
 }
+
 .top-nav-links a {
-    margin: 0 0.5rem;
+    margin: 0 1rem; /* Increase spacing between links */
+    color: var(--color-white);
+    text-decoration: none;
 }
 .top-nav-title a,
 .top-nav-links a {
     font-weight: bold;
 }
+
 .side-nav-item {
     display: block;
     padding: 0.5rem 0;
@@ -166,11 +199,6 @@ th {
     background: var(--color-message-success-bg);
     color: var(--color-message-success-text);
     border-color: var(--color-message-success-border);
-}
-.message.warning {
-    background: var(--color-message-warning-bg);
-    color: var(--color-message-warning-text);
-    border-color: var(--color-message-warning-border);
 }
 .message.error {
     background: var(--color-message-error-bg);
@@ -226,7 +254,7 @@ input[type='color'] {
     text-align: center;
 }
 .pagination a {
-    color: var(--color-cakephp-blue);
+    color: var(--color-primary);
     display: inline-block;
     font-size: 1.25rem;
     line-height: 3rem;
@@ -262,7 +290,7 @@ input[type='color'] {
     content: " \2191";
 }
 
-/* Error in non debug mode */
+/* Error in non-debug mode */
 .error-container {
     align-items: center;
     display: flex;
@@ -271,11 +299,37 @@ input[type='color'] {
     justify-content: center;
 }
 
+/* General button style, similar to Login */
+.btn-primary {
+    margin: 30px; /* Adds space on all sides of the button */
+    background-color: #4c67a1; /* Match the theme color */
+    color: #ffffff;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:hover {
+    background-color: #5a78b4; /* Slightly lighter shade for hover */
+    transform: translateY(-2px); /* Subtle lift on hover */
+}
+
+.btn-primary:active {
+    transform: translateY(1px); /* Pressed effect */
+}
+
+
 @media screen and (max-width: 640px) {
     /* Fix milligram not having a responsive column system */
     .row .column[class*='column-'] {
         flex: 0 0 100%;
-        max-width: 100%
+        max-width: 100%;
     }
     .top-nav {
         margin: 0 auto;
