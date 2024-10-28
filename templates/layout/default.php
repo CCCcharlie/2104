@@ -56,6 +56,7 @@ $loggedIn = $this->request->getAttribute('identity') !== null;
                 <a href="<?= $this->Url->build('./organisations'); ?>">Organisations</a>
                 <a href="<?= $this->Url->build('./contact'); ?>">Contact Us</a>
                 <a href="<?= $this->Url->build('./skills'); ?>">Skills</a>
+                <a><?= $this->Html->link(__('Logout'), ['controller' => 'Users', 'action' => 'logout'], ['class' => 'nav-link']) ?></a>
             <?php else: ?>
                 <!-- Public Navigation for Unauthenticated Users -->
                 <a href="<?= $this->Url->build('./dashboard'); ?>">Homepage</a>
