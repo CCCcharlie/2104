@@ -138,6 +138,13 @@ th a,
     color: var(--color-white);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
     box-sizing: border-box;
+    height: 100px; /* Adjust height to match or slightly exceed logo size */
+}
+/* Position the logo in the top-left corner */
+.top-nav-title {
+    position: absolute;
+    top: 13.5px; /* Adjust spacing from the top */
+    left: 25px; /* Adjust spacing from the left */
 }
 
 .top-nav-title a {

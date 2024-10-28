@@ -45,6 +45,14 @@ $loggedIn = $this->request->getAttribute('identity') !== null;
 </head>
 <body>
     <nav class="top-nav">
+        <div class="top-nav-title">
+            <!-- Display the logo with a link to the homepage -->
+            <?= $this->Html->link(
+                $this->Html->image('logo.png', ['alt' => 'Nathan\'s Business Logo', 'class' => 'logo', 'style' => 'height: 70px; width: auto;']),
+                ['controller' => 'Pages', 'action' => 'display', 'home'],
+                ['escape' => false]
+            ) ?>
+        </div>
 
         <div class="top-nav-links">
             <?php if ($loggedIn): ?>

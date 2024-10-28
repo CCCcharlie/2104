@@ -1,8 +1,6 @@
 <!-- src/Templates/Dashboard/index.php -->
 <head>
-    ...
-    <?= $this->Html->css('sidebar') ?>
-    ...
+
     <style>
         /* Full container background with overlay */
         .container-fluid {
@@ -37,7 +35,7 @@
             position: relative;
             z-index: 2; /* Ensures content appears above overlay */
             max-width: 800px;
-            text-align: center;
+            text-align: left;
             padding: 2rem;
             color: #ffffff;
             background: transparent; /* Transparent background */
@@ -45,13 +43,13 @@
 
         /* Typography improvements */
         .content-wrapper h1 {
-            font-size: 3rem;
+            font-size: 6rem;
             font-weight: bold;
             margin-bottom: 1rem;
         }
 
         .content-wrapper h3 {
-            font-size: 2rem;
+            font-size: 4rem;
             margin-top: 2rem;
             margin-bottom: 1rem;
         }
@@ -93,7 +91,7 @@
         <h1>About Nathan's Business</h1>
         <h4>Nathan’s business specialises in B2B projects. We collaborate with business partners and contractors to deliver exceptional results. Join us to make an impact together!</h4>
 
-        <h1>Register as a Business Partner or Contractor</h1>
+        <h3>Register as a Business Partner or Contractor</h3>
         <h4>Interested in partnering with us? Please register below:</h4>
 
         <ul style="list-style-type: none; padding: 0;">
