@@ -5,7 +5,6 @@
  */
 ?>
 <div class="contractors index content">
-    <?= $this->Html->link(__('New Contractor'), ['action' => 'add'], ['class' => 'button float-right']) ?>
     <h3><?= __('Contractors') ?></h3>
     <?= $this->Form->create(null, ['type' => 'get']) ?>
     <?= $this->Form->control('keyword', ['label' => 'Search by Name']) ?>
