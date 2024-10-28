@@ -299,6 +299,32 @@ input[type='color'] {
     justify-content: center;
 }
 
+/* General button style, similar to Login */
+.btn-primary {
+    margin: 30px; /* Adds space on all sides of the button */
+    background-color: #4c67a1; /* Match the theme color */
+    color: #ffffff;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:hover {
+    background-color: #5a78b4; /* Slightly lighter shade for hover */
+    transform: translateY(-2px); /* Subtle lift on hover */
+}
+
+.btn-primary:active {
+    transform: translateY(1px); /* Pressed effect */
+}
+
+
 @media screen and (max-width: 640px) {
     /* Fix milligram not having a responsive column system */
     .row .column[class*='column-'] {

@@ -9,7 +9,7 @@
     <aside class="column">
         <!-- Back to Dashboard button -->
         <div class="back-button">
-            <?= $this->Html->link(__('Back'), ['controller' => 'Dashboard', 'action' => 'index'], ['class' => 'btn btn-secondary']) ?>
+            <?= $this->Html->link(__('Back'), ['controller' => 'Dashboard', 'action' => 'index'], ['class' => 'btn btn-primary']) ?>
         </div>
     </aside>
     <div class="column column-80">
