@@ -10,13 +10,18 @@ namespace App\Controller;
  */
 class UsersController extends AppController
 {
+    /**
+     * Initialize controller
+     *
+     * @return void
+     */
     public function initialize(): void
     {
         parent::initialize();
-        // Load the Authentication component
-        $this->loadComponent('Authentication.Authentication');
-        $this->Authentication->addUnauthenticatedActions(['login']);
+
+        $this->Authentication->allowUnauthenticated(['login']);
     }
+
     /**
      * Index method
      *
@@ -105,32 +110,53 @@ class UsersController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
+    /**
+     * Login method
+     *
+     * @return \Cake\Http\Response|null|void Redirects on successful edit, renders view otherwise.
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
     public function login()
     {
         $this->request->allowMethod(['get', 'post']);
         $result = $this->Authentication->getResult();
-        if ($result->isValid()) {
-            // Redirect to intended page
-            $redirect = $this->request->getQuery('redirect', [
-                'controller' => 'Pages',
-                'action' => 'display',
-                'home'
-            ]);
 
-            return $this->redirect($redirect);
-        } else if ($this->request->is('post')) {
-            // Authentication failed, display error
+
+        if ($result->isValid()) {
+            $this->Flash->success(__('Login successful'));
+//            $redirect = $this->Authentication->getLoginRedirect();
+
+            return $this->redirect(['controller' => 'Dashboard', 'action' => 'index']);
+//
+//            if ($redirect) {
+//                return $this->redirect($redirect);
+//            }
+        }
+
+        // Display error if user submitted and authentication failed
+        else if ($this->request->is('post')) {
+
+//
+//            $email = $this->request->getData('email'); //  email
+//            $password = $this->request->getData('password'); //  password
+
+
+//            debug(['email' => $email, 'password' => $password]);
+//            debug($result); //
+//            debug($this->request->getRequestTarget());
+
             $this->Flash->error(__('Invalid username or password'));
         }
     }
 
-    public function logout()
-    {
-        $result = $this->Authentication->getResult();
-        if ($result->isValid()) {
-            $this->Authentication->logout();
-            return $this->redirect(['controller' => 'Users', 'action' => 'login']);
-        }
-    }
+    public function logout() {
+        // end the user session
+        $this->Authentication->logout();
 
+        // message
+        $this->Flash->success(__('You have been logged out.'));
+
+
+        return $this->redirect('/users/login');
+    }
 }

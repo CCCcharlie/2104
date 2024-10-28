@@ -134,8 +134,8 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
                 'username' => 'email',
                 'password' => 'password',
             ],
-            'loginUrl' => './Users/login',
-            'unauthenticatedRedirect' => './Users/login', // Redirect for unauthenticated users
+            'loginUrl' => '/users/login',
+            'unauthenticatedRedirect' => '/users/login', //
             'queryParam' => 'redirect' // Allow redirect to the original page after login
         ]);
 
