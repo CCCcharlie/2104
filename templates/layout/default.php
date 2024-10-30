@@ -24,6 +24,8 @@ $loggedIn = $this->request->getAttribute('identity') !== null;
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title><?= $cakeDescription ?> - <?= $this->fetch('title') ?></title>
+    <link rel="icon" type="image/png" href="<?= $this->Url->build('/img/logo.png') ?>"/>
+
 
     <!-- Bootstrap 4 Admin Theme CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
@@ -35,6 +37,21 @@ $loggedIn = $this->request->getAttribute('identity') !== null;
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
+    <link href="css/sidebar.css" rel="stylesheet">
+
+    <style>
+        .sidebar {
+            width: 22rem !important;
+            min-height: 100vh;
+        }
+
+        .sidebar .nav-item .nav-link {
+            padding: 0.75rem 1.5rem; /* Adjust padding to fit the new width */
+            width: 22rem !important; /* Match width of the sidebar */
+        }
+    </style>
+
+
 </head>
 <body id="page-top">
 
@@ -55,7 +72,7 @@ $loggedIn = $this->request->getAttribute('identity') !== null;
         <hr class="sidebar-divider my-0">
 
         <!-- Nav Item - Dashboard -->
-        <li class="nav-item"><a class="nav-link" href="<?= $this->Url->build('/dashboard'); ?>"><i class="fas fa-project-diagram"></i> Dashboard</a></li>
+        <li class="nav-item"><a class="nav-link" href="<?= $this->Url->build('/dashboard'); ?>"><i class="fas fa-project-diagram"></i> Homepage</a></li>
 
 
         <!-- Divider -->
