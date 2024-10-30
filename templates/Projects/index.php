@@ -62,8 +62,8 @@
                     <td><?= h($project->project_due_date) ?></td>
                     <td><?= h($project->last_checked) ?></td>
                     <td><?= h($project->complete) ?></td>
-                    <td><?= $project->hasValue('contractor') ? $this->Html->link(       $project->contractor->first_name . " " . $project->contractor->last_name, ['controller' => 'Contractors', 'action' => 'view', $project->contractor->id]) : '' ?></td>
-                    <td><?= $project->hasValue('organisation') ? $this->Html->link($project->organisation->business_name, ['controller' => 'Organisations', 'action' => 'view', $project->organisation->id]) : '' ?></td>
+                    <td><?= $project->hasValue('contractor') ? $this->Html->link(       $project->contractor->first_name . " " . $project->contractor->last_name, ['controller' => 'Contractors', 'action' => 'view', $project->contractor->id]) : 'Not assigned'  ?></td>
+                    <td><?= $project->hasValue('organisation') ? $this->Html->link($project->organisation->business_name, ['controller' => 'Organisations', 'action' => 'view', $project->organisation->id]) : 'Not assigned' ?></td>
                     <td><?= h($project->created) ?></td>
                     <td><?= h($project->modified) ?></td>
                     <td class="actions">
