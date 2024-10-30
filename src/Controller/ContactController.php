@@ -61,6 +61,8 @@ class ContactController extends AppController
 
                 return $this->redirect(['action' => 'index']);
             }
+            dd($contact->getErrors());
+            exit();
             $this->Flash->error(__('The contact could not be saved. Please, try again.'));
         }
         $organisations = $this->Contact->Organisations->find('list', [

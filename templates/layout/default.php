@@ -28,8 +28,8 @@ $loggedIn = $this->request->getAttribute('identity') !== null;
 
 
     <!-- Bootstrap 4 Admin Theme CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-    <?= $this->Html->css(['sb-admin-2.min', 'sidebar', 'normalize.min', 'milligram.min', 'fonts', 'cake']) ?>
+<!--    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">-->
+    <?= $this->Html->css(['sb-admin-2.min', 'sidebar', 'normalize.min', 'milligram.min', 'fonts']) ?>
 
     <!-- FontAwesome for icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
