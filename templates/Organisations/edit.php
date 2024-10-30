@@ -9,11 +9,11 @@
         <div class="side-nav">
             <h4 class="heading"><?= __('Actions') ?></h4>
             <!-- Back to Organisation List -->
-            <?= $this->Html->link(__('Back to Organisation'), ['action' => 'index'], ['class' => 'button', 'style' => 'color: white; background-color: #007bff;']) ?>
+            <?= $this->Html->link(__('Back'), ['action' => 'index'], ['class' => 'button', 'style' => 'color: white; background-color: #007bff;']) ?>
 
             <!-- Delete Organisation -->
             <?= $this->Form->postLink(
-                __('Delete Organisation'),
+                __('Delete'),
                 ['action' => 'delete', $organisation->id],
                 [
                     'confirm' => __('Are you sure you want to delete # {0}?', $organisation->id),

@@ -126,7 +126,7 @@ class UsersController extends AppController
             $this->Flash->success(__('Login successful'));
 //            $redirect = $this->Authentication->getLoginRedirect();
 
-            return $this->redirect(['controller' => 'Dashboard', 'action' => 'index']);
+            return $this->redirect(['controller' => 'Projects', 'action' => 'index']);
 //
 //            if ($redirect) {
 //                return $this->redirect($redirect);
