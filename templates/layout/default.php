@@ -14,7 +14,7 @@
  * @var \App\View\AppView $this
  */
 
-$cakeDescription = 'CakePHP: the rapid development php framework';
+$cakeDescription = 'Nathan Jims';
 $loggedIn = $this->request->getAttribute('identity') !== null;
 ?>
 <!DOCTYPE html>
@@ -24,6 +24,8 @@ $loggedIn = $this->request->getAttribute('identity') !== null;
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title><?= $cakeDescription ?> - <?= $this->fetch('title') ?></title>
+    <link rel="icon" type="image/png" href="<?= $this->Url->build('/img/logo.png') ?>"/>
+
 
     <!-- Bootstrap 4 Admin Theme CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
@@ -35,6 +37,8 @@ $loggedIn = $this->request->getAttribute('identity') !== null;
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
+    <link href="css/sidebar.css" rel="stylesheet"> <!-- Link to the sidebar styles with the logo CSS -->
+
 </head>
 <body id="page-top">
 
@@ -44,23 +48,12 @@ $loggedIn = $this->request->getAttribute('identity') !== null;
     <!-- Sidebar -->
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= $this->Url->build('/dashboard'); ?>">
+        <a class="sidebar-brand d-flex align-items-center justify-content-left" href="<?= $this->Url->build('/dashboard'); ?>">
             <div class="sidebar-brand-icon">
-                <?= $this->Html->image('logo.png', ['alt' => 'Nathan\'s Business Logo', 'class' => 'logo', 'style' => 'height: 70px; width: auto;']) ?>
+                <?= $this->Html->image('logo.png', ['alt' => 'Nathan\'s Business Logo', 'class' => 'logo', 'style' => 'height: 40px; width: auto;']) ?>
             </div>
             <div class="sidebar-brand-text mx-3">Admin</div>
         </a>
-
-        <!-- Divider -->
-        <hr class="sidebar-divider my-0">
-
-        <!-- Nav Item - Dashboard -->
-        <li class="nav-item">
-            <a class="nav-link" href="<?= $this->Url->build('/dashboard'); ?>">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Dashboard</span>
-            </a>
-        </li>
 
         <!-- Divider -->
         <hr class="sidebar-divider">
@@ -74,6 +67,7 @@ $loggedIn = $this->request->getAttribute('identity') !== null;
             <li class="nav-item"><a class="nav-link" href="<?= $this->Url->build('/skills'); ?>"><i class="fas fa-tools"></i> Skills</a></li>
             <li class="nav-item"><a class="nav-link" href="<?= $this->Url->build('/users/logout'); ?>"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
         <?php else: ?>
+            <li class="nav-item"><a class="nav-link" href="<?= $this->Url->build('/dashboard'); ?>"><i class="fas fa-fw fa-tachometer-alt"></i> Homepage</a></li>
             <li class="nav-item"><a class="nav-link" href="<?= $this->Url->build('/contractors/add'); ?>"><i class="fas fa-user-plus"></i> Register Contractor</a></li>
             <li class="nav-item"><a class="nav-link" href="<?= $this->Url->build('/organisations/add'); ?>"><i class="fas fa-plus-circle"></i> Register Organisation</a></li>
             <li class="nav-item"><a class="nav-link" href="<?= $this->Url->build('/contact/add'); ?>"><i class="fas fa-envelope"></i> Contact Us</a></li>
