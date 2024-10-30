@@ -33,6 +33,9 @@ class ContractorsSkillsTable extends Table
     /**
      * Initialize method
      *
+     * Sets up the model's configuration, table name, display field, primary key,
+     * and defines relationships to Contractors and Skills tables.
+     *
      * @param array<string, mixed> $config The configuration for the Table.
      * @return void
      */
@@ -40,30 +43,42 @@ class ContractorsSkillsTable extends Table
     {
         parent::initialize($config);
 
+        // Define the database table used by this model
         $this->setTable('contractors_skills');
+
+        // Define the display field for the model
         $this->setDisplayField('id');
+
+        // Define the primary key for the model
         $this->setPrimaryKey('id');
 
+        // Set up belongsTo association with Contractors table
         $this->belongsTo('Contractors', [
             'foreignKey' => 'contractor_id',
         ]);
+
+        // Set up belongsTo association with Skills table
         $this->belongsTo('Skills', [
             'foreignKey' => 'skill_id',
         ]);
     }
 
     /**
-     * Default validation rules.
+     * Default validation rules
+     *
+     * Defines validation rules to ensure data integrity for the contractor_id and skill_id fields.
      *
      * @param \Cake\Validation\Validator $validator Validator instance.
      * @return \Cake\Validation\Validator
      */
     public function validationDefault(Validator $validator): Validator
     {
+        // Validate contractor_id as an integer, allowing it to be empty
         $validator
             ->integer('contractor_id')
             ->allowEmptyString('contractor_id');
 
+        // Validate skill_id as an integer, allowing it to be empty
         $validator
             ->integer('skill_id')
             ->allowEmptyString('skill_id');
@@ -72,15 +87,20 @@ class ContractorsSkillsTable extends Table
     }
 
     /**
-     * Returns a rules checker object that will be used for validating
-     * application integrity.
+     * Build rules method
+     *
+     * Defines application integrity rules to ensure that contractor_id and skill_id
+     * reference existing records in Contractors and Skills tables, respectively.
      *
      * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
      * @return \Cake\ORM\RulesChecker
      */
     public function buildRules(RulesChecker $rules): RulesChecker
     {
+        // Ensure contractor_id exists in the Contractors table
         $rules->add($rules->existsIn(['contractor_id'], 'Contractors'), ['errorField' => 'contractor_id']);
+
+        // Ensure skill_id exists in the Skills table
         $rules->add($rules->existsIn(['skill_id'], 'Skills'), ['errorField' => 'skill_id']);
 
         return $rules;

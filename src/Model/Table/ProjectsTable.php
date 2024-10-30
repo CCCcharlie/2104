@@ -36,6 +36,8 @@ class ProjectsTable extends Table
     /**
      * Initialize method
      *
+     * Configures the Projects table, setting up behaviors and associations.
+     *
      * @param array<string, mixed> $config The configuration for the Table.
      * @return void
      */
@@ -43,63 +45,84 @@ class ProjectsTable extends Table
     {
         parent::initialize($config);
 
+        // Define the name of the table in the database
         $this->setTable('projects');
+
+        // Set the field used to display records in views
         $this->setDisplayField('id');
+
+        // Set the primary key for this table
         $this->setPrimaryKey('id');
 
+        // Adds the Timestamp behavior to automatically handle created and modified timestamps
         $this->addBehavior('Timestamp');
 
+        // Set up the association with the Contractors table (many-to-one)
         $this->belongsTo('Contractors', [
             'foreignKey' => 'contractor_id',
         ]);
+
+        // Set up the association with the Organisations table (many-to-one)
         $this->belongsTo('Organisations', [
             'foreignKey' => 'organisation_id',
         ]);
+
+        // Set up the association with the Skills table (many-to-many through projects_skills)
         $this->belongsToMany('Skills', [
             'foreignKey' => 'project_id',
             'targetForeignKey' => 'skill_id',
-            'joinTable' => 'projects_skills',
+            'joinTable' => 'projects_skills', // Specifies the join table for the many-to-many relationship
         ]);
     }
 
     /**
-     * Default validation rules.
+     * Default validation rules
+     *
+     * Specifies validation rules for the Projects table fields.
      *
      * @param \Cake\Validation\Validator $validator Validator instance.
      * @return \Cake\Validation\Validator
      */
     public function validationDefault(Validator $validator): Validator
     {
+        // Validates project_name as a string up to 255 characters
         $validator
             ->scalar('project_name')
             ->maxLength('project_name', 255)
             ->allowEmptyString('project_name');
 
+        // Allows an optional description for the project
         $validator
             ->scalar('description')
             ->allowEmptyString('description');
 
+        // Validates management_tool_link as a string up to 255 characters
         $validator
             ->scalar('management_tool_link')
             ->maxLength('management_tool_link', 255)
             ->allowEmptyString('management_tool_link');
 
+        // Validates project_due_date as a datetime field
         $validator
             ->dateTime('project_due_date')
             ->allowEmptyDateTime('project_due_date');
 
+        // Validates last_checked as a datetime field
         $validator
             ->dateTime('last_checked')
             ->allowEmptyDateTime('last_checked');
 
+        // Validates complete as a boolean field
         $validator
             ->boolean('complete')
             ->allowEmptyString('complete');
 
+        // Validates contractor_id as an integer
         $validator
             ->integer('contractor_id')
             ->allowEmptyString('contractor_id');
 
+        // Validates organisation_id as an integer
         $validator
             ->integer('organisation_id')
             ->allowEmptyString('organisation_id');
@@ -108,15 +131,19 @@ class ProjectsTable extends Table
     }
 
     /**
-     * Returns a rules checker object that will be used for validating
-     * application integrity.
+     * Returns a rules checker object for validating application integrity
+     *
+     * Ensures that contractor_id and organisation_id reference valid records in their respective tables.
      *
      * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
      * @return \Cake\ORM\RulesChecker
      */
     public function buildRules(RulesChecker $rules): RulesChecker
     {
+        // Ensures that contractor_id references a valid Contractor record
         $rules->add($rules->existsIn(['contractor_id'], 'Contractors'), ['errorField' => 'contractor_id']);
+
+        // Ensures that organisation_id references a valid Organisation record
         $rules->add($rules->existsIn(['organisation_id'], 'Organisations'), ['errorField' => 'organisation_id']);
 
         return $rules;

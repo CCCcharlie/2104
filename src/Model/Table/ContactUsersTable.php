@@ -34,6 +34,8 @@ class ContactUsersTable extends Table
     /**
      * Initialize method
      *
+     * Configures the table properties, behaviors, and associations for the ContactUsers model.
+     *
      * @param array<string, mixed> $config The configuration for the Table.
      * @return void
      */
@@ -41,48 +43,59 @@ class ContactUsersTable extends Table
     {
         parent::initialize($config);
 
+        // Set table name, display field, and primary key for the model
         $this->setTable('contact_users');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
 
+        // Add Timestamp behavior to automatically manage created and modified fields
         $this->addBehavior('Timestamp');
 
+        // Define a belongsTo association with the Organisations table
         $this->belongsTo('Organisations', [
             'foreignKey' => 'organisation_id',
         ]);
     }
 
     /**
-     * Default validation rules.
+     * Default validation rules
+     *
+     * Defines validation rules for each field in the 'contact_users' table to ensure data integrity.
      *
      * @param \Cake\Validation\Validator $validator Validator instance.
      * @return \Cake\Validation\Validator
      */
     public function validationDefault(Validator $validator): Validator
     {
+        // Validate 'first_name' as a string with a max length of 255 characters
         $validator
             ->scalar('first_name')
             ->maxLength('first_name', 255)
             ->allowEmptyString('first_name');
 
+        // Validate 'last_name' as a string with a max length of 255 characters
         $validator
             ->scalar('last_name')
             ->maxLength('last_name', 255)
             ->allowEmptyString('last_name');
 
+        // Validate 'email' as a valid email format, allowing it to be empty
         $validator
             ->email('email')
             ->allowEmptyString('email');
 
+        // Validate 'phone_number' as a string with a max length of 10 characters
         $validator
             ->scalar('phone_number')
             ->maxLength('phone_number', 10)
             ->allowEmptyString('phone_number');
 
+        // Allow 'message' to be a string or empty
         $validator
             ->scalar('message')
             ->allowEmptyString('message');
 
+        // Validate 'organisation_id' as an integer, allowing it to be empty
         $validator
             ->integer('organisation_id')
             ->allowEmptyString('organisation_id');
@@ -91,14 +104,17 @@ class ContactUsersTable extends Table
     }
 
     /**
-     * Returns a rules checker object that will be used for validating
-     * application integrity.
+     * Build rules method
+     *
+     * Defines integrity rules for the table, especially for foreign key constraints.
+     * Ensures that the organisation_id exists in the Organisations table.
      *
      * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
      * @return \Cake\ORM\RulesChecker
      */
     public function buildRules(RulesChecker $rules): RulesChecker
     {
+        // Ensure that 'organisation_id' exists in the Organisations table
         $rules->add($rules->existsIn(['organisation_id'], 'Organisations'), ['errorField' => 'organisation_id']);
 
         return $rules;

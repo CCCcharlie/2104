@@ -35,6 +35,9 @@ class ContractorsTable extends Table
     /**
      * Initialize method
      *
+     * Sets up the model's configuration, table name, display field, primary key,
+     * behaviors, and associations with Projects and Skills.
+     *
      * @param array<string, mixed> $config The configuration for the Table.
      * @return void
      */
@@ -42,49 +45,60 @@ class ContractorsTable extends Table
     {
         parent::initialize($config);
 
+        // Define the database table used by this model
         $this->setTable('contractors');
+
+        // Define the display field for the model
         $this->setDisplayField('id');
+
+        // Define the primary key for the model
         $this->setPrimaryKey('id');
 
+        // Add Timestamp behavior to automatically manage created and modified fields
         $this->addBehavior('Timestamp');
 
+        // Set up a hasMany association with Projects table
         $this->hasMany('Projects', [
             'foreignKey' => 'contractor_id',
         ]);
 
-
-        // Other associations
+        // Set up a belongsToMany association with Skills table through contractors_skills table
         $this->belongsToMany('Skills', [
             'joinTable' => 'contractors_skills',
             'foreignKey' => 'contractor_id',
             'targetForeignKey' => 'skill_id',
         ]);
-
     }
 
     /**
-     * Default validation rules.
+     * Default validation rules
+     *
+     * Defines validation rules to ensure data integrity for contractor fields.
      *
      * @param \Cake\Validation\Validator $validator Validator instance.
      * @return \Cake\Validation\Validator
      */
     public function validationDefault(Validator $validator): Validator
     {
+        // Validate first_name as a string up to 255 characters, allowing it to be empty
         $validator
             ->scalar('first_name')
             ->maxLength('first_name', 255)
             ->allowEmptyString('first_name');
 
+        // Validate last_name as a string up to 255 characters, allowing it to be empty
         $validator
             ->scalar('last_name')
             ->maxLength('last_name', 255)
             ->allowEmptyString('last_name');
 
+        // Validate phone_number as a string up to 10 characters, allowing it to be empty
         $validator
             ->scalar('phone_number')
             ->maxLength('phone_number', 10)
             ->allowEmptyString('phone_number');
 
+        // Validate contractor_email as a string up to 255 characters, allowing it to be empty
         $validator
             ->scalar('contractor_email')
             ->maxLength('contractor_email', 255)
