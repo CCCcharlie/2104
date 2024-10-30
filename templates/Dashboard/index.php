@@ -90,11 +90,12 @@
 <div class="container-fluid">
     <div class="content-wrapper">
         <!-- Main content -->
-        <h1>About Nathan's Business</h1>
-        <h4>Nathan’s business specialises in B2B projects. We collaborate with business partners and contractors to deliver exceptional results. Join us to make an impact together!</h4>
+        <h1 style="color: white;">About Nathan's Business</h1>
+        <h4 style="color: white;">Nathan’s business specialises in B2B projects. We collaborate with business partners and contractors to deliver exceptional results. Join us to make an impact together!</h4>
 
-        <h3>Register as a Business Partner or Contractor</h3>
-        <h4>Interested in partnering with us? Please register below:</h4>
+        <h3 style="color: white;">Register as a Business Partner or Contractor</h3>
+        <h4 style="color: white;">Interested in partnering with us? Please register below:</h4>
+
 
         <ul style="list-style-type: none; padding: 0;">
             <li><?= $this->Html->link(__('Register as a Contractor'), ['controller' => 'Contractors', 'action' => 'add'], ['class' => 'button']) ?></li>

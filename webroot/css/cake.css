@@ -11,7 +11,7 @@
     --color-main-bg: #f4f6f9; /* Light background color */
     --color-links: var(--color-primary);
     --color-links-active: #145a7c; /* Darker blue for active links */
-    --color-headings: var(--color-lightgray);
+    --color-headings: var(--color-black);
 
     /* Custom success, warning, error, and info message colors */
     --color-message-success-bg: #e8f5f4;
