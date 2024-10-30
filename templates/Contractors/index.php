@@ -11,11 +11,13 @@
     <?= $this->Form->control('email', ['label' => 'Search by Email']) ?>
     <?= $this->Form->control('skills', [
         'type' => 'select',
-        'multiple' => true,
+        'multiple' => 'multiple', // Ensure 'multiple' is set
         'options' => $skillsList,
-        'label' => 'Filter by Skills'
+        'label' => 'Filter by Skills',
+        'empty' => true // Optional: adds an empty option at the top
     ]) ?>
-    <?= $this->Form->create(null, ['type' => 'get']) ?>
+
+
 
     <?= $this->Form->control('project_count', [
         'type' => 'number',
@@ -24,8 +26,7 @@
     ]) ?>
     <?= $this->Form->button(__('Filter')) ?>
     <?= $this->Form->end() ?>
-    <?= $this->Form->button('Search') ?>
-    <?= $this->Form->end() ?>
+
 
     <div class="form-group">
         <a href="<?= $this->Url->build(['action' => 'index']) ?>" class="btn btn-secondary">
