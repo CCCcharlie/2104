@@ -10,6 +10,15 @@ namespace App\Controller;
  */
 class OrganisationsController extends AppController
 {
+    public function initialize(): void
+    {
+        parent::initialize();
+        $this->loadComponent('Authentication.Authentication');
+
+        // Allow unauthenticated access to the add action
+        $this->Authentication->allowUnauthenticated(['add']);
+    }
+
     /**
      * Index method
      *
