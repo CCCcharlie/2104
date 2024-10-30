@@ -22,7 +22,13 @@
                     echo $this->Form->control('last_name');
                     echo $this->Form->control('phone_number');
                     echo $this->Form->control('contractor_email');
-                    echo $this->Form->control('skills._ids', ['options' => $skills]);
+                    echo $this->Form->control('skills._ids', [
+                        'type' => 'select',
+                        'multiple' => 'checkbox',
+                        'options' => $skills,
+                        'label' => 'Select Skills'
+                    ]);
+
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

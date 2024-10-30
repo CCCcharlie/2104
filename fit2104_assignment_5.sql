@@ -271,6 +271,10 @@ CREATE TABLE `users` (
                          `modified` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+
+INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `created`, `modified`)
+VALUES (NULL, 'Nathan', 'Jims', 'nathan@example.com', '$2y$10$2JdifBonLZdWR6YqWueVn.WCXaJWQe9UYzuPy7sCqYSdRGkYwOBhi', NOW(), NOW());
+
 --
 -- Indexes for dumped tables
 --
