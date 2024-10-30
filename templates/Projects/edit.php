@@ -12,11 +12,11 @@
         <div class="side-nav">
             <h4 class="heading"><?= __('Actions') ?></h4>
             <!-- Back to Projects List -->
-            <?= $this->Html->link(__('Back to Projects'), ['action' => 'index'], ['class' => 'button', 'style' => 'color: white; background-color: #007bff;']) ?>
+            <?= $this->Html->link(__('Back'), ['action' => 'index'], ['class' => 'button', 'style' => 'color: white; background-color: #007bff;']) ?>
 
             <!-- Delete Project -->
             <?= $this->Form->postLink(
-                __('Delete Project'),
+                __('Delete'),
                 ['action' => 'delete', $project->id],
                 [
                     'confirm' => __('Are you sure you want to delete # {0}?', $project->id),

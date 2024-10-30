@@ -11,7 +11,7 @@
     <aside class="column">
         <!-- Back button -->
         <div class="back-button">
-            <?= $this->Html->link(__('Back to Projects'), ['action' => 'index'], ['class' => 'button']) ?>
+            <?= $this->Html->link(__('Back'), ['action' => 'index'], ['class' => 'button']) ?>
         </div>
         <div class="side-nav">
             <h4 class="heading"><?= __('Add New Project') ?></h4>
