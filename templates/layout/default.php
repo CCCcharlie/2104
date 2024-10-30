@@ -33,6 +33,9 @@ $loggedIn = $this->request->getAttribute('identity') !== null;
 
     <!-- FontAwesome for icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+<!--    database -->
+    <link href="/webroot/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
@@ -117,6 +120,14 @@ $loggedIn = $this->request->getAttribute('identity') !== null;
 <!-- End of Page Wrapper -->
 
 <!-- Bootstrap core JavaScript-->
+
+<script src="vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#dataTable').DataTable();
+    });
+</script>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
 </body>
