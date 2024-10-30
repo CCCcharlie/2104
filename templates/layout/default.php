@@ -58,7 +58,6 @@ $loggedIn = $this->request->getAttribute('identity') !== null;
 
         <div class="top-nav-links">
             <?php if ($loggedIn): ?>
-                <a href="<?= $this->Url->build('./dashboard'); ?>">Homepage</a>
                 <a href="<?= $this->Url->build('./projects'); ?>">Projects</a>
                 <a href="<?= $this->Url->build('./contractors'); ?>">Contractors</a>
                 <a href="<?= $this->Url->build('./organisations'); ?>">Organisations</a>
