@@ -8,10 +8,22 @@
     <aside class="column">
         <div class="side-nav">
             <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('Edit'), ['action' => 'edit', $contact->id], ['class' => 'side-nav-item']) ?>
-            <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $contact->id], ['confirm' => __('Are you sure you want to delete # {0}?', $contact->id), 'class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('List'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('New Contact'), ['action' => 'add'], ['class' => 'side-nav-item']) ?>
+            <!-- Back to Contractor List -->
+            <?= $this->Html->link(__('Back'), ['action' => 'index'], ['class' => 'button', 'style' => 'color: white;']) ?>
+
+            <!-- Edit Contractor -->
+            <?= $this->Html->link(__('Edit'), ['action' => 'edit', $contact->id], ['class' => 'button', 'style' => 'color: white; background-color: #007bff;']) ?>
+
+            <!-- Delete Contractor -->
+            <?= $this->Form->postLink(
+                __('Delete'),
+                ['action' => 'delete', $contact->id],
+                [
+                    'confirm' => __('Are you sure you want to delete # {0}?', $contact->id),
+                    'class' => 'button',
+                    'style' => 'color: white; background-color: #dc3545;'
+                ]
+            ) ?>
         </div>
     </aside>
     <div class="column column-80">
