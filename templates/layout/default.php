@@ -37,6 +37,7 @@ $loggedIn = $this->request->getAttribute('identity') !== null;
         <?= $cakeDescription ?>:
         <?= $this->fetch('title') ?>
     </title>
+    <link rel="icon" type="image/png" href="<?= $this->Url->build('/img/logo.png') ?>"/>
     <?= $this->Html->meta('icon') ?>
 
     <?= $this->Html->css(['normalize.min', 'milligram.min', 'fonts', 'cake']) ?>
