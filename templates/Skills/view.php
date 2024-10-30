@@ -8,10 +8,22 @@
     <aside class="column">
         <div class="side-nav">
             <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('Edit Skill'), ['action' => 'edit', $skill->id], ['class' => 'side-nav-item']) ?>
-            <?= $this->Form->postLink(__('Delete Skill'), ['action' => 'delete', $skill->id], ['confirm' => __('Are you sure you want to delete # {0}?', $skill->id), 'class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('List Skills'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('New Skill'), ['action' => 'add'], ['class' => 'side-nav-item']) ?>
+            <!-- Back to Organisation List -->
+            <?= $this->Html->link(__('Back'), ['action' => 'index'], ['class' => 'button', 'style' => 'color: white;']) ?>
+
+            <!-- Edit Organisation -->
+            <?= $this->Html->link(__('Edit'), ['action' => 'edit', $skill->id], ['class' => 'button', 'style' => 'color: white; background-color: #007bff;']) ?>
+
+            <!-- Delete Organisation -->
+            <?= $this->Form->postLink(
+                __('Delete'),
+                ['action' => 'delete', $skill->id],
+                [
+                    'confirm' => __('Are you sure you want to delete # {0}?', $skill->id),
+                    'class' => 'button',
+                    'style' => 'color: white; background-color: #dc3545;'
+                ]
+            ) ?>
         </div>
     </aside>
     <div class="column column-80">

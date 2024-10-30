@@ -6,10 +6,10 @@
 ?>
 <div class="row">
     <aside class="column column-20">
-        x<div class="side-nav">
+        <div class="side-nav">
             <h4 class="heading"><?= __('Actions') ?></h4>
             <!-- Back to Projects List -->
-            <?= $this->Html->link(__('Back'), ['action' => 'index'], ['class' => 'button', 'style' => 'color: white; background-color: #007bff;']) ?>
+            <?= $this->Html->link(__('Back'), ['action' => 'index'], ['class' => 'button', 'style' => 'color: white;']) ?>
 
             <!-- Edit Project -->
             <?= $this->Html->link(__('Edit'), ['action' => 'edit', $project->id], ['class' => 'button', 'style' => 'color: white; background-color: #007bff;']) ?>

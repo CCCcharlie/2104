@@ -7,14 +7,19 @@
 ?>
 <div class="row">
     <aside class="column">
+        <h4 class="heading"><?= __('Actions') ?></h4>
+        <!-- Back button -->
+        <div class="back-button">
+            <?= $this->Html->link(__('Back'), ['action' => 'index'], ['class' => 'button']) ?>
+        </div>
         <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
             <?= $this->Form->postLink(
                 __('Delete'),
                 ['action' => 'delete', $skill->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $skill->id), 'class' => 'side-nav-item']
+                ['confirm' => __('Are you sure you want to delete # {0}?', $skill->id), 'class' => 'side-nav-item',
+                    'class' => 'button',
+                    'style' => 'color: white; background-color: #dc3545;']
             ) ?>
-            <?= $this->Html->link(__('List Skills'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
         </div>
     </aside>
     <div class="column column-80">

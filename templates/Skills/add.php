@@ -7,9 +7,9 @@
 ?>
 <div class="row">
     <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('List Skills'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
+        <!-- Back button -->
+        <div class="back-button">
+            <?= $this->Html->link(__('Back'), ['action' => 'index'], ['class' => 'button']) ?>
         </div>
     </aside>
     <div class="column column-80">
