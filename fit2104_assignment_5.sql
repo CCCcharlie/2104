@@ -273,7 +273,7 @@ CREATE TABLE `users` (
 
 
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `created`, `modified`)
-VALUES (NULL, 'Nathan', 'Jims', 'nathan@example.com', '$2y$10$2JdifBonLZdWR6YqWueVn.WCXaJWQe9UYzuPy7sCqYSdRGkYwOBhi', NOW(), NOW());
+VALUES (1, 'Nathan', 'Jims', 'nathan@example.com', '$2y$10$2JdifBonLZdWR6YqWueVn.WCXaJWQe9UYzuPy7sCqYSdRGkYwOBhi', NOW(), NOW());
 
 --
 -- Indexes for dumped tables
