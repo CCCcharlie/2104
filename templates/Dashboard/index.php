@@ -75,6 +75,8 @@
             text-decoration: none;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             transition: background-color 0.3s, transform 0.3s;
+            white-space: normal;
+            width: auto;
         }
 
         /* Button hover effect */
