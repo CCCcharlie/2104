@@ -12,7 +12,7 @@ class ProjectsSkillsController extends AppController
 {
     /**
      * Index method
-     *
+     * Displays a paginated list of project-skill associations, including related project and skill data.
      * @return \Cake\Http\Response|null|void Renders view
      */
     public function index()
@@ -26,7 +26,7 @@ class ProjectsSkillsController extends AppController
 
     /**
      * View method
-     *
+     * Displays detailed information about a specific project-skill association.
      * @param string|null $id Projects Skill id.
      * @return \Cake\Http\Response|null|void Renders view
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
@@ -39,7 +39,7 @@ class ProjectsSkillsController extends AppController
 
     /**
      * Add method
-     *
+     * Creates a new project-skill association. On successful save, redirects to the index; otherwise, renders the form with validation errors.
      * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
      */
     public function add()
@@ -61,7 +61,7 @@ class ProjectsSkillsController extends AppController
 
     /**
      * Edit method
-     *
+     * Updates an existing project-skill association. On successful save, redirects to the index; otherwise, renders the form with validation errors.
      * @param string|null $id Projects Skill id.
      * @return \Cake\Http\Response|null|void Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
@@ -85,7 +85,7 @@ class ProjectsSkillsController extends AppController
 
     /**
      * Delete method
-     *
+     * Deletes an existing project-skill association. Redirects to the index on successful deletion, with appropriate success or error messages.
      * @param string|null $id Projects Skill id.
      * @return \Cake\Http\Response|null Redirects to index.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.

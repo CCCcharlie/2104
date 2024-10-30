@@ -25,7 +25,9 @@ use Cake\View\Exception\MissingTemplateException;
 /**
  * Static content controller
  *
- * This controller will render views from templates/Pages/
+ * This controller is responsible for rendering static views from the templates/Pages directory.
+ * It handles actions related to displaying static pages, such as the homepage
+ *
  *
  * @link https://book.cakephp.org/5/en/controllers/pages-controller.html
  */
@@ -41,7 +43,7 @@ class PagesController extends AppController
     }
     /**
      * Displays a view
-     *
+     *Renders a static view based on the provided path segments
      * @param string ...$path Path segments.
      * @return \Cake\Http\Response|null
      * @throws \Cake\Http\Exception\ForbiddenException When a directory traversal attempt.

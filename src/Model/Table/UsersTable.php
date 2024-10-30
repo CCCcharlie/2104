@@ -32,42 +32,54 @@ class UsersTable extends Table
     /**
      * Initialize method
      *
-     * @param array<string, mixed> $config The configuration for the Table.
+     * Configures the table's settings, including the name, display field, and primary key, as well as behaviors.
+     *
+     * @param array<string, mixed> $config Configuration array for the table.
      * @return void
      */
     public function initialize(array $config): void
     {
         parent::initialize($config);
 
+        // Set the table name
         $this->setTable('users');
+        // Define the display field used in lists or labels
         $this->setDisplayField('email');
+        // Set the primary key for the table
         $this->setPrimaryKey('id');
 
+        // Automatically manage created and modified timestamps
         $this->addBehavior('Timestamp');
     }
 
     /**
      * Default validation rules.
      *
+     * Defines validation rules for user data, such as type, length, and format.
+     *
      * @param \Cake\Validation\Validator $validator Validator instance.
-     * @return \Cake\Validation\Validator
+     * @return \Cake\Validation\Validator Returns the validator with rules added.
      */
     public function validationDefault(Validator $validator): Validator
     {
+        // Validate first name: must be a string of up to 255 characters, optional field
         $validator
             ->scalar('first_name')
             ->maxLength('first_name', 255)
             ->allowEmptyString('first_name');
 
+        // Validate last name: must be a string of up to 255 characters, optional field
         $validator
             ->scalar('last_name')
             ->maxLength('last_name', 255)
             ->allowEmptyString('last_name');
 
+        // Validate email: must be a valid email format, optional field
         $validator
             ->email('email')
             ->allowEmptyString('email');
 
+        // Validate password: must be a string of up to 255 characters, optional field
         $validator
             ->scalar('password')
             ->maxLength('password', 255)
@@ -77,14 +89,16 @@ class UsersTable extends Table
     }
 
     /**
-     * Returns a rules checker object that will be used for validating
-     * application integrity.
+     * Returns a rules checker object that will be used for validating application integrity.
+     *
+     * Ensures unique constraints, such as requiring a unique email for each user.
      *
      * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
-     * @return \Cake\ORM\RulesChecker
+     * @return \Cake\ORM\RulesChecker Returns the modified rules checker.
      */
     public function buildRules(RulesChecker $rules): RulesChecker
     {
+        // Ensures that each email is unique within the users table
         $rules->add($rules->isUnique(['email']), ['errorField' => 'email']);
 
         return $rules;

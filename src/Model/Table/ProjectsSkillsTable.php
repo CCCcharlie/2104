@@ -33,6 +33,8 @@ class ProjectsSkillsTable extends Table
     /**
      * Initialize method
      *
+     * Sets up the table configuration, associations, and display properties.
+     *
      * @param array<string, mixed> $config The configuration for the Table.
      * @return void
      */
@@ -40,49 +42,66 @@ class ProjectsSkillsTable extends Table
     {
         parent::initialize($config);
 
+        // Set the name of the table in the database
         $this->setTable('projects_skills');
+
+        // Set the field used to display records in views
         $this->setDisplayField('id');
+
+        // Define the primary key for this table
         $this->setPrimaryKey('id');
 
+        // Define a many-to-one association with the Projects table
         $this->belongsTo('Projects', [
             'foreignKey' => 'project_id',
-            'joinType' => 'INNER',
+            'joinType' => 'INNER', // Ensures each ProjectsSkills entry has an associated Project
         ]);
+
+        // Define a many-to-one association with the Skills table
         $this->belongsTo('Skills', [
             'foreignKey' => 'skill_id',
-            'joinType' => 'INNER',
+            'joinType' => 'INNER', // Ensures each ProjectsSkills entry has an associated Skill
         ]);
     }
 
     /**
-     * Default validation rules.
+     * Default validation rules
+     *
+     * Specifies validation rules for the project_id and skill_id fields.
      *
      * @param \Cake\Validation\Validator $validator Validator instance.
      * @return \Cake\Validation\Validator
      */
     public function validationDefault(Validator $validator): Validator
     {
+        // Require project_id to be an integer and not empty
         $validator
             ->integer('project_id')
-            ->notEmptyString('project_id');
+            ->notEmptyString('project_id', 'Project ID is required.');
 
+        // Require skill_id to be an integer and not empty
         $validator
             ->integer('skill_id')
-            ->notEmptyString('skill_id');
+            ->notEmptyString('skill_id', 'Skill ID is required.');
 
         return $validator;
     }
 
     /**
-     * Returns a rules checker object that will be used for validating
-     * application integrity.
+     * Returns a rules checker object for application integrity validation
+     *
+     * Validates that project_id and skill_id reference existing records in their
+     * respective tables.
      *
      * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
      * @return \Cake\ORM\RulesChecker
      */
     public function buildRules(RulesChecker $rules): RulesChecker
     {
+        // Ensure that the project_id exists in the Projects table
         $rules->add($rules->existsIn(['project_id'], 'Projects'), ['errorField' => 'project_id']);
+
+        // Ensure that the skill_id exists in the Skills table
         $rules->add($rules->existsIn(['skill_id'], 'Skills'), ['errorField' => 'skill_id']);
 
         return $rules;

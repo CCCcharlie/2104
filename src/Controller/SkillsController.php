@@ -12,7 +12,7 @@ class SkillsController extends AppController
 {
     /**
      * Index method
-     *
+     * Displays a paginated list of skills.
      * @return \Cake\Http\Response|null|void Renders view
      */
     public function index()
@@ -25,7 +25,7 @@ class SkillsController extends AppController
 
     /**
      * View method
-     *
+     * Displays detailed information about a specific skill and its related projects.
      * @param string|null $id Skill id.
      * @return \Cake\Http\Response|null|void Renders view
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
@@ -38,7 +38,7 @@ class SkillsController extends AppController
 
     /**
      * Add method
-     *
+     * Creates a new skill. On successful save, redirects to the index; otherwise, renders the form with validation errors.
      * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
      */
     public function add()
@@ -59,7 +59,7 @@ class SkillsController extends AppController
 
     /**
      * Edit method
-     *
+     * Updates an existing skill. On successful save, redirects to the index; otherwise, renders the form with validation errors.
      * @param string|null $id Skill id.
      * @return \Cake\Http\Response|null|void Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
@@ -82,7 +82,7 @@ class SkillsController extends AppController
 
     /**
      * Delete method
-     *
+     * Deletes an existing skill. Redirects to the index on successful deletion, with appropriate success or error messages.
      * @param string|null $id Skill id.
      * @return \Cake\Http\Response|null Redirects to index.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.

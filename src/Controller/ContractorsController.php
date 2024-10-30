@@ -20,6 +20,9 @@ class ContractorsController extends AppController
     }
     /**
      * Index method
+     * Handles the display of all contractors. Allows filtering and sorting
+     *  by name, email, skills, project count, and skill sets. Retrieves a list
+     *  of contractors and their associated skills and projects
      *
      * @return \Cake\Http\Response|null|void Renders view
      */
@@ -92,6 +95,7 @@ class ContractorsController extends AppController
         $contractors = $this->paginate($query);
 
         // Get the list of skills for the skills filter
+        // Additional sorting and filtering applied based on project count if set
         $skillsList = $this->Contractors->Skills->find('list')->toArray();
 
         // Set variables for the view
@@ -101,6 +105,8 @@ class ContractorsController extends AppController
 
     /**
      * View method
+     *Displays detailed information for a specific contractor, including
+     *  their skills and associated projects
      *
      * @param string|null $id Contractor id.
      * @return \Cake\Http\Response|null|void Renders view
@@ -119,6 +125,9 @@ class ContractorsController extends AppController
 
     /**
      * Add method
+     *
+     * Handles creating a new contractor record. Processes form submission
+     *  for contractor information and saves to the database if valid
      *
      * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
      */
@@ -140,6 +149,9 @@ class ContractorsController extends AppController
 
     /**
      * Edit method
+     *
+     * Allows updating an existing contractor's information. Retrieves the
+     *  contractor record by ID and applies any changes submitted via form
      *
      * @param string|null $id Contractor id.
      * @return \Cake\Http\Response|null|void Redirects on successful edit, renders view otherwise.
@@ -163,6 +175,10 @@ class ContractorsController extends AppController
 
     /**
      * Delete method
+     *
+     * Deletes a specified contractor record from the database based on the
+     *  provided ID. Redirects to the contractors list upon successful deletion
+     *
      *
      * @param string|null $id Contractor id.
      * @return \Cake\Http\Response|null Redirects to index.
