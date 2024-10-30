@@ -37,6 +37,7 @@ class AppController extends Controller
      *
      * @return void
      */
+    //authentication package installed and implemented
     public function initialize(): void
     {
         parent::initialize();
@@ -44,12 +45,6 @@ class AppController extends Controller
 
         $this->loadComponent('Flash');
 
-
-        /*
-         * Enable the following component for recommended CakePHP form protection settings.
-         * see https://book.cakephp.org/5/en/controllers/components/form-protection.html
-         */
-        //$this->loadComponent('FormProtection');
     }
 
 

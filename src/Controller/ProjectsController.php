@@ -12,6 +12,8 @@ class ProjectsController extends AppController
 {
     /**
      * Index method
+     *  Displays a paginated list of projects, with optional filters for skills, status, date range, and keyword search.
+     *  Also fetches the list of skills for filtering options in the view
      *
      * @return \Cake\Http\Response|null|void Renders view
      */
@@ -73,7 +75,7 @@ class ProjectsController extends AppController
 
     /**
      * View method
-     *
+     * Displays detailed information about a specific project, including associated contractors, organisations, and skills.
      * @param string|null $id Project id.
      * @return \Cake\Http\Response|null|void Renders view
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
@@ -86,7 +88,7 @@ class ProjectsController extends AppController
 
     /**
      * Add method
-     *
+     * Creates a new project record. On successful save, redirects to the index; otherwise, renders the form with validation errors.
      * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
      */
     public function add()
@@ -109,7 +111,7 @@ class ProjectsController extends AppController
 
     /**
      * Edit method
-     *
+     * Edits an existing project record. On successful save, redirects to the index; otherwise, renders the form with validation errors.
      * @param string|null $id Project id.
      * @return \Cake\Http\Response|null|void Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
@@ -134,7 +136,7 @@ class ProjectsController extends AppController
 
     /**
      * Delete method
-     *
+     * Deletes an existing project record. Redirects to the index on successful deletion, with appropriate success or error messages.
      * @param string|null $id Project id.
      * @return \Cake\Http\Response|null Redirects to index.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.

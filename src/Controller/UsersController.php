@@ -24,7 +24,7 @@ class UsersController extends AppController
 
     /**
      * Index method
-     *
+     * Displays a paginated list of users.
      * @return \Cake\Http\Response|null|void Renders view
      */
     public function index()
@@ -37,7 +37,7 @@ class UsersController extends AppController
 
     /**
      * View method
-     *
+     * Displays details of a specific user.
      * @param string|null $id User id.
      * @return \Cake\Http\Response|null|void Renders view
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
@@ -50,7 +50,8 @@ class UsersController extends AppController
 
     /**
      * Add method
-     *
+     *Creates a new user account. On successful save, redirects to the index page.
+     *  Renders the form with validation errors otherwise
      * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
      */
     public function add()
@@ -70,7 +71,8 @@ class UsersController extends AppController
 
     /**
      * Edit method
-     *
+     *Updates an existing user's information. On successful save, redirects to the index.
+     *  Renders the form with validation errors otherwise
      * @param string|null $id User id.
      * @return \Cake\Http\Response|null|void Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
@@ -92,7 +94,7 @@ class UsersController extends AppController
 
     /**
      * Delete method
-     *
+     * Deletes an existing user account. Redirects to the index with a success or error message.
      * @param string|null $id User id.
      * @return \Cake\Http\Response|null Redirects to index.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
@@ -112,7 +114,8 @@ class UsersController extends AppController
 
     /**
      * Login method
-     *
+     *Authenticates the user based on submitted credentials. Redirects to Projects index on success.
+     *  Displays an error message if authentication fails
      * @return \Cake\Http\Response|null|void Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
@@ -149,6 +152,7 @@ class UsersController extends AppController
         }
     }
 
+    //Ends the user's session and redirects them to the login page with a logout message.
     public function logout() {
         // end the user session
         $this->Authentication->logout();

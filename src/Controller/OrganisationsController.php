@@ -21,7 +21,8 @@ class OrganisationsController extends AppController
 
     /**
      * Index method
-     *
+     *Fetches a list of organisations with optional filters for name and project count,
+     *  and pagination. Supports sorting by the number of projects
      * @return \Cake\Http\Response|null|void Renders view
      */
     public function index()
@@ -80,7 +81,7 @@ class OrganisationsController extends AppController
 
     /**
      * View method
-     *
+     *  Displays details of a single organisation, including related contacts and projects
      * @param string|null $id Organisation id.
      * @return \Cake\Http\Response|null|void Renders view
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
@@ -93,7 +94,7 @@ class OrganisationsController extends AppController
 
     /**
      * Add method
-     *
+     *  Allows the addition of a new organisation to the database. Redirects on success
      * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
      */
     public function add()
@@ -113,7 +114,7 @@ class OrganisationsController extends AppController
 
     /**
      * Edit method
-     *
+     *  Allows the addition of a new organisation to the database. Redirects on success
      * @param string|null $id Organisation id.
      * @return \Cake\Http\Response|null|void Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
@@ -135,7 +136,7 @@ class OrganisationsController extends AppController
 
     /**
      * Delete method
-     *
+     *  Removes an organisation from the database, if it exists. Redirects on success
      * @param string|null $id Organisation id.
      * @return \Cake\Http\Response|null Redirects to index.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
