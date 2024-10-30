@@ -32,10 +32,10 @@
                     <td><?= h($contact->last_name) ?></td>
                     <td><?= h($contact->email) ?></td>
                     <td><?= h($contact->phone_number) ?></td>
-                    <td><?= $contact->hasValue('organisation') ? $this->Html->link($contact->organisation->business_name, ['controller' => 'Organisations', 'action' => 'view', $contact->organisation->id]) : '' ?></td>
+                    <td><?= $contact->hasValue('organisation') ? $this->Html->link($contact->organisation->business_name, ['controller' => 'Organisations', 'action' => 'view', $contact->organisation->id]) : 'Not assigned' ?></td>
                     <td><?= h($contact->created) ?></td>
                     <td><?= h($contact->modified) ?></td>
-                    <td><?= $contact->hasValue('contractor') ? $this->Html->link($contact->contractor->first_name.$contact->contractor->last_name, ['controller' => 'Contractors', 'action' => 'view', $contact->contractor->id]) : '' ?></td>
+                    <td><?= $contact->hasValue('contractor') ? $this->Html->link($contact->contractor->first_name.$contact->contractor->last_name, ['controller' => 'Contractors', 'action' => 'view', $contact->contractor->id]) : 'Not assigned' ?></td>
                     <td><?= $contact->replied === null ? '' : $this->Number->format($contact->replied) ?></td>
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $contact->id]) ?>
