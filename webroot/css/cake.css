@@ -202,14 +202,18 @@ th a,
     display: none;
 }
 .message.success {
+    font-size: 1.5em;
+
     background: var(--color-message-success-bg);
     color: var(--color-message-success-text);
     border-color: var(--color-message-success-border);
+    display: grid !important;
 }
 .message.error {
     background: var(--color-message-error-bg);
     color: var(--color-message-error-text);
     border-color: var(--color-message-error-border);
+    display: grid
 }
 
 /* Forms */

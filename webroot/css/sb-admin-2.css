@@ -11117,6 +11117,7 @@ form.user .btn-user {
 }
 
 .error:after {
+
   content: attr(data-text);
   position: absolute;
   left: 2px;
