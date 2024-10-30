@@ -40,7 +40,12 @@
                     echo $this->Form->control('complete');
                     echo $this->Form->control('contractor_id', ['options' => $contractors, 'empty' => true]);
                     echo $this->Form->control('organisation_id', ['options' => $organisations, 'empty' => true]);
-                    echo $this->Form->control('skills._ids', ['options' => $skills]);
+                    echo $this->Form->control('skills._ids', [
+                        'type' => 'select',
+                        'multiple' => 'checkbox',
+                        'options' => $skills,
+                        'label' => 'Select Skills'
+                    ]);
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>
