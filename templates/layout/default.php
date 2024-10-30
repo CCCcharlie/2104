@@ -14,7 +14,7 @@
  * @var \App\View\AppView $this
  */
 
-$cakeDescription = 'CakePHP: the rapid development php framework';
+$cakeDescription = 'Nathan Projects';
 $loggedIn = $this->request->getAttribute('identity') !== null;
 ?>
 <!DOCTYPE html>
@@ -65,7 +65,6 @@ $loggedIn = $this->request->getAttribute('identity') !== null;
             <div class="sidebar-brand-icon">
                 <?= $this->Html->image('logo.png', ['alt' => 'Nathan\'s Business Logo', 'class' => 'logo', 'style' => 'height: 70px; width: auto;']) ?>
             </div>
-            <div class="sidebar-brand-text mx-3">Admin</div>
         </a>
 
         <!-- Divider -->
