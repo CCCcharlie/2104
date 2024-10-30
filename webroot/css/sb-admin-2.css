@@ -10447,8 +10447,13 @@ a:focus {
 .sidebar.toggled .sidebar-card {
   display: none;
 }
+.sidebar .sidebar-brand {
+    margin-top: 30px !important;
+    margin-bottom: 30px !important;
+}
 
 .sidebar .sidebar-brand {
+
   height: 4.375rem;
   text-decoration: none;
   font-size: 1rem;
@@ -10458,9 +10463,12 @@ a:focus {
   text-transform: uppercase;
   letter-spacing: 0.05rem;
   z-index: 1;
+
+
 }
 
 .sidebar .sidebar-brand .sidebar-brand-icon i {
+
   font-size: 2rem;
 }
 
