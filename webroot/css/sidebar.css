@@ -1,30 +1,21 @@
-.sidebar-menu {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    background-color: #f4f4f4;
-    width: 200px; /* Adjust based on your layout */
-    height: 100vh;
+/* Style for Sidebar Brand Icon container */
+.sidebar-brand-icon {
+    display: flex;
+    align-items: centre;
+    justify-content: flex-start; /* Align logo to the left */
+    padding-left: 0px; /* Optional padding to create some space */
+    padding-top: 0px;
 }
 
-.sidebar-menu li {
-    border-bottom: 1px solid #ddd;
+/* Style for the logo image itself */
+.sidebar-brand-icon .logo {
+    height: 50px; /* Adjust height as needed */
+    width: auto; /* Maintain aspect ratio */
+    max-width: 100%; /* Prevents the logo from exceeding the sidebar width */
+    transition: transform 0.3s ease; /* Adds a smooth hover effect */
 }
 
-.sidebar-menu li a {
-    display: block;
-    padding: 10px;
-    color: #333;
-    text-decoration: none;
-}
-
-.sidebar-menu li a:hover {
-    background-color: #ddd;
-}
-
-/* FontAwesome icons */
-.sidebar-menu li a:before {
-    font-family: FontAwesome;
-    margin-right: 10px;
-    content: "\f015"; /* Example icon code */
+/* Optional hover effect for the logo */
+.sidebar-brand-icon .logo:hover {
+    transform: scale(1.05); /* Slightly enlarges the logo on hover */
 }
