@@ -19,6 +19,7 @@
     'type' => 'number',
     'label' => 'Minimum Project Count',
     'value' => $this->request->getQuery('project_count')
+    'min' => '0'
 ]) ?>
 <?= $this->Form->button(__('Filter')) ?>
 <?= $this->Form->end() ?>

@@ -8,32 +8,54 @@
     <?= $this->Html->link(__('New Contractors'), ['action' => 'add'], ['class' => 'button float-right justify-content-center']) ?>
 
     <h3><?= __('Contractors') ?></h3>
+
     <?= $this->Form->create(null, ['type' => 'get']) ?>
-    <?= $this->Form->control('keyword', ['label' => 'Search by Name']) ?>
-    <?= $this->Form->control('email', ['label' => 'Search by Email']) ?>
-    <fieldset>
-        <legend>Filter by Skills</legend>
-        <?php foreach ($skillsList as $id => $skillName): ?>
-            <?= $this->Form->control("skills[]", [
-                'type' => 'checkbox',
-                'value' => $id,
-                'label' => $skillName,
-                'checked' => false, // Adjust if needed to retain checked state after form submission
+    <div class="row mb-2">
+        <div class="col-6">
+            <?= $this->Form->control('keyword', [
+                'label' => 'Search by Name',
+                'class' => 'form-control'
             ]) ?>
-        <?php endforeach; ?>
+        </div>
+        <div class="col-6">
+            <?= $this->Form->control('email', [
+                'label' => 'Search by Email',
+                'class' => 'form-control'
+            ]) ?>
+        </div>
+    </div>
+    <fieldset class="mb-2">
+        <legend>Filter by Skills</legend>
+        <div class="d-flex flex-wrap gap-1">
+            <?php foreach ($skillsList as $id => $skillName): ?>
+                <div class="form-check form-check-inline">
+                    <?= $this->Form->control("skills[]", [
+                        'type' => 'checkbox',
+                        'value' => $id,
+                        'label' => $skillName,
+                        'class' => 'form-check-input',
+                        'labelOptions' => ['class' => 'form-check-label mb-0'],
+                        'checked' => false
+                    ]) ?>
+                </div>
+            <?php endforeach; ?>
+        </div>
     </fieldset>
 
-
-
-    <?= $this->Form->control('project_count', [
-        'type' => 'number',
-        'label' => 'Minimum Project Count',
-        'value' => $this->request->getQuery('project_count'),
-            'min' => 0 // Sets the minimum value to 0
-
-    ]) ?>
-    <?= $this->Form->button(__('Filter')) ?>
+    <div class="row mb-2">
+        <div class="col-6">
+            <?= $this->Form->control('project_count', [
+                'type' => 'number',
+                'label' => 'Minimum Project Count',
+                'value' => $this->request->getQuery('project_count'),
+                'class' => 'form-control form-control-sm',
+                'min' => 0
+            ]) ?>
+        </div>
+    </div>
+<?= $this->Form->button(__('Filter')) ?>
     <?= $this->Form->end() ?>
+
 
 
     <div class="form-group">
@@ -41,6 +63,7 @@
             Reset
         </a>
     </div>
+
     <div class="table-responsive">
 
         <table>

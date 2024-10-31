@@ -4,42 +4,77 @@
  * @var iterable<\App\Model\Entity\Project> $projects
  */
 ?>
+<?= $this->Html->link(__('New Project'), ['action' => 'add'], ['class' => 'button float-right']) ?>
+
+<h3><?= __('Projects') ?></h3>
 
 <?= $this->Form->create(null, ['type' => 'get', 'url' => ['action' => 'index']]) ?>
-<?= $this->Form->control('keyword', ['label' => 'Search by Skill Keyword', 'value' => $this->request->getQuery('keyword')]) ?>
-<?= $this->Form->control('status', [
-    'type' => 'select',
-    'options' => ['1' => 'Complete', '0' => 'Incomplete'],
-    'label' => 'Filter by Status',
-    'empty' => 'Select Status',
-    'value' => $this->request->getQuery('status')
-]) ?>
-<fieldset>
-    <legend>Filter by Skills</legend>
-    <?php foreach ($skillsList as $id => $skillName): ?>
-        <?= $this->Form->control("skills[]", [
-            'type' => 'checkbox',
-            'value' => $id,
-            'label' => $skillName,
-            'checked' => false, // Adjust if needed to retain checked state after form submission
-        ]) ?>
-    <?php endforeach; ?>
-</fieldset>
-<?= $this->Form->control('start_date', ['type' => 'date', 'label' => 'Start Date', 'value' => $this->request->getQuery('start_date')]) ?>
-<?= $this->Form->control('end_date', ['type' => 'date', 'label' => 'End Date', 'value' => $this->request->getQuery('end_date')]) ?>
-<?= $this->Form->button(__('Filter')) ?>
-<?= $this->Form->end() ?>
+<?= $this->Form->create(null, ['type' => 'get', 'url' => ['action' => 'index']]) ?>
 
-<!-- Reset Button -->
-<div class="form-group">
+<div class="row mb-2">
+    <div class="col-md-6"> <!--  col-md-6 to make sure they take half screen each  -->
+        <?= $this->Form->control('keyword', [
+            'label' => 'Search by Skill Keyword',
+            'value' => $this->request->getQuery('keyword')
+        ]) ?>
+    </div>
+    <div class="col-md-6"> <!--  col-md-6 -->
+        <?= $this->Form->control('status', [
+            'type' => 'select',
+            'options' => ['1' => 'Complete', '0' => 'Incomplete'],
+            'label' => 'Filter by Status',
+            'empty' => 'Select Status',
+            'value' => $this->request->getQuery('status')
+        ]) ?>
+    </div>
+</div>
+
+<fieldset class="mb-2">
+    <legend>Filter by Skills</legend>
+    <div class="d-flex flex-wrap gap-1"> <!--  column-6 -->
+        <?php foreach ($skillsList as $id => $skillName): ?>
+            <div class="form-check form-check-inline">
+                <?= $this->Form->control("skills[]", [
+                    'type' => 'checkbox',
+                    'value' => $id,
+                    'label' => $skillName,
+                    'class' => 'form-check-input',
+                    'labelOptions' => ['class' => 'form-check-label'],
+                    'checked' => false
+                ]) ?>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</fieldset>
+
+<div class="row mb-2">
+    <div class="col-md-6">
+        <?= $this->Form->control('start_date', [
+            'type' => 'date',
+            'label' => 'Start Date',
+            'value' => $this->request->getQuery('start_date'),
+            'class' => 'form-control'
+        ]) ?>
+    </div>
+    <div class="col-md-6"> <!-- fixed these -->
+        <?= $this->Form->control('end_date', [
+            'type' => 'date',
+            'label' => 'End Date',
+            'value' => $this->request->getQuery('end_date'),
+            'class' => 'form-control'
+        ]) ?>
+    </div>
+</div>
+
+<div class="d-flex justify-content-between gap-2">
+    <?= $this->Form->button(__('Filter'), ['class' => 'btn btn-primary']) ?>
     <a href="<?= $this->Url->build(['action' => 'index']) ?>" class="btn btn-secondary">Reset</a>
 </div>
 
-
 <?= $this->Form->end() ?>
 
+
 <div class="projects index content">
-    <?= $this->Html->link(__('New Project'), ['action' => 'add'], ['class' => 'button float-right']) ?>
     <h3><?= __('Projects') ?></h3>
     <div class="table-responsive">
         <table>

@@ -101,9 +101,9 @@ $loggedIn = $this->request->getAttribute('identity') !== null;
         <!-- Main Content -->
         <div id="content">
             <!-- Topbar -->
-            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-                <h1 class="h3 mb-0 text-gray-800"><?= $this->fetch('title') ?></h1>
-            </nav>
+<!--            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">-->
+<!--                <h1 class="h3 mb-0 text-gray-800">--><?php //= $this->fetch('title') ?><!--</h1>-->
+<!--            </nav>-->
 
             <!-- Begin Page Content -->
             <div class="container-fluid">
