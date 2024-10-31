@@ -48,11 +48,11 @@
                 </tr>
                 <tr>
                     <th><?= __('Organisation') ?></th>
-                    <td><?= $contact->hasValue('organisation') ? $this->Html->link($contact->organisation->id, ['controller' => 'Organisations', 'action' => 'view', $contact->organisation->id]) : '' ?></td>
+                    <td><?= $contact->hasValue('organisation') ? $this->Html->link($contact->organisation->business_name, ['controller' => 'Organisations', 'action' => 'view', $contact->organisation->id]) : '' ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Contractor') ?></th>
-                    <td><?= $contact->hasValue('contractor') ? $this->Html->link($contact->contractor->id, ['controller' => 'Contractors', 'action' => 'view', $contact->contractor->id]) : '' ?></td>
+                    <td><?= $contact->hasValue('contractor') ? $this->Html->link($contact->contractor->first_name. ' ' . $contact->contractor->last_name, ['controller' => 'Contractors', 'action' => 'view', $contact->contractor->id]) : '' ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Id') ?></th>

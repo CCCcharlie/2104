@@ -29,8 +29,17 @@
                     echo $this->Form->control('project_due_date', ['empty' => true]);
                     echo $this->Form->control('last_checked', ['empty' => true]);
                     echo $this->Form->control('complete');
-                    echo $this->Form->control('contractor_id', ['options' => $contractors, 'empty' => true]);
-                    echo $this->Form->control('organisation_id', ['options' => $organisations, 'empty' => true]);
+                    echo $this->Form->control('contractor_id', [
+                        'options' => $contractors,
+                        'empty' => 'Select Contractor',
+                        'label' => 'Contractor Name'
+                    ]);
+
+                    echo $this->Form->control('organisation_id', [
+                        'options' => $organisations,
+                        'empty' => 'Select Organisation',
+                        'label' => 'Organisation Name'
+                    ]);
                     echo $this->Form->control('skills._ids', [
                         'type' => 'select',
                         'multiple' => 'checkbox',

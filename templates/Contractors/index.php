@@ -11,13 +11,17 @@
     <?= $this->Form->create(null, ['type' => 'get']) ?>
     <?= $this->Form->control('keyword', ['label' => 'Search by Name']) ?>
     <?= $this->Form->control('email', ['label' => 'Search by Email']) ?>
-    <?= $this->Form->control('skills', [
-        'type' => 'select',
-        'multiple' => 'multiple', // Ensure 'multiple' is set
-        'options' => $skillsList,
-        'label' => 'Filter by Skills',
-        'empty' => true // Optional: adds an empty option at the top
-    ]) ?>
+    <fieldset>
+        <legend>Filter by Skills</legend>
+        <?php foreach ($skillsList as $id => $skillName): ?>
+            <?= $this->Form->control("skills[]", [
+                'type' => 'checkbox',
+                'value' => $id,
+                'label' => $skillName,
+                'checked' => false, // Adjust if needed to retain checked state after form submission
+            ]) ?>
+        <?php endforeach; ?>
+    </fieldset>
 
 
 

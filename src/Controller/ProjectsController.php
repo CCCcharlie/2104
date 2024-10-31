@@ -103,8 +103,19 @@ class ProjectsController extends AppController
             }
             $this->Flash->error(__('The project could not be saved. Please, try again.'));
         }
-        $contractors = $this->Projects->Contractors->find('list', limit: 200)->all();
-        $organisations = $this->Projects->Organisations->find('list', limit: 200)->all();
+        // Fetch contractors with full name (first and last)
+        $contractors = $this->Projects->Contractors->find('list', [
+            'keyField' => 'id',
+            'valueField' => function ($row) {
+                return $row['first_name'] . ' ' . $row['last_name'];
+            }
+        ])->toArray();
+
+        // Fetch organisations by name
+        $organisations = $this->Projects->Organisations->find('list', [
+            'keyField' => 'id',
+            'valueField' => 'business_name'
+        ])->toArray();
         $skills = $this->Projects->Skills->find('list', limit: 200)->all();
         $this->set(compact('project', 'contractors', 'organisations', 'skills'));
     }
@@ -128,8 +139,19 @@ class ProjectsController extends AppController
             }
             $this->Flash->error(__('The project could not be saved. Please, try again.'));
         }
-        $contractors = $this->Projects->Contractors->find('list', limit: 200)->all();
-        $organisations = $this->Projects->Organisations->find('list', limit: 200)->all();
+        // Fetch contractors with full name (first and last)
+        $contractors = $this->Projects->Contractors->find('list', [
+            'keyField' => 'id',
+            'valueField' => function ($row) {
+                return $row['first_name'] . ' ' . $row['last_name'];
+            }
+        ])->toArray();
+
+        // Fetch organisations by name
+        $organisations = $this->Projects->Organisations->find('list', [
+            'keyField' => 'id',
+            'valueField' => 'business_name'
+        ])->toArray();
         $skills = $this->Projects->Skills->find('list', limit: 200)->all();
         $this->set(compact('project', 'contractors', 'organisations', 'skills'));
     }

@@ -14,12 +14,17 @@
     'empty' => 'Select Status',
     'value' => $this->request->getQuery('status')
 ]) ?>
-<?= $this->Form->control('skills', [
-    'type' => 'select',
-    'multiple' => true,
-    'options' => $skillsList,
-    'label' => 'Filter by Skills'
-]) ?>
+<fieldset>
+    <legend>Filter by Skills</legend>
+    <?php foreach ($skillsList as $id => $skillName): ?>
+        <?= $this->Form->control("skills[]", [
+            'type' => 'checkbox',
+            'value' => $id,
+            'label' => $skillName,
+            'checked' => false, // Adjust if needed to retain checked state after form submission
+        ]) ?>
+    <?php endforeach; ?>
+</fieldset>
 <?= $this->Form->control('start_date', ['type' => 'date', 'label' => 'Start Date', 'value' => $this->request->getQuery('start_date')]) ?>
 <?= $this->Form->control('end_date', ['type' => 'date', 'label' => 'End Date', 'value' => $this->request->getQuery('end_date')]) ?>
 <?= $this->Form->button(__('Filter')) ?>

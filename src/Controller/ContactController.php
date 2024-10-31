@@ -78,10 +78,12 @@ class ContactController extends AppController
             'limit' => 200
         ])->toArray();
 
+        // Fetch contractors with full name (first and last)
         $contractors = $this->Contact->Contractors->find('list', [
             'keyField' => 'id',
-            'valueField' => 'first_name',
-            'limit' => 200
+            'valueField' => function ($row) {
+                return $row['first_name'] . ' ' . $row['last_name'];
+            }
         ])->toArray();
 
 //        dd($organisations);
