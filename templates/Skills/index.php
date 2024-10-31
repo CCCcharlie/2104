@@ -31,14 +31,14 @@
             </tbody>
         </table>
     </div>
-    <div class="paginator">
-        <ul class="pagination">
-            <?= $this->Paginator->first('<< ' . __('first')) ?>
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-            <?= $this->Paginator->last(__('last') . ' >>') ?>
+    <div class="paginator my-3"> <!-- Add vertical margin to the whole paginator -->
+        <ul class="pagination justify-content-center"> <!-- Center the pagination -->
+            <li class="page-item mx-1"><?= $this->Paginator->first('<< ' . __('first')) ?></li>
+            <li class="page-item mx-1"><?= $this->Paginator->prev('< ' . __('previous')) ?></li>
+            <li class="page-item mx-1"><?= $this->Paginator->numbers() ?></li>
+            <li class="page-item mx-1"><?= $this->Paginator->next(__('next') . ' >') ?></li>
+            <li class="page-item mx-1"><?= $this->Paginator->last(__('last') . ' >>') ?></li>
         </ul>
-        <p><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>
+        <p class="text-center mt-3"><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>
     </div>
 </div>

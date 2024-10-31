@@ -17,13 +17,14 @@
             <fieldset>
                 <legend><?= __('Add Organisation') ?></legend>
                 <?php
-                    echo $this->Form->control('business_name');
-                    echo $this->Form->control('contact_first_name');
-                    echo $this->Form->control('contact_last_name');
-                    echo $this->Form->control('contact_email');
-                    echo $this->Form->control('current_website');
-                    echo $this->Form->control('industry');
+                echo $this->Form->control('business_name', ['required' => true]);
+                echo $this->Form->control('contact_first_name', ['required' => true]);
+                echo $this->Form->control('contact_last_name', ['required' => true]);
+                echo $this->Form->control('contact_email', ['required' => true]);
+                echo $this->Form->control('current_website', ['required' => true]);
+                echo $this->Form->control('industry', ['required' => true]);
                 ?>
+
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>
             <?= $this->Form->end() ?>

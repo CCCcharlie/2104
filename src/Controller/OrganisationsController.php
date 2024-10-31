@@ -105,7 +105,7 @@ class OrganisationsController extends AppController
             if ($this->Organisations->save($organisation)) {
                 $this->Flash->success(__('The organisation has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'add']);
             }
             $this->Flash->error(__('The organisation could not be saved. Please, try again.'));
         }
