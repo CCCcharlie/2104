@@ -19,13 +19,39 @@
             <fieldset>
                 <legend><?= __('Add Contact') ?></legend>
                 <?php
-                    echo $this->Form->control('first_name');
-                    echo $this->Form->control('last_name');
-                    echo $this->Form->control('email');
-                    echo $this->Form->control('phone_number');
-                    echo $this->Form->control('message');
-                    echo $this->Form->control('organisation_id', ['options' => $organisations, 'empty' => true]);
-                    echo $this->Form->control('contractors_id', ['options' => $contractors, 'empty' => true]);
+                echo $this->Form->control('first_name', [
+                    'required' => true,
+                    'label' => 'First Name'
+                ]);
+                echo $this->Form->control('last_name', [
+                    'required' => true,
+                    'label' => 'Last Name'
+                ]);
+                echo $this->Form->control('email', [
+                    'required' => true,
+                    'label' => 'Email'
+                ]);
+                echo $this->Form->control('phone_number', [
+                    'required' => true,
+                    'label' => 'Phone Number'
+                ]);
+                echo $this->Form->control('message', [
+                    'required' => true,
+                    'label' => 'Message'
+                ]);
+                echo $this->Form->control('organisation_id', [
+                    'options' => $organisations,
+                    'empty' => true,
+                    'required' => true,
+                    'label' => 'Organisation'
+                ]);
+                echo $this->Form->control('contractors_id', [
+                    'options' => $contractors,
+                    'empty' => true,
+                    'required' => true,
+                    'label' => 'Contractor'
+                ]);
+
 //                    echo $this->Form->control('replied', [
 //                        'type' => 'checkbox',
 //                        'label' => 'Replied'
