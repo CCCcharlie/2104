@@ -18,17 +18,29 @@
             <fieldset>
                 <legend><?= __('Add Contractor') ?></legend>
                 <?php
-                    echo $this->Form->control('first_name');
-                    echo $this->Form->control('last_name');
-                    echo $this->Form->control('phone_number');
-                    echo $this->Form->control('contractor_email');
-                    echo $this->Form->control('skills._ids', [
-                        'type' => 'select',
-                        'multiple' => 'checkbox',
-                        'options' => $skills,
-                        'label' => 'Select Skills'
-                    ]);
-
+                echo $this->Form->control('first_name', [
+                    'required' => true,
+                    'label' => 'First Name'
+                ]);
+                echo $this->Form->control('last_name', [
+                    'required' => true,
+                    'label' => 'Last Name'
+                ]);
+                echo $this->Form->control('phone_number', [
+                    'required' => true,
+                    'label' => 'Phone Number'
+                ]);
+                echo $this->Form->control('contractor_email', [
+                    'required' => true, // ensure being filled
+                    'label' => 'Contractor Email'
+                ]);
+                echo $this->Form->control('skills._ids', [
+                    'type' => 'select',
+                    'multiple' => true, // Ensure multiple selections
+                    'options' => $skills,
+                    'label' => 'Select Skills',
+                    'required' => true // Ensure at least one skill is selected
+                ]);
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

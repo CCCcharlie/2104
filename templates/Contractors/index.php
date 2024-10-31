@@ -4,7 +4,9 @@
  * @var iterable<\App\Model\Entity\Contractor> $contractors
  */
 ?>
-<div class="contractors index content">
+<div class="contractors index content ">
+    <?= $this->Html->link(__('New Contractors'), ['action' => 'add'], ['class' => 'button float-right justify-content-center']) ?>
+
     <h3><?= __('Contractors') ?></h3>
     <?= $this->Form->create(null, ['type' => 'get']) ?>
     <?= $this->Form->control('keyword', ['label' => 'Search by Name']) ?>

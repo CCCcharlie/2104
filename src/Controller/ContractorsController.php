@@ -139,7 +139,7 @@ class ContractorsController extends AppController
             if ($this->Contractors->save($contractor)) {
                 $this->Flash->success(__('The contractor has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'add']);
             }
             $this->Flash->error(__('The contractor could not be saved. Please, try again.'));
         }

@@ -4,6 +4,9 @@
  * @var iterable<\App\Model\Entity\Organisation> $organisations
  */
 ?>
+<?= $this->Html->link(__('New Organisations'), ['action' => 'add'], ['class' => 'button float-right justify-content-center']) ?>
+<h3><?= __('Organisations') ?></h3>
+
 <?= $this->Form->create(null, ['type' => 'get', 'url' => ['action' => 'index']]) ?>
 <?= $this->Form->control('keyword', ['label' => 'Search by Organisation Name', 'value' => $this->request->getQuery('keyword')]) ?>
 <?= $this->Form->control('sort_by_projects', [
@@ -26,7 +29,7 @@
     </a>
 </div>
 <div class="organisations index content">
-    <h3><?= __('Organisations') ?></h3>
+
     <div class="table-responsive">
         <table>
             <thead>
