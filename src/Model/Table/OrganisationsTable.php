@@ -100,6 +100,7 @@ class OrganisationsTable extends Table
         $validator
             ->scalar('contact_email')
             ->maxLength('contact_email', 255)
+            ->email('contact_email', false, __('Please provide a valid email address with an "@" symbol.'))
             ->allowEmptyString('contact_email');
 
         // Validate current_website as a string with a max length of 255 characters, allowing it to be empty
