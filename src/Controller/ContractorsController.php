@@ -49,9 +49,6 @@ class ContractorsController extends AppController
                 ]
             ]);
 
-//            $querySql = $query->sql();
-//            debug($querySql);
-            debug($query);
 
 
         }

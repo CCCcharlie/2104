@@ -42,14 +42,12 @@
                 echo $this->Form->control('organisation_id', [
                     'options' => $organisations,
                     'empty' => true,
-                    'required' => true,
-                    'label' => 'Organisation'
+                    'label' => 'Organisation(Optional)'
                 ]);
                 echo $this->Form->control('contractors_id', [
                     'options' => $contractors,
                     'empty' => true,
-                    'required' => true,
-                    'label' => 'Contractor'
+                    'label' => 'Contractor(Optional)'
                 ]);
 
 //                    echo $this->Form->control('replied', [

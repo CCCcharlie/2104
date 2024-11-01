@@ -48,7 +48,6 @@ class ProjectsController extends AppController
         // Apply skills filter if any skills are selected
         if (isset($skills) && is_array($skills) && !empty($skills)) {
 
-            dd($skills);
             $query->matching('Skills', function ($q) use ($skills) {
                 return $q->where(['Skills.id IN' => $skills]);
             });
