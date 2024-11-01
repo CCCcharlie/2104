@@ -11,6 +11,19 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 :root {
+    /* Custom message colors */
+    --color-message-success-bg: #e8f5f4;
+    --color-message-success-text: #17a2b8;
+    --color-message-success-border: #17a2b8;
+
+    --color-message-error-bg: #f8d7da;
+    --color-message-error-text: #721c24;
+    --color-message-error-border: #f5c6cb;
+
+    --color-message-info-bg: #d4e6f1;
+    --color-message-info-text: #2c3e50;
+    --color-message-info-border: #3498db;
+
   --blue: #4e73df;
   --indigo: #6610f2;
   --purple: #6f42c1;

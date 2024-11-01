@@ -43,7 +43,8 @@
                 ]);
                 ?>
             </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
+
+            <?= $this->Form->button(__('Submit'), ['class' => 'd-flex justify-content-center']) ?>
             <?= $this->Form->end() ?>
         </div>
     </div>
