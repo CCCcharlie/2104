@@ -42,8 +42,7 @@
         </div>
     </fieldset>
 
-    <div class="row mb-2">
-        <div class="col-6">
+
             <?= $this->Form->control('project_count', [
                 'type' => 'number',
                 'label' => 'Minimum Project Count',
@@ -51,18 +50,16 @@
                 'class' => 'form-control form-control-sm',
                 'min' => 0
             ]) ?>
+
+    <div class="row justify-content-center">
+        <div class="col-md-6 d-flex justify-content-center">
+            <?= $this->Form->button(__('Filter'), ['class' => 'btn btn-primary h-75 mr-3']) ?>
+            <a href="<?= $this->Url->build(['action' => 'index']) ?>" class="btn btn-secondary h-75 ml-3">Reset</a>
         </div>
     </div>
-<?= $this->Form->button(__('Filter')) ?>
-    <?= $this->Form->end() ?>
 
 
 
-    <div class="form-group">
-        <a href="<?= $this->Url->build(['action' => 'index']) ?>" class="btn btn-secondary">
-            Reset
-        </a>
-    </div>
 
     <div class="table-responsive">
 

@@ -66,10 +66,13 @@
     </div>
 </div>
 
-<div class="d-flex justify-content-between gap-2">
-    <?= $this->Form->button(__('Filter')) ?>
-    <a href="<?= $this->Url->build(['action' => 'index']) ?>" class="btn btn-secondary">Reset</a>
+<div class="row justify-content-center">
+    <div class="col-md-6 d-flex justify-content-center">
+        <?= $this->Form->button(__('Filter'), ['class' => 'btn btn-primary h-75 mr-3']) ?>
+        <a href="<?= $this->Url->build(['action' => 'index']) ?>" class="btn btn-secondary h-75 ml-3">Reset</a>
+    </div>
 </div>
+<!--make the button sit in the center and in the same height -->
 
 <?= $this->Form->end() ?>
 
