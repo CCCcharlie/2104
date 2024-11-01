@@ -25,7 +25,7 @@ $loggedIn = $this->request->getAttribute('identity') !== null;
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title><?= $cakeDescription ?> - <?= $this->fetch('title') ?></title>
     <link rel="icon" type="image/png" href="<?= $this->Url->build('/img/logo.png') ?>"/>
-
+<!--setting up icon-->
 
     <!-- Bootstrap 4 Admin Theme CSS -->
 <!--    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">-->
@@ -100,10 +100,7 @@ $loggedIn = $this->request->getAttribute('identity') !== null;
     <div id="content-wrapper" class="d-flex flex-column">
         <!-- Main Content -->
         <div id="content">
-            <!-- Topbar -->
-<!--            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">-->
-<!--                <h1 class="h3 mb-0 text-gray-800">--><?php //= $this->fetch('title') ?><!--</h1>-->
-<!--            </nav>-->
+
 
             <!-- Begin Page Content -->
             <div class="container-fluid">
