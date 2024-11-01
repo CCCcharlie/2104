@@ -55,6 +55,8 @@
         <div class="col-md-6 d-flex justify-content-center">
             <?= $this->Form->button(__('Filter'), ['class' => 'btn btn-primary h-75 mr-3']) ?>
             <a href="<?= $this->Url->build(['action' => 'index']) ?>" class="btn btn-secondary h-75 ml-3">Reset</a>
+            <?= $this->Form->end() ?>
+
         </div>
     </div>
 
@@ -77,6 +79,9 @@
                 </tr>
             </thead>
             <tbody>
+
+
+
                 <?php foreach ($contractors as $contractor): ?>
                 <tr>
                     <td><?= $this->Number->format($contractor->id) ?></td>
@@ -94,6 +99,7 @@
                 </tr>
                 <?php endforeach; ?>
             </tbody>
+
         </table>
     </div>
     <div class="paginator my-3"> <!-- Add vertical margin to the whole paginator -->

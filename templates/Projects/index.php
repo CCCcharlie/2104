@@ -51,7 +51,7 @@
     <div class="col-md-6">
         <?= $this->Form->control('start_date', [
             'type' => 'date',
-            'label' => 'Start Date',
+            'label' => 'Project Due Date After',
             'value' => $this->request->getQuery('start_date'),
             'class' => 'form-control'
         ]) ?>
@@ -59,7 +59,7 @@
     <div class="col-md-6"> <!-- fixed these -->
         <?= $this->Form->control('end_date', [
             'type' => 'date',
-            'label' => 'End Date',
+            'label' => 'Project Due Date Before',
             'value' => $this->request->getQuery('end_date'),
             'class' => 'form-control'
         ]) ?>
