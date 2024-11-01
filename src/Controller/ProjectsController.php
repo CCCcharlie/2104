@@ -21,7 +21,7 @@ class ProjectsController extends AppController
     {
         $keyword = $this->request->getQuery('keyword'); // Skill keyword
         $status = $this->request->getQuery('status');   // Status filter
-        $skills = $this->request->getQuery('skills');   // Array of skill IDs
+        $skills = $this->request->getQuery('skills', []); // Default to empty array
         $startDate = $this->request->getQuery('start_date'); // Start date filter
         $endDate = $this->request->getQuery('end_date');     // End date filter
 
@@ -40,8 +40,14 @@ class ProjectsController extends AppController
             $query->where(['Projects.complete' => $status]);
         }
 
-        // Filter by selected skills if any skills are specified
-        if (!empty($skills)) {
+
+
+        $skills = array_filter($skills, function($skill) {
+            return $skill !== '0'; // only keep the valid
+        });
+        // Apply skills filter if any skills are selected
+        if (isset($skills) && is_array($skills) && !empty($skills)) {
+
             $query->matching('Skills', function ($q) use ($skills) {
                 return $q->where(['Skills.id IN' => $skills]);
             });

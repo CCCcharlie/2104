@@ -28,10 +28,10 @@ class ContractorsController extends AppController
      */
     public function index()
     {
-        // Get query parameters
+        // Get query parameters with defaults
         $keyword = $this->request->getQuery('keyword'); // Name keyword
         $email = $this->request->getQuery('email'); // Email keyword
-        $skills = $this->request->getQuery('skills', []); // Ensure it defaults to an empty array
+        $skills = $this->request->getQuery('skills', []); // Default to empty array
         $sortByProjects = $this->request->getQuery('sort_by_projects'); // Sort option
         $projectCount = $this->request->getQuery('project_count'); // Minimum project count filter
 
@@ -48,6 +48,9 @@ class ContractorsController extends AppController
                     'Contractors.last_name LIKE' => '%' . $keyword . '%'
                 ]
             ]);
+
+
+
         }
 
         // Apply email filter if an email is entered
@@ -55,16 +58,15 @@ class ContractorsController extends AppController
             $query->where(['Contractors.contractor_email LIKE' => '%' . $email . '%']);
         }
 
-//        debug($skills); // Check the structure of the $skills array
-
+        $skills = array_filter($skills, function($skill) {
+            return $skill !== '0'; // only keep the valid
+        });
         // Apply skills filter if any skills are selected
-// Ensure $skills is treated as an array
-        if (!empty($skills) && is_array($skills)) {
-            $query->matching('Skills', function ($q) use ($skills) {
+        if (isset($skills) && is_array($skills) && !empty($skills)) {
+$query->matching('Skills', function ($q) use ($skills) {
                 return $q->where(['Skills.id IN' => $skills]);
             });
         }
-
 
         // Sort by the number of projects if the sort option is checked
         if ($sortByProjects === '1' || !empty($projectCount)) {
@@ -78,15 +80,15 @@ class ContractorsController extends AppController
                 'Contractors.modified',
                 'total_projects' => $query->func()->count('Projects.id')
             ])
-                ->group('Contractors.id');
+                ->groupBy('Contractors.id');
 
             // Sort in descending order by project count if the checkbox is checked
-            if ($sortByProjects === '1') {
-                $query->order(['total_projects' => 'DESC']);
-            }
+//            if ($sortByProjects === '1') {
+//                $query->order(['total_projects' => 'DESC']);
+//            }
 
             // Filter by minimum project count if specified
-            if (!empty($projectCount)) {
+            if (!empty($projectCount) && is_numeric($projectCount)) {
                 $query->having(['total_projects >=' => $projectCount]);
             }
         }
@@ -94,8 +96,8 @@ class ContractorsController extends AppController
         // Paginate the results
         $contractors = $this->paginate($query);
 
+
         // Get the list of skills for the skills filter
-        // Additional sorting and filtering applied based on project count if set
         $skillsList = $this->Contractors->Skills->find('list')->toArray();
 
         // Set variables for the view
