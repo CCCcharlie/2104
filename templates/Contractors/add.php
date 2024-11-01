@@ -36,10 +36,9 @@
                 ]);
                 echo $this->Form->control('skills._ids', [
                     'type' => 'select',
-                    'multiple' => true, // Ensure multiple selections
+                    'multiple' => 'checkbox', // Ensure multiple selections
                     'options' => $skills,
                     'label' => 'Select Skills',
-                    'required' => true // Ensure at least one skill is selected
                 ]);
                 ?>
             </fieldset>
