@@ -40,7 +40,7 @@
                 </tr>
                 <tr>
                     <th><?= __('Contractor') ?></th>
-                    <td><?= $project->hasValue('contractor') ? $this->Html->link($project->contractor->first_name. ' ' . $project->contractor->last_name, ['controller' => 'Contractors', 'action' => 'view', $project->contractor->id]) : '' ?></td>
+                    <td><?= $project->hasValue('contractor') ? $this->Html->link($project->contractor->first_name. ' ' . $project->contractor->last_name, ['controller' => 'Contractors', 'action' => 'view', $project->contractor->id]) : 'Not assigned' ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Organisation') ?></th>
