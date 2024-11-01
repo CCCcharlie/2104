@@ -62,9 +62,6 @@ class ProjectsController extends AppController
             $query->where(['Projects.project_due_date <=' => $endDate]);
         }
 
-//        dd($startDate);
-//        dd($endDate);
-//        exit();
 
         // Fetch the skills list for filtering options in the view
         $skillsList = $this->Projects->Skills->find('list', [

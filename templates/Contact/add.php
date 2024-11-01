@@ -13,6 +13,7 @@
             <?= $this->Html->link(__('Back'), ['controller' => 'Dashboard', 'action' => 'index'], ['class' => 'button']) ?>
         </div>
     </aside>
+<!-- define the layout    -->
     <div class="column column-80">
         <div class="contact form content">
             <?= $this->Form->create($contact) ?>
@@ -22,7 +23,9 @@
                 echo $this->Form->control('first_name', [
                     'required' => true,
                     'label' => 'First Name'
+
                 ]);
+//                make sure field is entered
                 echo $this->Form->control('last_name', [
                     'required' => true,
                     'label' => 'Last Name'
@@ -50,10 +53,7 @@
                     'label' => 'Contractor(Optional)'
                 ]);
 
-//                    echo $this->Form->control('replied', [
-//                        'type' => 'checkbox',
-//                        'label' => 'Replied'
-//                    ]);
+
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

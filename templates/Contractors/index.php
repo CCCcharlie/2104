@@ -12,6 +12,7 @@
     <?= $this->Form->create(null, ['type' => 'get']) ?>
     <div class="row mb-2">
         <div class="col-6">
+<!--            make the layout look more tight up and organize, placing 2 input field in a same line -->
             <?= $this->Form->control('keyword', [
                 'label' => 'Search by Name',
                 'class' => 'form-control'
@@ -26,6 +27,7 @@
     </div>
     <fieldset class="mb-2">
         <legend>Filter by Skills</legend>
+<!--        field for skill fillter -->
         <div class="d-flex flex-wrap gap-1">
             <?php foreach ($skillsList as $id => $skillName): ?>
                 <div class="form-check form-check-inline">
@@ -36,6 +38,7 @@
                         'class' => 'form-check-input',
                         'labelOptions' => ['class' => 'form-check-label mb-0'],
                         'checked' => false
+//                        allow mutiple skills
                     ]) ?>
                 </div>
             <?php endforeach; ?>
@@ -49,6 +52,7 @@
                 'value' => $this->request->getQuery('project_count'),
                 'class' => 'form-control form-control-sm',
                 'min' => 0
+//                preventing project number negative
             ]) ?>
 
     <div class="row justify-content-center">
@@ -56,7 +60,7 @@
             <?= $this->Form->button(__('Filter'), ['class' => 'btn btn-primary h-75 mr-3']) ?>
             <a href="<?= $this->Url->build(['action' => 'index']) ?>" class="btn btn-secondary h-75 ml-3">Reset</a>
             <?= $this->Form->end() ?>
-
+<!--make the button in the center with space in between -->
         </div>
     </div>
 

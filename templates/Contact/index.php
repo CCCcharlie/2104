@@ -33,6 +33,7 @@
                     <td><?= h($contact->email) ?></td>
                     <td><?= h($contact->phone_number) ?></td>
                     <td><?= $contact->hasValue('organisation') ? $this->Html->link($contact->organisation->business_name, ['controller' => 'Organisations', 'action' => 'view', $contact->organisation->id]) : 'Not assigned' ?></td>
+<!--                    show not assign if no value same as below -->
                     <td><?= h($contact->created) ?></td>
                     <td><?= h($contact->modified) ?></td>
                     <td><?= $contact->hasValue('contractor') ? $this->Html->link($contact->contractor->first_name.$contact->contractor->last_name, ['controller' => 'Contractors', 'action' => 'view', $contact->contractor->id]) : 'Not assigned' ?></td>
@@ -44,6 +45,7 @@
                                 : 'Replied')
                         ?>
                     </td>
+<!--                    make  the field readable -->
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $contact->id]) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $contact->id]) ?>
@@ -64,4 +66,5 @@
         </ul>
         <p class="text-center mt-3"><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>
     </div>
+<!--    place the paginator in the center of the pages -->
 </div>

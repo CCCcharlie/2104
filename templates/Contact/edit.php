@@ -22,6 +22,8 @@
                     'class' => 'button',
                     'style' => 'color: white; background-color: #dc3545;'
                 ]
+
+//                custom style for the delete confirmation
             ) ?>
         </div>
     </aside>
@@ -43,6 +45,7 @@
                     'options' => [0 => 'Not replied', 1 => 'Replied'],
                     'empty' => 'Not marked'
                 ]);
+//               make the replied field more understandable
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

@@ -40,6 +40,7 @@
                         'options' => $skills,
                         'label' => 'Select Skills'
                     ]);
+//                    allow mutiple skills
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

@@ -60,6 +60,7 @@ class ContactController extends AppController
      */
     public function add()
     {
+
         $contact = $this->Contact->newEmptyEntity();
         if ($this->request->is('post')) {
             $contact = $this->Contact->patchEntity($contact, $this->request->getData());
@@ -68,8 +69,7 @@ class ContactController extends AppController
 
                 return $this->redirect(['action' => 'add']);
             }
-//            dd($contact->getErrors());
-//            exit();
+
             $this->Flash->error(__('The contact could not be saved. Please, try again.'));
         }
         $organisations = $this->Contact->Organisations->find('list', [
@@ -78,7 +78,7 @@ class ContactController extends AppController
             'limit' => 200
         ])->toArray();
 
-        // Fetch contractors with full name (first and last)
+        // Fetch organisations contractors with full name (first and last)
         $contractors = $this->Contact->Contractors->find('list', [
             'keyField' => 'id',
             'valueField' => function ($row) {
@@ -86,8 +86,7 @@ class ContactController extends AppController
             }
         ])->toArray();
 
-//        dd($organisations);
-//        exit;
+
         $this->set(compact('contact', 'organisations', 'contractors'));
 
     }
@@ -124,8 +123,7 @@ class ContactController extends AppController
             'valueField' => function ($row) {
                 return $row->first_name . ' ' . $row->last_name;
             }        ])->limit(200)->all();
-//        debug($organisations);
-//        exit();
+
         $this->set(compact('contact', 'organisations', 'contractors'));
     }
 
