@@ -21,7 +21,10 @@
                 echo $this->Form->control('contact_first_name', ['required' => true]);
                 echo $this->Form->control('contact_last_name', ['required' => true]);
                 echo $this->Form->control('contact_email', ['required' => true]);
-                echo $this->Form->control('current_website', ['required' => true]);
+                echo $this->Form->control('current_website', ['required' => true,
+                                    'type' => 'url', // Set the type to url to validate URL format
+                    'placeholder' => 'https://example.com' // Optional: provide a placeholder for clarity
+                ]);
                 echo $this->Form->control('industry', ['required' => true]);
                 ?>
 
