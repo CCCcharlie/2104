@@ -67,7 +67,7 @@
 </div>
 
 <div class="d-flex justify-content-between gap-2">
-    <?= $this->Form->button(__('Filter'), ['class' => 'btn btn-primary']) ?>
+    <?= $this->Form->button(__('Filter')) ?>
     <a href="<?= $this->Url->build(['action' => 'index']) ?>" class="btn btn-secondary">Reset</a>
 </div>
 

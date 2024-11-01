@@ -7,28 +7,47 @@
 <?= $this->Html->link(__('New Organisations'), ['action' => 'add'], ['class' => 'button float-right justify-content-center']) ?>
 <h3><?= __('Organisations') ?></h3>
 
+
 <?= $this->Form->create(null, ['type' => 'get', 'url' => ['action' => 'index']]) ?>
-<?= $this->Form->control('keyword', ['label' => 'Search by Organisation Name', 'value' => $this->request->getQuery('keyword')]) ?>
-<?= $this->Form->control('sort_by_projects', [
-    'type' => 'checkbox',
-    'label' => 'Sort by Number of Projects',
-    'value' => '1'
-]) ?>
-<?= $this->Form->create(null, ['type' => 'get']) ?>
-<?= $this->Form->control('project_count', [
-    'type' => 'number',
-    'label' => 'Minimum Project Count',
-    'value' => $this->request->getQuery('project_count')
-    'min' => '0'
-]) ?>
-<?= $this->Form->button(__('Filter')) ?>
+
+<div class="row mb-2">
+    <div class="col-md-6">
+        <?= $this->Form->control('keyword', [
+            'label' => 'Search by Organisation Name',
+            'value' => $this->request->getQuery('keyword'),
+            'class' => 'form-control'
+        ]) ?>
+    </div>
+    <div class="col-md-6">
+
+        <?= $this->Form->control('project_count', [
+            'type' => 'number',
+            'label' => 'Minimum Project Count',
+            'value' => $this->request->getQuery('project_count'),
+            'min' => '0',
+            'class' => 'form-control'
+        ]) ?>
+    </div>
+</div>
+
+<div class="row mb-2">
+    <div class="col-md-6">
+
+        <?= $this->Form->control('sort_by_projects', [
+            'type' => 'checkbox',
+            'label' => 'Sort by Number of Projects',
+            'value' => '1',
+        ]) ?>
+    </div>
+</div>
+
+<div class="d-flex justify-content-between gap-2">
+    <?= $this->Form->button(__('Filter'), ['class' => 'btn btn-primary']) ?>
+    <a href="<?= $this->Url->build(['action' => 'index']) ?>" class="btn btn-secondary">Reset</a>
+</div>
+
 <?= $this->Form->end() ?>
 
-<div class="form-group">
-    <a href="<?= $this->Url->build(['action' => 'index']) ?>" class="btn btn-secondary">
-        Reset
-    </a>
-</div>
 <div class="organisations index content">
 
     <div class="table-responsive">
