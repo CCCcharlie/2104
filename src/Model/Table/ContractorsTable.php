@@ -96,12 +96,14 @@ class ContractorsTable extends Table
         $validator
             ->scalar('phone_number')
             ->maxLength('phone_number', 10)
+            ->minLength('phone_number', 10, 'Phone number must be exactly 10 digits')
             ->allowEmptyString('phone_number');
 
         // Validate contractor_email as a string up to 255 characters, allowing it to be empty
         $validator
             ->scalar('contractor_email')
             ->maxLength('contractor_email', 255)
+            ->email('contractor_email', false, __('Please provide a valid email address with an "@" symbol.'))
             ->allowEmptyString('contractor_email');
 
         return $validator;

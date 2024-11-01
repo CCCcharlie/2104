@@ -99,6 +99,7 @@ class ContactTable extends Table
         $validator
             ->scalar('phone_number')
             ->maxLength('phone_number', 10)
+            ->minLength('phone_number', 10, 'Phone number must be exactly 10 digits')
             ->allowEmptyString('phone_number');
 
         // Allow 'message' to be any string or empty
