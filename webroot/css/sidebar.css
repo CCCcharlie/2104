@@ -19,3 +19,7 @@
 .sidebar-brand-icon .logo:hover {
     transform: scale(1.05); /* Slightly enlarges the logo on hover */
 }
+.side-nav {
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+}

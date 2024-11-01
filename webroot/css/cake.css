@@ -345,6 +345,7 @@ input[type='color'] {
         margin: 0 auto;
     }
     .side-nav {
+        margin-top: 1rem;!important;
         margin-bottom: 1rem;
     }
     .heading {
